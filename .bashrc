@@ -139,3 +139,17 @@ fi
 export NVM_DIR="/home/ilix/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+[ -z "$PS1" ] && return
+
+function nvmuse {
+  if [ -f .nvmrc ]; then
+    nvm use
+  fi
+}
+
+function cd {
+  builtin cd "$@"
+  nvmuse
+}
+
+nvmuse
