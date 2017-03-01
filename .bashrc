@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+export PATH=$PATH:/home/ilix/.local/bin
+
 # timestamps for later analysis. www.debian-administration.org/users/rossen/weblog/1
 export HISTTIMEFORMAT='%F %T '
 
