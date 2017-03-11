@@ -34,12 +34,14 @@ shopt -s nocaseglob;
 shopt -s cdspell;
 
 # Custom aliases
-alias rm="trash"
-alias bashrc_rl="source ~/.bashrc"
-alias bashrc_up="cp $SOURCE_LOCATION/home/.bashrc ~/.bashrc && source ~/.bashrc"
+alias update="cp $SOURCE_LOCATION/home/.bashrc ~/.bashrc && source ~/.bashrc"
 alias minecraft="java -jar ~/Applications/Minecraft.jar &>/dev/null &"
 alias syncthing="~/Applications/syncthing/syncthing &>/dev/null &"
 alias sqldeveloper="sh ~/Applications/sqldeveloper/sqldeveloper.sh &>/dev/null &"
+alias xps_wifi="sudo systemctl restart network-manager.service"
+alias docker_clean_containers="docker rm $(docker ps -aq)"
+alias docker_clean_containers="docker rmi -f $(docker images -aq)"
+alias docker_clean_volumes="docker volume rm $(docker volume ls -qf dangling=true)"
 
 # Unfinished git status output.
 if [ -n `command -v git 2>/dev/null` ]; then
@@ -144,6 +146,7 @@ export NVM_DIR="/home/ilix/.nvm"
 [ -z "$PS1" ] && return
 
 function nvmuse {
+  [ -z "$PS1" ] && return
   if [ -f .nvmrc ]; then
     nvm use
   fi
