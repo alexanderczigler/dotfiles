@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+export PATH=$PATH:/home/ilix/.local/bin
+
 # timestamps for later analysis. www.debian-administration.org/users/rossen/weblog/1
 export HISTTIMEFORMAT='%F %T '
 
@@ -32,14 +34,17 @@ shopt -s nocaseglob;
 shopt -s cdspell;
 
 # Custom aliases
-alias bashrc_rl="source ~/.bashrc"
-alias bashrc_up="cp $SOURCE_LOCATION/home/.bashrc ~/.bashrc && source ~/.bashrc"
+alias docker_clean_containers="docker rm $(docker ps -aq)"
+alias docker_clean_containers="docker rmi -f $(docker images -aq)"
+alias docker_clean_volumes="docker volume rm $(docker volume ls -qf dangling=true)"
 alias minecraft="java -jar ~/Applications/Minecraft.jar &>/dev/null &"
 alias oadm="~/Applications/openshift/oadm"
 alias oc="~/Applications/openshift/oc"
 alias sqldeveloper="sh ~/Applications/sqldeveloper/sqldeveloper.sh &>/dev/null &"
+alias update="cp $SOURCE_LOCATION/home/.bashrc ~/.bashrc && source ~/.bashrc"
 alias vpn_dn=""
 alias vpn_up=""
+alias xps_wifi="sudo systemctl restart network-manager.service"
 
 # Unfinished git status output.
 if [ -n `command -v git 2>/dev/null` ]; then
@@ -158,6 +163,7 @@ export NVM_DIR="/home/ilix/.nvm"
 [ -z "$PS1" ] && return
 
 function nvmuse {
+  [ -z "$PS1" ] && return
   if [ -f .nvmrc ]; then
     nvm use
   fi
