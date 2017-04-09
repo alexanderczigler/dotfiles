@@ -32,12 +32,14 @@ shopt -s nocaseglob;
 shopt -s cdspell;
 
 # Custom aliases
-alias rm="trash"
 alias bashrc_rl="source ~/.bashrc"
 alias bashrc_up="cp $SOURCE_LOCATION/home/.bashrc ~/.bashrc && source ~/.bashrc"
 alias minecraft="java -jar ~/Applications/Minecraft.jar &>/dev/null &"
-alias syncthing="~/Applications/syncthing/syncthing &>/dev/null &"
+alias oadm="~/Applications/openshift/oadm"
+alias oc="~/Applications/openshift/oc"
 alias sqldeveloper="sh ~/Applications/sqldeveloper/sqldeveloper.sh &>/dev/null &"
+alias vpn_dn=""
+alias vpn_up=""
 
 # Unfinished git status output.
 if [ -n `command -v git 2>/dev/null` ]; then
@@ -135,6 +137,20 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/ilix/Downloads/google-cloud-sdk/path.bash.inc ]; then
+  source '/home/ilix/Downloads/google-cloud-sdk/path.bash.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /home/ilix/Downloads/google-cloud-sdk/completion.bash.inc ]; then
+  source '/home/ilix/Downloads/google-cloud-sdk/completion.bash.inc'
+fi
+
+function fixwifi {
+  sudo systemctl restart network-manager.service
+}
 
 export NVM_DIR="/home/ilix/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
