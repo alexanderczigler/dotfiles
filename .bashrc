@@ -44,6 +44,7 @@ alias sqldeveloper="sh ~/Applications/sqldeveloper/sqldeveloper.sh &>/dev/null &
 alias update="cp $SOURCE_LOCATION/home/.bashrc ~/.bashrc && source ~/.bashrc"
 alias vpn_dn=""
 alias vpn_up=""
+alias wejay="./home/ilix/Applications/wejay"
 alias xps_wifi="sudo systemctl restart network-manager.service"
 
 # Unfinished git status output.
