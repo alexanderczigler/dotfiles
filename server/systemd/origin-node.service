@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenShift Origin node
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/openshift/openshift start node --config=/opt/openshift/openshift.local.config/node/node-config.yaml
+User=openshift
+Group=openshift
+
+[Install]
+WantedBy=multi-user.target
