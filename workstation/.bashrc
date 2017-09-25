@@ -5,9 +5,6 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
 # User specific aliases and functions
 
 case $- in
@@ -33,19 +30,15 @@ shopt -s checkwinsize
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Custom aliases
-alias discord="~/Program/Discord/Discord"
-alias docker_clean_containers="docker rm $(docker ps -aq)"
-alias docker_clean_containers="docker rmi -f $(docker images -aq)"
-alias docker_clean_volumes="docker volume rm $(docker volume ls -qf dangling=true)"
-alias minecraft="java -jar ~/Program/Minecraft.jar &>/dev/null &"
-alias oadm="~/Program/openshift/oadm"
-alias oc="~/Program/openshift/oc"
-alias sqldeveloper="sh ~/Program/sqldeveloper/sqldeveloper.sh &>/dev/null &"
-alias update="cp ~/Dokument/home/.bashrc ~/.bashrc && source ~/.bashrc"
-alias vpn_dn="sudo killall -9 openvpn" # seriously? I mean, seriously?
-alias vpn_up="sudo openvpn --config ~/alexander@iteam.se/Access/iteam-acr.ovpn"
-alias wejay="./home/ilix/Program/wejay"
-alias xps_wifi="sudo systemctl restart network-manager.service"
+alias discord="~/.local/Discord/Discord"
+alias minecraft="java -jar ~/.local/Minecraft.jar &>/dev/null &"
+alias oadm="~/.local/openshift/oadm"
+alias oc="~/.local/openshift/oc"
+alias sqldeveloper="sh ~/.local/sqldeveloper/sqldeveloper.sh &>/dev/null &"
+alias syncthing="screen -d -m -S syncthing bash -c ""~/.local/syncthing/syncthing"""
+alias vpn_up="screen -d -m -S openvpn sudo openvpn --config ~/Documents/iteam-acr.ovpn"
+alias vpn_dn="sudo killall openvpn"
+alias wejay="~/.local/wejay"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
