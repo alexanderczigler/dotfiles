@@ -1,3 +1,7 @@
+# Arch setup
+
+pacman -S vim git mesa mesa-demos xorg-xrandr libreswan gnome-bluetooth
+
 # Fedora setup
 
 Fedora setup
