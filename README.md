@@ -38,5 +38,5 @@ chmod 700 /home/ilix/.xsession
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # Install interesting packages
-sudo pacman -Sy dnsutils
+sudo pacman -Sy dnsutils docker
 ```
