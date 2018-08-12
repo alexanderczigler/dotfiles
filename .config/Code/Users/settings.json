@@ -1,0 +1,20 @@
+{
+  "workbench.startupEditor": "none",
+  "explorer.openEditors.visible": 0,
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "workbench.editor.tabCloseButton": "off",
+  "window.menuBarVisibility": "toggle",
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": false,
+  "workbench.iconTheme": "vs-minimal",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "window.zoomLevel": 0,
+  "editor.renderWhitespace": "all",
+  "window.openFilesInNewWindow": "off",
+  "window.openFoldersInNewWindow": "off",
+  "window.restoreWindows": "none"
+}
