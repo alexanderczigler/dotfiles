@@ -36,4 +36,7 @@ chmod 700 /home/ilix/.xsession
 ```
 # Executing scripts from the internet is totally safe!
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+# Install interesting packages
+sudo pacman -Sy dnsutils
 ```
