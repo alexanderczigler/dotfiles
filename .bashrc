@@ -39,6 +39,9 @@ alias vpn_up="screen -d -m -S openvpn sudo openvpn --config ~/Documents/iteam-ac
 alias vpn_dn="sudo killall openvpn"
 alias wejay="~/.local/wejay"
 
+alias __get="~/Source/ilix/linux/get.sh"
+alias __put="~/Source/ilix/linux/put.sh"
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
