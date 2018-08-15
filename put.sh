@@ -1,6 +1,6 @@
 #!/bin/bash
 
-S="~/Sourc/ilix/linux/"
+S="$HOME/Source/ilix/linux/"
 
 # Update
 cd "$S"
