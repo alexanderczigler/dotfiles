@@ -1,16 +1,15 @@
-# .bashrc
+# my .bashrc
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
-
-# User specific aliases and functions
-
-case $- in
-  *i*) ;;
-    *) return;;
-esac
 
 # PATH mods
 export PATH=$PATH:/home/ilix/.local/bin
@@ -43,8 +42,9 @@ alias wejay="~/.local/wejay"
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-export NVM_DIR="/home/ilix/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -z "$PS1" ] && return
 
