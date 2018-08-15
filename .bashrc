@@ -51,6 +51,11 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -z "$PS1" ] && return
 
+function cpkubeconfig {
+  KUBE_CONFIG=`ssh root@$1 cat /root/.kube/config`
+  echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
+}
+
 function nvmuse {
   [ -z "$PS1" ] && return
   if [ -f .nvmrc ]; then

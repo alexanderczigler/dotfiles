@@ -16,5 +16,5 @@ mkdir -p ~/.config/Code/Users
 cp "$S".config/Code/Users/settings.json ~/.config/Code/Users/settings.json
 
 # Setup bashrc
-cp .bashrc ~/.bashrc
+cp "$S".bashrc ~/.bashrc
 source ~/.bashrc
