@@ -40,7 +40,7 @@ alias vpn_dn="sudo killall openvpn"
 alias wejay="~/.local/wejay"
 
 alias __get="~/Source/ilix/linux/get.sh"
-alias __put="~/Source/ilix/linux/put.sh"
+alias __put="source ~/Source/ilix/linux/put.sh"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -54,6 +54,25 @@ export NVM_DIR="$HOME/.nvm"
 function cpkubeconfig {
   KUBE_CONFIG=`ssh root@$1 cat /root/.kube/config`
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
+}
+
+function instaur {
+  AUR="$HOME/.aur"
+  PKG="$AUR/$1"
+  
+  if [ -d "${PKG}" ]
+  then
+    cd "${PKG}"
+    git checkout .
+    git reset --hard HEAD
+    git pull origin master
+  else
+    git clone "https://aur.archlinux.org/$1.git" "$PKG"
+    cd "$PKG"
+  fi
+  
+  makepkg -Acsi
+  cd -
 }
 
 function nvmuse {
