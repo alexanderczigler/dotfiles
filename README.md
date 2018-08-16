@@ -2,9 +2,9 @@
 
 ## Arch linux (workstation)
 
-### Post-install core
+### Post-install
 
-```
+```bash
 # Load swedish keyboard layout
 loadkeys sv-latin1
 
@@ -31,14 +31,23 @@ echo "startkde" > /home/ilix/.xsession
 chmod 700 /home/ilix/.xsession
 ```
 
-### Post-install other
+### Software and settings
 
-```
+```bash
 # Executing scripts from the internet is totally safe!
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # Install interesting packages
 sudo pacman -Sy dnsutils docker guake
+
+# Setup .bashrc and such
+mkdir -p ~/Source/ilix
+git clone git@github.com:ilix/kubernetes.git ~/Source/ilix/linux
+cd ~/Source/ilix/linux
+sh put.sh
+
+# Install AUR packages
+install-aur-package visual-studio-code-bin
 ```
 
 ### AUR
