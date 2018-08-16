@@ -39,8 +39,8 @@ alias vpn_up="screen -d -m -S openvpn sudo openvpn --config ~/Documents/iteam-ac
 alias vpn_dn="sudo killall openvpn"
 alias wejay="~/.local/wejay"
 
-alias __get="~/Source/ilix/linux/get.sh"
-alias __put="source ~/Source/ilix/linux/put.sh"
+alias use-with-caution="~/Source/ilix/linux/get.sh"
+alias update-bashrc-from-git="source ~/Source/ilix/linux/put.sh"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -56,7 +56,7 @@ function cpkubeconfig {
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
 }
 
-function instaur {
+function install-aur-package {
   AUR="$HOME/.aur"
   PKG="$AUR/$1"
   

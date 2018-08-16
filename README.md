@@ -40,3 +40,13 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 # Install interesting packages
 sudo pacman -Sy dnsutils docker guake
 ```
+
+### AUR
+
+- chromium-widevine
+- kubectl-bin
+- minecraft-launcher
+- openttd-git
+- slack-desktop
+- syncthing-git
+- visual-studio-code-bin
