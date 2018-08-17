@@ -39,6 +39,8 @@ alias vpn_up="screen -d -m -S openvpn sudo openvpn --config ~/Documents/iteam-ac
 alias vpn_dn="sudo killall openvpn"
 alias wejay="~/.local/wejay"
 
+alias remove-orphaned-packages="sudo pacman -Rns $(pacman -Qtdq)"
+
 alias use-with-caution="~/Source/ilix/linux/get.sh"
 alias update-bashrc-from-git="source ~/Source/ilix/linux/put.sh"
 
