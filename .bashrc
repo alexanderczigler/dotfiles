@@ -88,3 +88,5 @@ function cd {
 }
 
 nvmuse
+
+export LC_ALL=C; unset LANGUAGE
