@@ -48,6 +48,10 @@ sh put.sh
 
 # Install AUR packages
 install-aur-package visual-studio-code-bin
+install-aur-package openh264
+install-aur-package freerdp-git
+install-aur-package remmina-git
+install-aur-package remmina-plugin-rdesktop
 ```
 
 ### AUR
