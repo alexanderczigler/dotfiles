@@ -53,6 +53,15 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -z "$PS1" ] && return
 
+function docker-swarm-tunnel {
+  ssh -fNL localhost:2374:/var/run/docker.sock $1
+  export DOCKER_HOST=localhost:2374
+}
+
+function docker-local {
+  export DOCKER_HOST=
+}
+
 function cpkubeconfig {
   KUBE_CONFIG=`ssh root@$1 cat /root/.kube/config`
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
