@@ -127,6 +127,12 @@ function updaur {
   done < $AURCACHE
 }
 
+function delaur {
+  AURCACHE="$HOME/.aurcache"
+  sed -i "/$1/d" $AURCACHE
+  sudo pacman -Rns "$1"
+}
+
 #
 # Ensure that `nvm use` is run whenever entering a dir containing an .nvmrc file
 # # # # # # #
