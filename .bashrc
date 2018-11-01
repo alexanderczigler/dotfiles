@@ -1,6 +1,11 @@
-# my .bashrc
+#
+# My own .bashrc
+# https://github.com/ilix/linux
+# # # # # # #
 
+#
 # If not running interactively, don't do anything
+# # # # # # #
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
@@ -41,8 +46,8 @@ alias wejay="~/.local/wejay"
 
 alias remove-orphaned-packages="sudo pacman -Rns $(pacman -Qtdq)"
 
-alias use-with-caution="~/Source/ilix/linux/get.sh"
-alias update-bashrc-from-git="source ~/Source/ilix/linux/put.sh"
+# alias use-with-caution="~/Source/ilix/linux/get.sh"
+# alias update-bashrc-from-git="source ~/Source/ilix/linux/put.sh"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -67,9 +72,33 @@ function cpkubeconfig {
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
 }
 
-function install-aur-package {
+#
+# .bashrc helpers
+# # # # # # #
+function bashrc_from_local_repo {
+  LINUX="$HOME/Source/linux/"
+
+  # Ensure folders exist
+  mkdir -p ~/.ssh
+  mkdir -p ~/.config/Code/Users
+
+  # Put files to use
+  cp "$LINUX".ssh/config ~/.ssh/config
+  cp "$LINUX".ssh/authorized_keys ~/.ssh/authorized_keys
+  cp "$LINUX".config/Code/Users/settings.json ~/.config/Code/Users/settings.json
+  cp "$LINUX".bashrc ~/.bashrc
+
+  # Reload
+  source ~/.bashrc
+}
+
+#
+# AUR helpers
+# # # # # # #
+function insaur {
   AUR="$HOME/.aur"
   PKG="$AUR/$1"
+  AURCACHE="$HOME/.aurcache"
   
   if [ -d "${PKG}" ]
   then
@@ -82,9 +111,25 @@ function install-aur-package {
     cd "$PKG"
   fi
   
-  makepkg -Acsi
+  makepkg -Acsi --noconfirm
+
+  touch "$AURCACHE"
+  grep -q -F "$1" $AURCACHE || echo "$1" >> $AURCACHE
+
   cd -
 }
+
+function updaur {
+  AURCACHE="$HOME/.aurcache"
+
+  while read package; do
+    insaur "$package"
+  done < $AURCACHE
+}
+
+#
+# Ensure that `nvm use` is run whenever entering a dir containing an .nvmrc file
+# # # # # # #
 
 function nvmuse {
   [ -z "$PS1" ] && return
