@@ -103,7 +103,7 @@ function aur-update-packages {
   AURCACHE="$HOME/.aurcache"
 
   while read package; do
-    insaur "$package"
+    aur-install-package "$package"
   done < $AURCACHE
 }
 
