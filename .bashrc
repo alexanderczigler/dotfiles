@@ -15,7 +15,7 @@ if [ -f /etc/bash.bashrc ]; then
 fi
 
 # PATH mods
-export PATH=$PATH:/home/ilix/.local/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # Keep history up to date, across sessions, in realtime
 #  http://unix.stackexchange.com/a/48113
