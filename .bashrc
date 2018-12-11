@@ -17,11 +17,9 @@ fi
 # PATH mods
 export PATH=$PATH:$HOME/.local/bin
 
-# Keep history up to date, across sessions, in realtime
-#  http://unix.stackexchange.com/a/48113
-export HISTCONTROL=ignoredups:erasedups         # no duplicate entries
-export HISTSIZE=100000                          # big big history (default is 500)
-export HISTFILESIZE=$HISTSIZE                   # big big history
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=100000
+export HISTFILESIZE=$HISTSIZE
 
 shopt -s histappend;
 shopt -s nocaseglob;
@@ -30,22 +28,6 @@ shopt -s checkwinsize
 
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# Custom aliases
-alias discord="~/.local/Discord/Discord"
-alias minecraft="java -jar ~/.local/Minecraft.jar &>/dev/null &"
-alias oadm="~/.local/openshift/oadm"
-alias oc="~/.local/openshift/oc"
-alias sqldeveloper="sh ~/.local/sqldeveloper/sqldeveloper.sh &>/dev/null &"
-alias syncthing="screen -d -m -S syncthing bash -c ""~/.local/syncthing/syncthing"""
-alias vpn_up="screen -d -m -S openvpn sudo openvpn --config ~/Documents/iteam-acr.ovpn"
-alias vpn_dn="sudo killall openvpn"
-alias wejay="~/.local/wejay"
-
-alias remove-orphaned-packages="sudo pacman -Rns $(pacman -Qtdq)"
-
-# alias use-with-caution="~/Source/ilix/linux/get.sh"
-# alias update-bashrc-from-git="source ~/Source/ilix/linux/put.sh"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -73,7 +55,7 @@ function cpkubeconfig {
 #
 # .bashrc helpers
 # # # # # # #
-function bashrc_from_local_repo {
+function bashrc-update {
   LINUX="$HOME/Source/linux/"
 
   # Ensure folders exist
@@ -93,7 +75,7 @@ function bashrc_from_local_repo {
 #
 # AUR helpers
 # # # # # # #
-function insaur {
+function aur-install-package {
   AUR="$HOME/.aur"
   PKG="$AUR/$1"
   AURCACHE="$HOME/.aurcache"
@@ -117,7 +99,7 @@ function insaur {
   cd -
 }
 
-function updaur {
+function aur-update-packages {
   AURCACHE="$HOME/.aurcache"
 
   while read package; do
@@ -125,15 +107,11 @@ function updaur {
   done < $AURCACHE
 }
 
-function delaur {
+function aur-remove-package {
   AURCACHE="$HOME/.aurcache"
   sed -i "/$1/d" $AURCACHE
   sudo pacman -Rns "$1"
 }
-
-#
-# Ensure that `nvm use` is run whenever entering a dir containing an .nvmrc file
-# # # # # # #
 
 function nvmuse {
   [ -z "$PS1" ] && return
@@ -152,5 +130,3 @@ nvmuse
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
   source /usr/share/git/completion/git-completion.bash
 fi
-
-export LC_ALL=C; unset LANGUAGE
