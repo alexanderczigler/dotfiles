@@ -62,6 +62,11 @@ function bashrc-update {
   mkdir -p ~/.ssh
   mkdir -p ~/.config/Code/Users
 
+  if [ "$1" == "pull" ]; then
+    echo "Going to get latest .bashrc from git"
+    git pull origin master
+  fi
+
   # Put files to use
   cp "$LINUX".ssh/config ~/.ssh/config
   cp "$LINUX".ssh/authorized_keys ~/.ssh/authorized_keys
