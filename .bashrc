@@ -151,4 +151,8 @@ function cd {
 
 nvmuse
 
+if [ -f /usr/share/git/completion/git-completion.bash ]; then
+  source /usr/share/git/completion/git-completion.bash
+fi
+
 export LC_ALL=C; unset LANGUAGE
