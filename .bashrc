@@ -52,9 +52,50 @@ function cpkubeconfig {
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
 }
 
-#
-# .bashrc helpers
-# # # # # # #
+# Aliases
+alias pacman-installed='pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }' | more'
+
+# Package helpers
+function pacman-clean {
+  pacman -Syy
+  pacman -Scc
+  pacman -Suu
+}
+
+function aur-install-package {
+  AUR="$HOME/.cache/aur"
+  AURCACHE="$HOME/.cache/aur/packages"
+  
+  PKG="$AUR/$1"
+
+  if [ -d "${PKG}" ]
+  then
+    cd "${PKG}"
+    git checkout .
+    git reset --hard HEAD
+    git pull origin master
+  else
+    git clone "https://aur.archlinux.org/$1.git" "$PKG"
+    cd "$PKG"
+  fi
+  
+  makepkg -Acsi --noconfirm
+
+  touch "$AURCACHE"
+  grep -q -F "$1" $AURCACHE || echo "$1" >> $AURCACHE
+
+  cd -
+}
+
+function aur-update-packages {
+  AURCACHE="$HOME/.cache/aur/packages"
+
+  while read package; do
+    aur-install-package "$package"
+  done < $AURCACHE
+}
+
+# Misc
 function bashrc-update {
   LINUX="$HOME/Source/linux/"
 
@@ -77,46 +118,6 @@ function bashrc-update {
   source ~/.bashrc
 }
 
-#
-# AUR helpers
-# # # # # # #
-function aur-install-package {
-  AUR="$HOME/.aur"
-  PKG="$AUR/$1"
-  AURCACHE="$HOME/.aurcache"
-  
-  if [ -d "${PKG}" ]
-  then
-    cd "${PKG}"
-    git checkout .
-    git reset --hard HEAD
-    git pull origin master
-  else
-    git clone "https://aur.archlinux.org/$1.git" "$PKG"
-    cd "$PKG"
-  fi
-  
-  makepkg -Acsi --noconfirm
-
-  touch "$AURCACHE"
-  grep -q -F "$1" $AURCACHE || echo "$1" >> $AURCACHE
-
-  cd -
-}
-
-function aur-update-packages {
-  AURCACHE="$HOME/.aurcache"
-
-  while read package; do
-    aur-install-package "$package"
-  done < $AURCACHE
-}
-
-function aur-remove-package {
-  AURCACHE="$HOME/.aurcache"
-  sed -i "/$1/d" $AURCACHE
-  sudo pacman -Rns "$1"
-}
 
 function nvmuse {
   [ -z "$PS1" ] && return
