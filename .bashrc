@@ -105,8 +105,10 @@ function bashrc-update {
   mkdir -p ~/.config/Code/Users
 
   if [ "$1" == "pull" ]; then
+    cd $LINUX
     echo "Going to get latest .bashrc from git"
     git pull origin master
+    cd -
   fi
 
   # Put files to use
