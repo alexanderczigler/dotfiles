@@ -58,9 +58,9 @@ function pacman-installed {
 }
 
 function pacman-clean {
-  pacman -Syy
-  pacman -Scc
-  pacman -Suu
+  sudo pacman -Syy
+  sudo pacman -Scc
+  sudo pacman -Suu
 }
 
 function aur-install-package {
