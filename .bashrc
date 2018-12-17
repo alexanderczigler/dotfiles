@@ -121,7 +121,6 @@ function bashrc-update {
   source ~/.bashrc
 }
 
-
 function nvmuse {
   [ -z "$PS1" ] && return
   if [ -f .nvmrc ]; then
