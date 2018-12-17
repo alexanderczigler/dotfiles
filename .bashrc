@@ -52,10 +52,11 @@ function cpkubeconfig {
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
 }
 
-# Aliases
-alias pacman-installed='pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }' | more'
-
 # Package helpers
+function pacman-installed {
+  pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }' | more
+}
+
 function pacman-clean {
   pacman -Syy
   pacman -Scc
