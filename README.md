@@ -68,7 +68,7 @@ install-aur-package remmina-plugin-rdesktop
 
 ### NFS server
 
-```
+```bash
 yum update
 yum install -y nfs-utils vim
 chown -R nfsnobody:nfsnobody /mnt/volume*
