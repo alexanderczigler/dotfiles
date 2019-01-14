@@ -63,3 +63,12 @@ install-aur-package remmina-plugin-rdesktop
 - slack-desktop
 - syncthing-git
 - visual-studio-code-bin
+
+## CentOS (server)
+
+### NFS server
+
+```
+yum update
+yum install -y nfs-utils vim
+```
