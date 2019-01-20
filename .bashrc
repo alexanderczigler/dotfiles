@@ -74,12 +74,13 @@ function aur-install-package {
     cd "${PKG}"
     git checkout .
     git reset --hard HEAD
+    git clean -fdx
     git pull origin master
   else
     git clone "https://aur.archlinux.org/$1.git" "$PKG"
     cd "$PKG"
   fi
-  
+
   makepkg -Acsi --noconfirm
 
   touch "$AURCACHE"
@@ -94,6 +95,16 @@ function aur-update-packages {
   while read package; do
     aur-install-package "$package"
   done < $AURCACHE
+}
+
+function aur-cache-list {
+  AURCACHE="$HOME/.cache/aur/packages"
+  cat $AURCACHE | more
+}
+
+function aur-cache-delete {
+  AURCACHE="$HOME/.cache/aur/packages"
+  sed -i "/$1/d" $AURCACHE
 }
 
 # Misc
