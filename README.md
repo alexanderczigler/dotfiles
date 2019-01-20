@@ -63,3 +63,24 @@ install-aur-package remmina-plugin-rdesktop
 - slack-desktop
 - syncthing-git
 - visual-studio-code-bin
+
+## CentOS (server)
+
+### NFS server
+
+```bash
+yum update
+yum install -y nfs-utils vim
+chown -R nfsnobody:nfsnobody /mnt/volume*
+chmod -R 755 /mnt/volume*
+cd /mnt/volume*
+mkdir share
+
+# Edit /etc/exports (change path and IP)
+echo "/mnt/volume_bla_bla/share 1.2.3.4(rw,sync,no_subtree_check)" > /etc/exports
+
+systemctl start nfs.service
+systemctl enable nfs.service
+
+exportfs -a
+```
