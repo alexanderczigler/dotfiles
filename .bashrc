@@ -20,6 +20,7 @@ fi
 
 # PATH mods
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:/home/ilix/Android/Sdk/platform-tools
 
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=100000
