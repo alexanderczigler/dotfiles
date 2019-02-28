@@ -63,6 +63,7 @@ install-aur-package remmina-plugin-rdesktop
 - slack-desktop
 - syncthing-git
 - visual-studio-code-bin
+- kubernetes-helm-bin
 
 ## CentOS (server)
 
