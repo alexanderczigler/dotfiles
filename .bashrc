@@ -78,8 +78,8 @@ function aur-install-package {
   then
     cd "${PKG}"
     git checkout .
-    git reset --hard HEAD
-    git clean -fdx
+    # git reset --hard HEAD
+    # git clean -fdx
     git pull origin master
   else
     git clone "https://aur.archlinux.org/$1.git" "$PKG"
