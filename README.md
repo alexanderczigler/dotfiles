@@ -64,6 +64,7 @@ install-aur-package remmina-plugin-rdesktop
 - syncthing-git
 - visual-studio-code-bin
 - kubernetes-helm-bin
+- google-cloud-sdk
 
 ## CentOS (server)
 
