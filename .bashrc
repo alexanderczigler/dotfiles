@@ -7,6 +7,10 @@ export LC_ALL=""
 export LC_COLLATE=C
 export LANG=en_US.UTF-8
 
+export SOURCE_DIR=$HOME/Source
+export LINUX_REPO_DIR=$SOURCE_DIR/linux
+export AUR_PACKAGE_LIST=$LINUX_REPO_DIR/.aur
+
 # If not running interactively, stop here
 [[ $- != *i* ]] && return
 
@@ -78,17 +82,12 @@ function pacman-clean {
 }
 
 function aur-install-package {
-  AUR="$HOME/.cache/aur"
-  AURCACHE="$HOME/.cache/aur/packages"
-  
-  PKG="$AUR/$1"
+  PKG="$SOURCE_DIR/$1"
 
   if [ -d "${PKG}" ]
   then
     cd "${PKG}"
     git checkout .
-    # git reset --hard HEAD
-    # git clean -fdx
     git pull origin master
   else
     git clone "https://aur.archlinux.org/$1.git" "$PKG"
@@ -97,28 +96,24 @@ function aur-install-package {
 
   makepkg -Acsi --noconfirm
 
-  touch "$AURCACHE"
-  grep -q -F "$1" $AURCACHE || echo "$1" >> $AURCACHE
+  touch "$AUR_PACKAGE_LIST"
+  grep -q -F "$1" $AUR_PACKAGE_LIST || echo "$1" >> $AUR_PACKAGE_LIST
 
   cd -
 }
 
 function aur-update-packages {
-  AURCACHE="$HOME/.cache/aur/packages"
-
   while read package; do
     aur-install-package "$package"
-  done < $AURCACHE
+  done < $AUR_PACKAGE_LIST
 }
 
 function aur-cache-list {
-  AURCACHE="$HOME/.cache/aur/packages"
-  cat $AURCACHE | more
+  cat $AUR_PACKAGE_LIST | more
 }
 
 function aur-cache-delete {
-  AURCACHE="$HOME/.cache/aur/packages"
-  sed -i "/$1/d" $AURCACHE
+  sed -i "/$1/d" $AUR_PACKAGE_LIST
 }
 
 #
