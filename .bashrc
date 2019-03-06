@@ -125,7 +125,7 @@ function bashrc-update {
 
   # Ensure folders exist
   mkdir -p ~/.ssh
-  mkdir -p ~/.config/Code/Users
+  mkdir -p ~/.config/Code/User
 
   if [ "$1" == "pull" ]; then
     cd $LINUX
@@ -137,7 +137,7 @@ function bashrc-update {
   # Put files to use
   cp "$LINUX".ssh/config ~/.ssh/config
   cp "$LINUX".ssh/authorized_keys ~/.ssh/authorized_keys
-  cp "$LINUX".config/Code/Users/settings.json ~/.config/Code/Users/settings.json
+  cp "$LINUX".config/Code/User/settings.json ~/.config/Code/User/settings.json
   cp "$LINUX".bashrc ~/.bashrc
 
   # Reload
