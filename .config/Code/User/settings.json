@@ -5,16 +5,15 @@
   "editor.tabSize": 2,
   "workbench.editor.tabCloseButton": "off",
   "window.menuBarVisibility": "toggle",
-  "workbench.statusBar.visible": true,
+  "workbench.statusBar.visible": false,
   "workbench.activityBar.visible": false,
-  "workbench.iconTheme": "vs-minimal",
+  "workbench.iconTheme": null,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "git.autofetch": true,
   "git.confirmSync": false,
-  "window.zoomLevel": 0,
-  "editor.renderWhitespace": "all",
   "window.openFilesInNewWindow": "off",
   "window.openFoldersInNewWindow": "off",
-  "window.restoreWindows": "none"
+  "window.restoreWindows": "none",
+  "workbench.colorTheme": "Default Light+"
 }

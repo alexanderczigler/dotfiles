@@ -1,13 +1,13 @@
 #
 # My own .bashrc
-# https://github.com/ilix/linux
-# # # # # # #
+# https://github.com/alexanderczigler/linux
+#
 
 export LC_ALL=""
 export LC_COLLATE=C
 export LANG=en_US.UTF-8
 
-# If not running interactively, don't do anything
+# If not running interactively, stop here
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
@@ -20,8 +20,9 @@ fi
 
 # PATH mods
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/home/ilix/Android/Sdk/platform-tools
+export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 
+# Bash settings
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=100000
 export HISTFILESIZE=$HISTSIZE
@@ -37,11 +38,16 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -z "$PS1" ] && return
+
+#
+# docker helpers
+#
 
 function docker-swarm-tunnel {
   ssh -fNL localhost:2374:/var/run/docker.sock $1
@@ -57,7 +63,10 @@ function cpkubeconfig {
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
 }
 
+#
 # Package helpers
+#
+
 function pacman-installed {
   pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }' | more
 }
@@ -112,7 +121,10 @@ function aur-cache-delete {
   sed -i "/$1/d" $AURCACHE
 }
 
-# Misc
+#
+# .bashrc helpers
+#
+
 function bashrc-update {
   LINUX="$HOME/Source/linux/"
 
@@ -137,6 +149,10 @@ function bashrc-update {
   source ~/.bashrc
 }
 
+#
+# directory helpers
+#
+
 function nvmuse {
   [ -z "$PS1" ] && return
   if [ -f .nvmrc ]; then
@@ -150,6 +166,10 @@ function cd {
 }
 
 nvmuse
+
+#
+# custom tab completions
+#
 
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
   source /usr/share/git/completion/git-completion.bash
