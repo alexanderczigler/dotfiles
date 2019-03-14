@@ -1,8 +1,12 @@
 # linux
 
+This is where I keep scripts and profile related things for my linux installations. My desktop and laptop run arch linux so that is the main focus. If you happen to find anything here useful, please feel free to take it!
+
 ## Arch linux (workstation)
 
 ### Post-install
+
+Once done with the arch linux installation, setup a normal user, desktop environment etc. 
 
 ```bash
 # Load swedish keyboard layout
@@ -21,14 +25,14 @@ ip route add default via 5.35.191.3
 passwd
 
 # Create user
-useradd ilix
-passwd ilix
+useradd alexander
+passwd alexander
 
 # Setup KDE (with xorg, plasma)
 pacman -S extra/xf86-video-intel xorg-server plasma xorg-xdm kde-applications
 systemctl enable xdm
-echo "startkde" > /home/ilix/.xsession
-chmod 700 /home/ilix/.xsession
+echo "startkde" > /home/alexander/.xsession
+chmod 700 /home/alexander/.xsession
 ```
 
 ### Software and settings
@@ -41,30 +45,18 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 sudo pacman -Sy dnsutils docker guake
 
 # Setup .bashrc and such
-mkdir -p ~/Source/ilix
-git clone git@github.com:ilix/kubernetes.git ~/Source/ilix/linux
-cd ~/Source/ilix/linux
-sh put.sh
+mkdir -p ~/Source/alexander
+git clone git@github.com:alexander/linux.git ~/Source/linux
+source ~/Source/alexander/linux/.bashrc
+bashrc-update
 
-# Install AUR packages
-install-aur-package visual-studio-code-bin
-install-aur-package openh264
-install-aur-package freerdp-git
-install-aur-package remmina-git
-install-aur-package remmina-plugin-rdesktop
+# Install AUR packages (see .aur file for a list)
+aur-update-packages
 ```
 
 ### AUR
 
-- chromium-widevine
-- kubectl-bin
-- minecraft-launcher
-- openttd-git
-- slack-desktop
-- syncthing-git
-- visual-studio-code-bin
-- kubernetes-helm-bin
-- google-cloud-sdk
+This repo contains a `.aur` file with a list of the aur packages I use. Running aur-update-packages installs/updates all of them in one go. Running aur-install-package <package> installs/updates a package and makes sure it is saved in `.aur`.
 
 ## CentOS (server)
 
