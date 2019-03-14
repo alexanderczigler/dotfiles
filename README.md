@@ -1,6 +1,6 @@
 # linux
 
-This is where I keep scripts and profile related things for my linux installations. My desktop and laptop run arch linux so that is the main focus. If you happen to find anything here useful, please feel free to take it!
+This is where I keep scripts and profile related things for my linux installations. My desktop and laptop run arch linux so that is the main focus. If you happen to find any of this useful, please feel free to use it!
 
 ## Arch linux (workstation)
 
