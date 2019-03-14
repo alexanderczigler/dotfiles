@@ -52,6 +52,9 @@ bashrc-update
 
 # Install AUR packages (see .aur file for a list)
 aur-update-packages
+
+# Misc.
+pip3 install aws --upgrade --user
 ```
 
 ### AUR
