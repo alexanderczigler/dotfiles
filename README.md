@@ -38,7 +38,7 @@ chmod 700 /home/alexander/.xsession
 ### Software and settings
 
 ```bash
-# Executing scripts from the internet is totally safe!
+# NVM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # Install interesting packages
@@ -53,8 +53,10 @@ bashrc-update
 # Install AUR packages (see .aur file for a list)
 aur-update-packages
 
-# Misc.
+# AWS
 pip3 install aws --upgrade --user
+curl -o ~/.local/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
+chmod +x ~/.local/bin/aws-iam-authenticator
 ```
 
 ### AUR
