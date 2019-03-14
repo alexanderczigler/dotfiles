@@ -136,8 +136,8 @@ function bashrc-update {
 
   # Put files to use
   cp "$LINUX".ssh/config ~/.ssh/config
-  cp "$LINUX".ssh/config ~/.ssh/id_rsa.pub
-  cp "$LINUX".ssh/config ~/.ssh/git_rsa.pub
+  cp "$LINUX".ssh/id_rsa.pub ~/.ssh/id_rsa.pub
+  cp "$LINUX".ssh/git_rsa.pub ~/.ssh/git_rsa.pub
   cp "$LINUX".ssh/authorized_keys ~/.ssh/authorized_keys
   cp "$LINUX".config/Code/User/settings.json ~/.config/Code/User/settings.json
   cp "$LINUX".bashrc ~/.bashrc
