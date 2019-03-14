@@ -42,7 +42,7 @@ chmod 700 /home/alexander/.xsession
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # Install interesting packages
-sudo pacman -Sy dnsutils docker guake
+sudo pacman -Sy dnsutils docker guake python-pip
 
 # Setup .bashrc and such
 mkdir -p ~/Source/alexander
