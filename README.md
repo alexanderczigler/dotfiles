@@ -1,6 +1,6 @@
 # linux
 
-This is where I keep scripts and profile related things for my linux installations. My desktop and laptop run arch linux so that is the main focus. If you happen to find anything here useful, please feel free to take it!
+This is where I keep scripts and profile related things for my linux installations. My desktop and laptop run arch linux so that is the main focus. If you happen to find any of this useful, please feel free to use it!
 
 ## Arch linux (workstation)
 
@@ -38,11 +38,11 @@ chmod 700 /home/alexander/.xsession
 ### Software and settings
 
 ```bash
-# Executing scripts from the internet is totally safe!
+# NVM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # Install interesting packages
-sudo pacman -Sy dnsutils docker guake
+sudo pacman -Sy dnsutils docker guake python-pip
 
 # Setup .bashrc and such
 mkdir -p ~/Source/alexander
@@ -53,8 +53,10 @@ bashrc-update
 # Install AUR packages (see .aur file for a list)
 aur-update-packages
 
-# Misc.
+# AWS
 pip3 install aws --upgrade --user
+curl -o ~/.local/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
+chmod +x ~/.local/bin/aws-iam-authenticator
 ```
 
 ### AUR
