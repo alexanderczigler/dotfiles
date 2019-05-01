@@ -1,4 +1,3 @@
-chromium-widevine
 docker-compose
 docker-compose-bin
 kubectl-bin
@@ -8,7 +7,6 @@ networkmanager-l2tp
 openh264
 remmina-git
 visual-studio-code-bin
-noson-app
 insync
 postman-bin
 hplip
@@ -18,3 +16,8 @@ kubernetes-helm-bin
 gcloud
 gcloud-bin
 google-cloud-sdk
+direnv
+spotify
+firefox-developer-edition
+syncthing-bin
+slack-desktop-dark

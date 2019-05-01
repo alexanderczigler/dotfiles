@@ -94,7 +94,10 @@ function aur-install-package {
     cd "$PKG"
   fi
 
-  makepkg -Acsi --noconfirm
+  makepkg
+  if [ $? == 0 ]; then
+    makepkg -Acsi --noconfirm
+  fi
 
   touch "$AUR_PACKAGE_LIST"
   grep -q -F "$1" $AUR_PACKAGE_LIST || echo "$1" >> $AUR_PACKAGE_LIST
@@ -184,4 +187,13 @@ nvmuse
 
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
   source /usr/share/git/completion/git-completion.bash
+fi
+
+_direnv_hook() {
+  local previous_exit_status=$?;
+  eval "$("/usr/bin/direnv" export bash)";
+  return $previous_exit_status;
+};
+if ! [[ "$PROMPT_COMMAND" =~ _direnv_hook ]]; then
+  PROMPT_COMMAND="_direnv_hook;$PROMPT_COMMAND"
 fi
