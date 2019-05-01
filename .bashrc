@@ -10,6 +10,7 @@ export LANG=en_US.UTF-8
 export SOURCE_DIR=$HOME/Source
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$LINUX_REPO_DIR/.aur
+export WINEPREFIX=$HOME/WINE
 
 # If not running interactively, stop here
 [[ $- != *i* ]] && return
@@ -65,6 +66,12 @@ function docker-local {
 function cpkubeconfig {
   KUBE_CONFIG=`ssh root@$1 cat /root/.kube/config`
   echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
+}
+
+function docker-clean {
+  docker rm -f $(docker ps -aq)
+  docker rmi -f $(docker images -q)
+  docker system prune --volumes -f
 }
 
 #
@@ -184,4 +191,13 @@ nvmuse
 
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
   source /usr/share/git/completion/git-completion.bash
+fi
+
+_direnv_hook() {
+  local previous_exit_status=$?;
+  eval "$("/usr/bin/direnv" export bash)";
+  return $previous_exit_status;
+};
+if ! [[ "$PROMPT_COMMAND" =~ _direnv_hook ]]; then
+  PROMPT_COMMAND="_direnv_hook;$PROMPT_COMMAND"
 fi
