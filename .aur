@@ -20,4 +20,5 @@ direnv
 spotify
 firefox-developer-edition
 syncthing-bin
-slack-desktop-dark
+slack-desktop
+drone-cli
