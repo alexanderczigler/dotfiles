@@ -9,7 +9,7 @@ export LANG=en_US.UTF-8
 
 export SOURCE_DIR=$HOME/Source
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
-export AUR_PACKAGE_LIST=$LINUX_REPO_DIR/.aur
+export AUR_PACKAGE_LIST=$HOME/Documents/.aur
 export WINEPREFIX=$HOME/WINE
 
 # If not running interactively, stop here
