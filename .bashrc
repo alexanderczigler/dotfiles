@@ -7,7 +7,7 @@ export LC_ALL=""
 export LC_COLLATE=C
 export LANG=en_US.UTF-8
 
-export SOURCE_DIR=$HOME/Source
+export SOURCE_DIR=$HOME/Code
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
 export WINEPREFIX=$HOME/WINE
@@ -131,26 +131,24 @@ function aur-cache-delete {
 #
 
 function bashrc-update {
-  LINUX="$HOME/Source/linux/"
-
   # Ensure folders exist
   mkdir -p ~/.ssh
   mkdir -p ~/.config/Code/User
 
   if [ "$1" == "pull" ]; then
-    cd $LINUX
+    cd $LINUX_REPO_DIR
     echo "Going to get latest .bashrc from git"
     git pull origin master
     cd -
   fi
 
   # Put files to use
-  cp "$LINUX".ssh/config ~/.ssh/config
-  cp "$LINUX".ssh/id_rsa.pub ~/.ssh/id_rsa.pub
-  cp "$LINUX".ssh/git_rsa.pub ~/.ssh/git_rsa.pub
-  cp "$LINUX".ssh/authorized_keys ~/.ssh/authorized_keys
-  cp "$LINUX".config/Code/User/settings.json ~/.config/Code/User/settings.json
-  cp "$LINUX".bashrc ~/.bashrc
+  cp "$LINUX_REPO_DIR"/.ssh/config ~/.ssh/config
+  cp "$LINUX_REPO_DIR"/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub
+  cp "$LINUX_REPO_DIR"/.ssh/git_rsa.pub ~/.ssh/git_rsa.pub
+  cp "$LINUX_REPO_DIR"/.ssh/authorized_keys ~/.ssh/authorized_keys
+  cp "$LINUX_REPO_DIR"/.config/Code/User/settings.json ~/.config/Code/User/settings.json
+  cp "$LINUX_REPO_DIR"/.bashrc ~/.bashrc
 
   # Reload
   source ~/.bashrc
