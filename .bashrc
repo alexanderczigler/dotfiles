@@ -136,11 +136,11 @@ function otp {
     echo "Usage:"
     echo "   otp google"
     echo
-    echo "Configuration: $HOME/.otpkeys"
+    echo "Configuration: $HOME/Documents/.otpkeys"
     echo "Format: name=key"
     exit
   fi
-  OTPKEY="$(sed -n "s/${1}=//p" $HOME/.otpkeys)"
+  OTPKEY="$(sed -n "s/${1}=//p" $HOME/Documents/.otpkeys)"
   if [ -z "$OTPKEY" ]; then
     echo "$(basename $0): Bad Service Name '$1'"
     $0
