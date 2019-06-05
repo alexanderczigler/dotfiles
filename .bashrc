@@ -178,6 +178,11 @@ function bashrc-update {
 }
 
 #
+# stupid aliases
+#
+alias reset_vim="docker-compose down && docker volume rm v2_db-data && docker-compose up"
+
+#
 # directory helpers
 #
 
