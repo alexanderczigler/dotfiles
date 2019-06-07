@@ -180,7 +180,8 @@ function bashrc-update {
 #
 # stupid aliases
 #
-alias reset_vim="docker-compose down && docker volume rm v2_db-data && docker-compose up"
+alias v2reset="docker-compose down && docker volume rm v2_db-data && docker-compose up -d"
+alias v2envrc="cp ~/Documents/v2.api.envrc ~/Code/v2/api/.envrc && cp ~/Documents/v2.cabby.envrc ~/Code/v2/cabby/.envrc && cp ~/Documents/v2.web.env ~/Code/v2/web/.env"
 
 #
 # directory helpers
