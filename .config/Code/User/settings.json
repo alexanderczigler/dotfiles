@@ -14,6 +14,5 @@
   "git.confirmSync": false,
   "window.openFilesInNewWindow": "off",
   "window.openFoldersInNewWindow": "off",
-  "window.restoreWindows": "none",
-  "workbench.colorTheme": "Default Light+"
+  "window.restoreWindows": "none"
 }
