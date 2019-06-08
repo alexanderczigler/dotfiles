@@ -23,6 +23,10 @@ if [ -f /etc/bash.bashrc ]; then
   . /etc/bash.bashrc
 fi
 
+# GnuPG
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
 # PATH mods
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/Android/Sdk/platform-tools
