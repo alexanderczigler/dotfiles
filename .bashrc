@@ -174,6 +174,8 @@ function bashrc-update {
 #
 alias v2reset="docker-compose down && docker volume rm v2_db-data && docker-compose up -d"
 alias v2envrc="cp ~/Documents/v2.api.envrc ~/Code/v2/api/.envrc && cp ~/Documents/v2.cabby.envrc ~/Code/v2/cabby/.envrc && cp ~/Documents/v2.web.env ~/Code/v2/web/.env"
+alias v2eks="aws --profile motorbranschen  eks --region eu-north-1 update-kubeconfig --name ci"
+alias k="kubectl -n v2"
 
 #
 # directory helpers
