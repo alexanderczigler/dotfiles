@@ -15,5 +15,6 @@
   "window.openFilesInNewWindow": "off",
   "window.openFoldersInNewWindow": "off",
   "window.restoreWindows": "none",
-  "workbench.colorTheme": "Default Light+"
+  "workbench.colorTheme": "Default Light+",
+  "editor.fontFamily": "'Source Code Pro'"
 }
