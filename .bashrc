@@ -172,7 +172,7 @@ function bashrc-update {
 #
 # stupid aliases
 #
-alias v2resetdb="docker-compose down && docker volume rm v2_db-data && docker-compose up -d"
+alias v2resetdb="docker-compose down && docker volume rm v2_db-data || true && docker-compose up -d"
 alias v2envrc="cp ~/Documents/v2.api.envrc ~/Code/v2/api/.envrc && cp ~/Documents/v2.cabby.envrc ~/Code/v2/cabby/.envrc && cp ~/Documents/v2.web.env ~/Code/v2/web/.env"
 alias eks_mrf="aws --profile motorbranschen eks --region eu-north-1 update-kubeconfig --name ci"
 alias eks_iteam="aws --profile iteam eks --region eu-north-1 update-kubeconfig --name gitlab-eks"
@@ -183,7 +183,6 @@ alias eks_iteam="aws --profile iteam eks --region eu-north-1 update-kubeconfig -
 function v2reset {
   if [ -z "$1" ]; then
     echo "Are you sure? Think about it."
-    exit 0
   else
     cd ~/Code/v2
     git clean -fdx
@@ -191,13 +190,35 @@ function v2reset {
     docker-compose down
     docker volume rm v2_db-data
     npm ci
-    cd api && npm ci
-    cd ../cabby && npm ci
-    cd ../web && npm ci
-    cd ..
     v2envrc
+    cd ~/Code/v2/api && direnv allow . && npm ci
+    cd ~/Code/v2/cabby && direnv allow . && npm ci
+    cd ~/Code/v2/web && npm ci
+    cd ..
     v2resetdb
   fi
+}
+
+function v2start {
+  cd ~/Code/v2
+
+  session=v2
+  tmux start-server
+  tmux new-session -d -s $session -n api
+  tmux selectp -t 1
+  tmux send-keys "cd api" C-m
+  tmux send-keys "npm run dev" C-m
+
+  tmux split-window -v
+  tmux send-keys "cd cabby" C-m
+  tmux send-keys "npm run dev" C-m
+
+  tmux split-window -v
+  tmux send-keys "cd web" C-m
+  tmux send-keys "npm run dev" C-m
+
+  tmux select-layout even-horizontal
+  tmux attach-session -t $session
 }
 
 #
