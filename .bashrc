@@ -209,16 +209,45 @@ function v2start {
   tmux send-keys "cd api" C-m
   tmux send-keys "npm run dev" C-m
 
-  tmux split-window -v
+  tmux split-window
   tmux send-keys "cd cabby" C-m
   tmux send-keys "npm run dev" C-m
 
-  tmux split-window -v
+  tmux split-window
   tmux send-keys "cd web" C-m
   tmux send-keys "npm run dev" C-m
 
   tmux select-layout even-horizontal
   tmux attach-session -t $session
+}
+
+function v2tests {
+  cd ~/Code/v2
+
+  session=v2tests
+  tmux start-server
+  tmux new-session -d -s $session -n api
+  tmux selectp -t 1
+  tmux send-keys "cd api" C-m
+  tmux send-keys "npm run test" C-m
+
+  tmux split-window
+  tmux send-keys "cd cabby" C-m
+  tmux send-keys "npm run test" C-m
+
+  tmux split-window
+  tmux send-keys "cd web" C-m
+  tmux send-keys "npm run test:watch" C-m
+
+  tmux select-layout even-horizontal
+  tmux attach-session -t $session
+}
+
+function v2dockerbuild {
+  cd ~/Code/v2
+  docker build -t v2_api api --no-cache && \
+    docker build -t v2_cabby cabby --no-cache && \
+    docker build -t v2_web web --no-cache
 }
 
 #
