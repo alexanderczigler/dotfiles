@@ -286,6 +286,8 @@ nvmuse
 # custom tab completions
 #
 
+source <(kubectl completion bash)
+
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
   source /usr/share/git/completion/git-completion.bash
 fi
