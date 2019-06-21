@@ -7,6 +7,8 @@ export LC_ALL=""
 export LC_COLLATE=C
 export LANG=en_US.UTF-8
 
+export VISUAL=vim
+
 export SOURCE_DIR=$HOME/Code
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
