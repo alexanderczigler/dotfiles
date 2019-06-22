@@ -167,6 +167,13 @@ function bashrc-update {
   cp "$LINUX_REPO_DIR"/.config/Code/User/settings.json ~/.config/Code/User/settings.json
   cp "$LINUX_REPO_DIR"/.bashrc ~/.bashrc
 
+  # Syncthing
+  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/DCIM/.stignore"
+  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Documents/.stignore"
+  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Downloads/.stignore"
+  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Pictures/.stignore"
+  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Videos/.stignore"
+
   # Reload
   source ~/.bashrc
 }
