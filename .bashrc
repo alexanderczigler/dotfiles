@@ -168,11 +168,11 @@ function bashrc-update {
   cp "$LINUX_REPO_DIR"/.bashrc ~/.bashrc
 
   # Syncthing
-  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/DCIM/.stignore"
-  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Documents/.stignore"
-  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Downloads/.stignore"
-  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Pictures/.stignore"
-  echo "#include $HOME/Documents/.stglobalignore" > "$HOME/Videos/.stignore"
+  echo "#include .stglobalignore" > "$HOME/Documents/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/DCIM/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/Downloads/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/Pictures/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/Videos/.stignore"
 
   # Reload
   source ~/.bashrc
