@@ -237,6 +237,8 @@ function v2tests {
 
   tmux split-window
   tmux send-keys "cd web" C-m
+  tmux send-keys "nvm use v11.11.0" C-m
+  tmux send-keys "alias node=\"node --icu-data-dir=node_modules/full-icu\"" C-m
   tmux send-keys "npm run test:watch" C-m
 
   tmux select-layout even-horizontal
