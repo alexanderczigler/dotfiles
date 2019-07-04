@@ -7,6 +7,8 @@ export LC_ALL=""
 export LC_COLLATE=C
 export LANG=en_US.UTF-8
 
+export VISUAL=vim
+
 export SOURCE_DIR=$HOME/Code
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
@@ -165,6 +167,13 @@ function bashrc-update {
   cp "$LINUX_REPO_DIR"/.config/Code/User/settings.json ~/.config/Code/User/settings.json
   cp "$LINUX_REPO_DIR"/.bashrc ~/.bashrc
 
+  # Syncthing
+  echo "#include .stglobalignore" > "$HOME/Documents/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/DCIM/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/Downloads/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/Pictures/.stignore"
+  echo "#include ../Documents/.stglobalignore" > "$HOME/Videos/.stignore"
+
   # Reload
   source ~/.bashrc
 }
@@ -287,6 +296,8 @@ nvmuse
 #
 # custom tab completions
 #
+
+source <(kubectl completion bash)
 
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
   source /usr/share/git/completion/git-completion.bash
