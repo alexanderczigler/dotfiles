@@ -12,6 +12,7 @@ export VISUAL=vim
 export SOURCE_DIR=$HOME/Code
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
+export UNINSTALL_PACKAGE_LIST=$HOME/Documents/.uninstall
 export WINEPREFIX=$HOME/WINE
 
 # If not running interactively, stop here
@@ -119,6 +120,8 @@ function aur-install-package {
 }
 
 function aur-update-packages {
+  uninstall-packages
+
   while read package; do
     aur-install-package "$package"
   done < $AUR_PACKAGE_LIST
@@ -130,6 +133,14 @@ function aur-cache-list {
 
 function aur-cache-delete {
   sed -i "/$1/d" $AUR_PACKAGE_LIST
+}
+
+function uninstall-packages {
+  touch "$UNINSTALL_PACKAGE_LIST"
+  while read package; do
+    aur-cache-delete "$package"
+    sudo pacman -Rns "$package"
+  done < $UNINSTALL_PACKAGE_LIST
 }
 
 #
