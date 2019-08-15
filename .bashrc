@@ -262,7 +262,7 @@ function v2tests {
 
   tmux split-window
   tmux send-keys "cd web" C-m
-  tmux send-keys "nvm use v11.11.0" C-m
+  # tmux send-keys "nvm use v12.8" C-m
   tmux send-keys "alias node=\"node --icu-data-dir=node_modules/full-icu\"" C-m
   tmux send-keys "npm run test:watch" C-m
 
@@ -293,6 +293,11 @@ function nvmuse {
 
     if [[ "$?" == "3" ]]; then
       eval "nvm install" >/dev/null
+      NODE_VERSION=`node --version`
+      npm config set unsafe-perm true
+      npm install -g full-icu
+      export NODE_ICU_DATA=/usr/share/nvm/versions/node/$NODE_VERSION/lib/node_modules/full-icu
+      npm config set unsafe-perm false
     fi
 
     nvm_dirty="1"
