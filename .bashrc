@@ -139,7 +139,7 @@ function uninstall-packages {
   touch "$UNINSTALL_PACKAGE_LIST"
   while read package; do
     aur-cache-delete "$package"
-    sudo pacman -Rns "$package"
+    sudo pacman -Rns --noconfirm "$package"
   done < $UNINSTALL_PACKAGE_LIST
 }
 
