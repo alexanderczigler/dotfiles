@@ -124,17 +124,17 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf
 echo LC_ALL= >> /etc/locale.conf
 ```
 
-Add user (replace ilix)
+Add user (replace alexander)
 
 ```
-useradd -m -g users -G wheel,storage,power -s /bin/bash ilix
+useradd -m -g users -G wheel,storage,power -s /bin/bash alexander
 ```
 
-Set password for root and the new user (again, replace ilix)
+Set password for root and the new user (again, replace alexander)
 
 ```
 passwd
-passwd ilix
+passwd alexander
 ```
 
 Setup mkinitcpio, add ext4 to MODULES.
