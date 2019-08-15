@@ -191,6 +191,11 @@ alias eks_mrf="aws --profile motorbranschen eks --region eu-north-1 update-kubec
 alias eks_iteam="aws --profile iteam eks --region eu-north-1 update-kubeconfig --name gitlab-eks"
 
 #
+# other aliases
+#
+alias gp="git pull --rebase --autostash"
+
+#
 # code helpers
 #
 function v2reset {
@@ -250,7 +255,7 @@ function v2tests {
 
   tmux split-window
   tmux send-keys "cd web" C-m
-  tmux send-keys "nvm use v11.11.0" C-m
+  # tmux send-keys "nvm use v12.8" C-m
   tmux send-keys "alias node=\"node --icu-data-dir=node_modules/full-icu\"" C-m
   tmux send-keys "npm run test:watch" C-m
 
