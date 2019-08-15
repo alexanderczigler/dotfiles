@@ -285,7 +285,7 @@ function nvmuse {
     eval "nvm use" >/dev/null
 
     if [[ "$?" == "3" ]]; then
-      eval "nvm install -s --with-intl=full-icu --download=all" >/dev/null
+      eval "nvm install" >/dev/null
     fi
 
     nvm_dirty="1"
