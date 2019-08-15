@@ -198,6 +198,11 @@ alias eks_mrf="aws --profile motorbranschen eks --region eu-north-1 update-kubec
 alias eks_iteam="aws --profile iteam eks --region eu-north-1 update-kubeconfig --name gitlab-eks"
 
 #
+# other aliases
+#
+alias gp="git pull --rebase --autostash"
+
+#
 # code helpers
 #
 function v2reset {
