@@ -1,27 +1,31 @@
-#
-# My own .bashrc
-# https://github.com/alexanderczigler/linux
+###
+## My own .bashrc [https://gitlab.com/alexanderczigler/linux]
 #
 
 export LC_ALL=""
 export LC_COLLATE=C
 export LANG=en_US.UTF-8
 
-export VISUAL=vim
+# If not running interactively, stop here
+[[ $- != *i* ]] && return
 
+
+
+
+###
+## Globals
+#
+
+PS1='[\u@\h \W]\$ '
+
+export VISUAL=vim
 export SOURCE_DIR=$HOME/Code
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
 export UNINSTALL_PACKAGE_LIST=$HOME/Documents/.uninstall
 export WINEPREFIX=$HOME/WINE
 
-# If not running interactively, stop here
-[[ $- != *i* ]] && return
-
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-
-# Source global definitions
+# Global .bashrc
 if [ -f /etc/bash.bashrc ]; then
   . /etc/bash.bashrc
 fi
@@ -34,7 +38,13 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 
-# Bash settings
+
+
+
+###
+## bash
+#
+
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=100000
 export HISTFILESIZE=$HISTSIZE
@@ -47,18 +57,18 @@ shopt -s checkwinsize
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# node version manager
+# nvm
 export NVM_DIR="/usr/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -z "$PS1" ] && return
 
-#
-# docker helpers
+
+
+
+###
+## Docker
 #
 
 function docker-swarm-tunnel {
@@ -81,8 +91,11 @@ function docker-clean {
   docker system prune --volumes -f
 }
 
-#
-# Package helpers
+
+
+
+###
+## Pacman and AUR
 #
 
 function pacman-installed {
@@ -143,8 +156,11 @@ function uninstall-packages {
   done < $UNINSTALL_PACKAGE_LIST
 }
 
-#
-# otp
+
+
+
+###
+## OTP
 #
 
 function otp {
@@ -154,8 +170,11 @@ function otp {
   fi
 }
 
-#
-# .bashrc helpers
+
+
+
+###
+## .bashrc helpers
 #
 
 function bashrc-update {
@@ -182,21 +201,41 @@ function bashrc-update {
   source ~/.bashrc
 }
 
+
+
+
+###
+## Aliases
 #
-# stupid aliases
-#
+alias gp="git pull --rebase --autostash"
 alias v2resetdb="docker-compose down && docker volume rm v2_db-data || true && docker-compose up -d"
 alias v2envrc="cp ~/Documents/v2.api.envrc ~/Code/v2/api/.envrc && cp ~/Documents/v2.cabby.envrc ~/Code/v2/cabby/.envrc && cp ~/Documents/v2.web.env ~/Code/v2/web/.env"
 alias eks_mrf="aws --profile motorbranschen eks --region eu-north-1 update-kubeconfig --name ci"
 alias eks_iteam="aws --profile iteam eks --region eu-north-1 update-kubeconfig --name gitlab-eks"
 
-#
-# other aliases
-#
-alias gp="git pull --rebase --autostash"
 
+
+
+###
+## DevOps
 #
-# code helpers
+function conf_eks {
+  alias eks="eksctl --profile $1"
+  echo "-> Created alias eks for 'eksctl --profile $1'"
+}
+
+function kube {
+  if [ "$1" == "ns" ]; then
+    alias k="kubectl -n $2"
+    echo "-> Create alias k=\"kubectl -n $2\""
+  fi
+}
+
+
+
+
+###
+## Dev
 #
 function v2reset {
   if [ -z "$1" ]; then
@@ -270,8 +309,11 @@ function v2dockerbuild {
     docker build -t v2_web web --no-cache
 }
 
-#
-# directory helpers
+
+
+
+###
+## Directory magic
 #
 
 function nvmuse {
@@ -295,23 +337,31 @@ function nvmuse {
   fi
 }
 
+# Override cd
 function cd {
   builtin cd "$@"
   nvmuse
 }
 
+# Run nvmuse right now!
 nvmuse
 
-#
-# custom tab completions
+
+
+
+###
+## Tab completions
 #
 
+# kubectl
 source <(kubectl completion bash)
 
+# GIT
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
   source /usr/share/git/completion/git-completion.bash
 fi
 
+# DirEnv
 _direnv_hook() {
   local previous_exit_status=$?;
   eval "$("/usr/bin/direnv" export bash)";
