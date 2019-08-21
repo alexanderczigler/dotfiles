@@ -20,7 +20,12 @@ export LANG=en_US.UTF-8
 ## Globals
 #
 
-PS1='[\u@\h \W]\$ '
+# Global .bashrc
+if [ -f /etc/bash.bashrc ]; then
+  . /etc/bash.bashrc
+fi
+
+PS1='\w \$ '
 
 export VISUAL=vim
 export SOURCE_DIR=$HOME/Code
@@ -28,11 +33,6 @@ export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
 export UNINSTALL_PACKAGE_LIST=$HOME/Documents/.uninstall
 export WINEPREFIX=$HOME/WINE
-
-# Global .bashrc
-if [ -f /etc/bash.bashrc ]; then
-  . /etc/bash.bashrc
-fi
 
 # GnuPG
 export GPG_TTY=$(tty)
