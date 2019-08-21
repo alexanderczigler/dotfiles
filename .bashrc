@@ -1,3 +1,7 @@
+
+#
+#
+#
 ###
 ## My own .bashrc [https://gitlab.com/alexanderczigler/linux]
 #
@@ -9,9 +13,9 @@ export LANG=en_US.UTF-8
 # If not running interactively, stop here
 [[ $- != *i* ]] && return
 
-
-
-
+#
+#
+#
 ###
 ## Globals
 #
@@ -38,9 +42,9 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 
-
-
-
+#
+#
+#
 ###
 ## bash
 #
@@ -62,11 +66,9 @@ export NVM_DIR="/usr/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[ -z "$PS1" ] && return
-
-
-
-
+#
+#
+#
 ###
 ## Docker
 #
@@ -91,9 +93,9 @@ function docker-clean {
   docker system prune --volumes -f
 }
 
-
-
-
+#
+#
+#
 ###
 ## Pacman and AUR
 #
@@ -156,9 +158,9 @@ function uninstall-packages {
   done < $UNINSTALL_PACKAGE_LIST
 }
 
-
-
-
+#
+#
+#
 ###
 ## OTP
 #
@@ -170,9 +172,9 @@ function otp {
   fi
 }
 
-
-
-
+#
+#
+#
 ###
 ## .bashrc helpers
 #
@@ -201,24 +203,26 @@ function bashrc-update {
   source ~/.bashrc
 }
 
-
-
-
+#
+#
+#
 ###
 ## Aliases
 #
+
 alias gp="git pull --rebase --autostash"
 alias v2resetdb="docker-compose down && docker volume rm v2_db-data || true && docker-compose up -d"
 alias v2envrc="cp ~/Documents/v2.api.envrc ~/Code/v2/api/.envrc && cp ~/Documents/v2.cabby.envrc ~/Code/v2/cabby/.envrc && cp ~/Documents/v2.web.env ~/Code/v2/web/.env"
 alias eks_mrf="aws --profile motorbranschen eks --region eu-north-1 update-kubeconfig --name ci"
 alias eks_iteam="aws --profile iteam eks --region eu-north-1 update-kubeconfig --name gitlab-eks"
 
-
-
-
+#
+#
+#
 ###
 ## DevOps
 #
+
 function conf_eks {
   alias eks="eksctl --profile $1"
   echo "-> Created alias eks for 'eksctl --profile $1'"
@@ -231,12 +235,13 @@ function kube {
   fi
 }
 
-
-
-
+#
+#
+#
 ###
 ## Dev
 #
+
 function v2reset {
   if [ -z "$1" ]; then
     echo "Are you sure? Think about it."
@@ -309,9 +314,9 @@ function v2dockerbuild {
     docker build -t v2_web web --no-cache
 }
 
-
-
-
+#
+#
+#
 ###
 ## Directory magic
 #
@@ -346,9 +351,9 @@ function cd {
 # Run nvmuse right now!
 nvmuse
 
-
-
-
+#
+#
+#
 ###
 ## Tab completions
 #
