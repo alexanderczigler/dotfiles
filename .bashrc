@@ -247,11 +247,11 @@ function v2tests {
   tmux new-session -d -s $session -n api
   tmux selectp -t 1
   tmux send-keys "cd api" C-m
-  tmux send-keys "npm run test" C-m
+  tmux send-keys "npm run test:watch" C-m
 
   tmux split-window
   tmux send-keys "cd cabby" C-m
-  tmux send-keys "npm run test" C-m
+  tmux send-keys "npm run test:watch" C-m
 
   tmux split-window
   tmux send-keys "cd web" C-m
