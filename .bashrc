@@ -277,6 +277,7 @@ function v2start {
 
   tmux split-window
   tmux send-keys "cd web" C-m
+  tmux send-keys "npm run build" C-m
   tmux send-keys "npm run dev" C-m
 
   tmux select-layout even-horizontal
