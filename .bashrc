@@ -277,6 +277,7 @@ function v2start {
 
   tmux split-window
   tmux send-keys "cd web" C-m
+  tmux send-keys "nvm use v12.8" C-m
   tmux send-keys "npm run build" C-m
   tmux send-keys "npm run dev" C-m
 
@@ -300,6 +301,8 @@ function v2tests {
 
   tmux split-window
   tmux send-keys "cd web" C-m
+  tmux send-keys "nvm use v12.8" C-m
+  tmux send-keys "npm run build" C-m
   tmux send-keys "npm run test:watch" C-m
 
   tmux select-layout even-horizontal
