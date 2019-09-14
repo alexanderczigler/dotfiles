@@ -112,6 +112,7 @@ function pacman-clean {
 
 function aur-install-package {
   PKG="$SOURCE_DIR/$1"
+  SAVE="false"
 
   if [ -d "${PKG}" ]
   then
@@ -126,10 +127,9 @@ function aur-install-package {
   makepkg
   if [ $? == 0 ]; then
     makepkg -Acsi --noconfirm
+    touch "$AUR_PACKAGE_LIST"
+    grep -q -F "$1" $AUR_PACKAGE_LIST || echo "$1" >> $AUR_PACKAGE_LIST
   fi
-
-  touch "$AUR_PACKAGE_LIST"
-  grep -q -F "$1" $AUR_PACKAGE_LIST || echo "$1" >> $AUR_PACKAGE_LIST
 
   cd -
 }
