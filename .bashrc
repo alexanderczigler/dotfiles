@@ -74,8 +74,15 @@ export NVM_DIR="/usr/share/nvm"
 #
 
 function docker-swarm-tunnel {
-  ssh -fNL localhost:2374:/var/run/docker.sock $1
-  export DOCKER_HOST=localhost:2374
+  SSH_DOCKER_SOCK=$(pwd)/.ssh-docker.sock
+  rm $SSH_DOCKER_SOCK
+
+  ssh -fNL $SSH_DOCKER_SOCK:/var/run/docker.sock $1
+  export DOCKER_HOST=unix://$SSH_DOCKER_SOCK
+
+  echo "OK!"
+  echo "DOCKER_HOST=$DOCKER_HOST"
+  echo "Connection: $1"
 }
 
 function docker-local {
@@ -91,6 +98,17 @@ function docker-clean {
   docker rm -f $(docker ps -aq)
   docker rmi -f $(docker images -q)
   docker system prune --volumes -f
+}
+
+#
+#
+#
+###
+## Docker
+#
+
+function close-ssh-tunnels {
+  pkill -f 'ssh.*-f'
 }
 
 #
