@@ -62,7 +62,7 @@ Create a volume group and setup a volume to hold your root file system.
 
 ```
 pvcreate /dev/mapper/luks
-vgcreate volgrp0 /dev/mapper/luks
+vgcreate vg0 /dev/mapper/luks
 lvcreate -l +100%FREE vg0 --name root
 ```
 
