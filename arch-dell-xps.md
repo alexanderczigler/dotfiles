@@ -121,7 +121,7 @@ vim /etc/locale.gen
 locale-gen
 localectl set-locale LANG=en_US.UTF-8
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
-echo LC_ALL= >> /etc/locale.conf
+echo LC_ALL=C >> /etc/locale.conf
 ```
 
 Add user (replace ilix)
