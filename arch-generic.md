@@ -21,7 +21,7 @@ mount /dev/sda2 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-pacstrap /mnt base base-devel vim git efibootmgr dialog curl mkinitcpio
+pacstrap /mnt linux base base-devel vim git efibootmgr dialog curl mkinitcpio
 
 genfstab -pU /mnt >> /mnt/etc/fstab
 echo "tmpfs	/tmp	tmpfs	defaults,noatime,mode=1777	0	0" >> /mnt/etc/fstab
