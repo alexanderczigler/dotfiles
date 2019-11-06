@@ -398,8 +398,14 @@ nvmuse
 source <(kubectl completion bash)
 
 # GIT
-if [ -f /usr/share/git/completion/git-completion.bash ]; then
-  source /usr/share/git/completion/git-completion.bash
+COMPLETION_GIT='/usr/share/git/completion/git-completion.bash'
+
+if [ ! -z 'uname -v | grep -i ubuntu' ]; then
+  COMPLETION_GIT='/usr/share/bash-completion/completions/git'
+fi
+
+if [ -f ${COMPLETION_GIT} ]; then
+  source ${COMPLETION_GIT}
 fi
 
 # DirEnv
