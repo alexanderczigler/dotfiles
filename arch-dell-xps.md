@@ -88,7 +88,7 @@ mount /dev/nvme0n1p1 /mnt/boot
 ## Setup fstab and base packges
 
 ```
-pacstrap /mnt base base-devel vim git sudo efibootmgr dialog wpa_supplicant curl mkinitcpio
+pacstrap /mnt base base-devel vim git sudo efibootmgr dialog wpa_supplicant curl mkinitcpio linux lvm2
 genfstab -pU /mnt >> /mnt/etc/fstab
 echo "tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0" >> /mnt/etc/fstab
 ```
