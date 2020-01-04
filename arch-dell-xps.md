@@ -34,10 +34,15 @@ fdisk /dev/nvme0n1
 Partition 1: 500 MB type EFI.
 Partition 2: The rest of the hard drive, type Linux.
 
-### No encrption
+Format EFI partition.
+
+```bash
+mkfs.vfat -F32 /dev/nvme0n1p1
+```
+
+#### No encrption
 
 ```
-mkfs.vfat -F32 /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p2
 ```
 
@@ -49,7 +54,7 @@ mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 ```
 
-### LUKS (whole disk encryption)
+#### LUKS (whole disk encryption)
 
 Setup LUKS encryption. This is where you enter your passphrase.
 
