@@ -34,10 +34,15 @@ fdisk /dev/nvme0n1
 Partition 1: 500 MB type EFI.
 Partition 2: The rest of the hard drive, type Linux.
 
-### No encrption
+Format EFI partition.
+
+```bash
+mkfs.vfat -F32 /dev/nvme0n1p1
+```
+
+#### No encrption
 
 ```
-mkfs.vfat -F32 /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p2
 ```
 
@@ -49,7 +54,7 @@ mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 ```
 
-### LUKS (whole disk encryption)
+#### LUKS (whole disk encryption)
 
 Setup LUKS encryption. This is where you enter your passphrase.
 
@@ -62,7 +67,7 @@ Create a volume group and setup a volume to hold your root file system.
 
 ```
 pvcreate /dev/mapper/luks
-vgcreate volgrp0 /dev/mapper/luks
+vgcreate vg0 /dev/mapper/luks
 lvcreate -l +100%FREE vg0 --name root
 ```
 
@@ -83,7 +88,7 @@ mount /dev/nvme0n1p1 /mnt/boot
 ## Setup fstab and base packges
 
 ```
-pacstrap /mnt base base-devel vim git sudo efibootmgr dialog wpa_supplicant curl
+pacstrap /mnt base base-devel vim git sudo efibootmgr dialog wpa_supplicant curl mkinitcpio linux lvm2
 genfstab -pU /mnt >> /mnt/etc/fstab
 echo "tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0" >> /mnt/etc/fstab
 ```
@@ -121,7 +126,7 @@ vim /etc/locale.gen
 locale-gen
 localectl set-locale LANG=en_US.UTF-8
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
-echo LC_ALL= >> /etc/locale.conf
+echo LC_ALL=C >> /etc/locale.conf
 ```
 
 Add user (replace alexander)
