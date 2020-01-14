@@ -1,71 +1,3 @@
-
-#
-#
-#
-###
-## My own .bashrc [https://gitlab.com/alexanderczigler/linux]
-#
-
-export LC_ALL=""
-export LC_COLLATE=C
-export LANG=en_US.UTF-8
-
-# If not running interactively, stop here
-[[ $- != *i* ]] && return
-
-#
-#
-#
-###
-## Globals
-#
-
-# Global .bashrc
-if [ -f /etc/bash.bashrc ]; then
-  . /etc/bash.bashrc
-fi
-
-PS1='\w \$ '
-
-export VISUAL=vim
-export SOURCE_DIR=$HOME/Code
-export LINUX_REPO_DIR=$SOURCE_DIR/linux
-export AUR_PACKAGE_LIST=$HOME/Documents/.aur
-export UNINSTALL_PACKAGE_LIST=$HOME/Documents/.uninstall
-export WINEPREFIX=$HOME/WINE
-
-# GnuPG
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
-
-# PATH mods
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/Android/Sdk/platform-tools
-
-#
-#
-#
-###
-## bash
-#
-
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=100000
-export HISTFILESIZE=$HISTSIZE
-
-shopt -s histappend;
-shopt -s nocaseglob;
-shopt -s cdspell;
-shopt -s checkwinsize
-
-# Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# nvm
-export NVM_DIR="/usr/share/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 #
 #
 #
@@ -99,13 +31,6 @@ function docker-clean {
   docker rmi -f $(docker images -q)
   docker system prune --volumes -f
 }
-
-#
-#
-#
-###
-## Docker
-#
 
 function close-ssh-tunnels {
   pkill -f 'ssh.*-f'
@@ -221,18 +146,6 @@ function bashrc-update {
   source ~/.bashrc
 }
 
-#
-#
-#
-###
-## Aliases
-#
-
-alias gp="git pull --rebase --autostash"
-alias v2resetdb="docker-compose down && docker volume rm v2_db-data || true && docker-compose up -d"
-alias v2envrc="cp ~/Documents/v2.api.envrc ~/Code/v2/api/.envrc && cp ~/Documents/v2.cabby.envrc ~/Code/v2/cabby/.envrc && cp ~/Documents/v2.web.env ~/Code/v2/web/.env"
-alias eks_mrf="aws --profile motorbranschen eks --region eu-north-1 update-kubeconfig --name ci"
-alias eks_iteam="aws --profile iteam eks --region eu-north-1 update-kubeconfig --name gitlab-eks"
 
 #
 #
@@ -349,71 +262,3 @@ function v2dockerbuild {
     docker build -t v2_cabby cabby --no-cache && \
     docker build -t v2_web web --no-cache
 }
-
-#
-#
-#
-###
-## Directory magic
-#
-
-function nvmuse {
-  [ -z "$PS1" ] && return
-  if [[ $PWD == $prev_pwd ]]; then
-    return
-  fi
-
-  prev_pwd=$PWD
-  if [[ -f ".nvmrc" ]]; then
-    eval "nvm use" >/dev/null
-
-    if [[ "$?" == "3" ]]; then
-      eval "nvm install" >/dev/null
-    fi
-
-    nvm_dirty="1"
-  elif [[ "$nvm_dirty" == "1" ]]; then
-    eval "nvm use default" >/dev/null
-    nvm_dirty="0"
-  fi
-}
-
-# Override cd
-function cd {
-  builtin cd "$@"
-  nvmuse
-}
-
-# Run nvmuse right now!
-nvmuse
-
-#
-#
-#
-###
-## Tab completions
-#
-
-# kubectl
-source <(kubectl completion bash)
-
-# GIT
-COMPLETION_GIT='/usr/share/git/completion/git-completion.bash'
-
-if [ ! -z 'uname -v | grep -i ubuntu' ]; then
-  COMPLETION_GIT='/usr/share/bash-completion/completions/git'
-fi
-
-if [ -f ${COMPLETION_GIT} ]; then
-  source ${COMPLETION_GIT}
-fi
-
-# DirEnv
-_direnv_hook() {
-  local previous_exit_status=$?;
-  eval "$("/usr/bin/direnv" export bash)";
-  return $previous_exit_status;
-};
-if ! [[ "$PROMPT_COMMAND" =~ _direnv_hook ]]; then
-  PROMPT_COMMAND="_direnv_hook;$PROMPT_COMMAND"
-fi
