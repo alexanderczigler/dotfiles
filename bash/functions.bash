@@ -122,7 +122,7 @@ function otp {
 ## .bashrc helpers
 #
 
-function bashrc-update {
+function src {
   # Ensure folders exist
   mkdir -p ~/.ssh
   mkdir -p ~/.config/Code/User

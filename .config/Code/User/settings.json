@@ -1,4 +1,5 @@
 {
+  "editor.fontFamily": "'Fira Code'",
   "workbench.startupEditor": "none",
   "explorer.openEditors.visible": 0,
   "editor.minimap.enabled": false,
@@ -15,5 +16,6 @@
   "window.openFilesInNewWindow": "off",
   "window.openFoldersInNewWindow": "off",
   "window.restoreWindows": "none",
-  "editor.fontFamily": "'Fira Code'",
+  "workbench.colorTheme": "Default Light+",
+  "editor.fontLigatures": true
 }
