@@ -260,3 +260,24 @@ function v2dockerbuild {
     docker build -t v2_cabby cabby --no-cache && \
     docker build -t v2_web web --no-cache
 }
+
+function setup-vevo {
+  guake -r home
+
+  # git
+  guake -n guake -e 'cd ~/Source/v3vo/monorepo' guake -r git
+  guake --split-vertical -e 'cd ~/Source/v3vo/monorepo/api && docker-compose up --build'
+
+  # api
+  guake -n guake -e 'cd ~/Source/v3vo/monorepo/api && npm run dev' guake -r api
+  guake --split-vertical -e 'cd ~/Source/v3vo/monorepo/api && npm run test -- --watch'
+
+  # app
+  guake -n guake -e 'cd ~/Source/v3vo/monorepo/app && npm run start' guake -r app
+  guake --split-vertical -e 'cd ~/Source/v3vo/monorepo/app && npm run dev'
+
+  # web
+  guake -n guake -e 'cd ~/Source/v3vo/monorepo/admin && python3 -m http.server' guake -r web
+  guake --split-vertical -e 'cd ~/Source/v3vo/monorepo/web && npm run start'
+  guake --split-horistonal -e 'cd ~/Source/v3vo/monorepo/web && npm run dev'
+}
