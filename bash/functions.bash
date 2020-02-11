@@ -261,6 +261,31 @@ function v2dockerbuild {
     docker build -t v2_web web --no-cache
 }
 
+function setup-v2 {
+  guake -r home
+
+  # git
+  guake -n guake -e 'cd ~/Source/mrf/v2' guake -r git
+  guake --split-vertical -e 'cd ~/Source/mrf/v2/api && docker-compose up --build'
+
+  # api
+  guake -n guake -e 'cd ~/Source/mrf/v2/api && npm run dev' guake -r api
+  guake --split-vertical -e 'cd ~/Source/mrf/v2/api && npm run test -- --watch'
+
+  # cabby
+  guake -n guake -e 'cd ~/Source/mrf/v2/cabby && npm run dev' guake -r cabby
+  guake --split-vertical -e 'cd ~/Source/mrf/v2/cabby && npm run test -- --watch'
+
+  # fortnox
+  guake -n guake -e 'cd ~/Source/mrf/v2/fortnox && npm run dev' guake -r fortnox
+  guake --split-vertical -e 'cd ~/Source/mrf/v2/fortnox && npm run test -- --watch'
+
+  # web
+  guake -n guake -e 'cd ~/Source/mrf/v2/web && npm run test -- --watch' guake -r web
+  guake --split-vertical -e 'cd ~/Source/mrf/v2/web && npm run start'
+  guake --split-horizontal -e 'cd ~/Source/mrf/v2/web && npm run dev'
+}
+
 function setup-vevo {
   guake -r home
 
@@ -279,5 +304,5 @@ function setup-vevo {
   # web
   guake -n guake -e 'cd ~/Source/v3vo/monorepo/admin && python3 -m http.server' guake -r web
   guake --split-vertical -e 'cd ~/Source/v3vo/monorepo/web && npm run start'
-  guake --split-horistonal -e 'cd ~/Source/v3vo/monorepo/web && npm run dev'
+  guake --split-horizontal -e 'cd ~/Source/v3vo/monorepo/web && npm run dev'
 }
