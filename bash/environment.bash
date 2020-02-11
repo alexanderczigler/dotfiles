@@ -5,10 +5,6 @@
 ## environment
 #
 
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=100000
-export HISTFILESIZE=$HISTSIZE
-
 shopt -s histappend;
 shopt -s nocaseglob;
 shopt -s cdspell;

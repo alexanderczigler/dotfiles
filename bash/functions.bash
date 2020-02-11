@@ -140,12 +140,10 @@ function bashrc-update {
   cp "$LINUX_REPO_DIR"/.ssh/git_rsa.pub ~/.ssh/git_rsa.pub
   cp "$LINUX_REPO_DIR"/.ssh/authorized_keys ~/.ssh/authorized_keys
   cp "$LINUX_REPO_DIR"/.config/Code/User/settings.json ~/.config/Code/User/settings.json
-  cp "$LINUX_REPO_DIR"/.bashrc ~/.bashrc
 
   # Reload
   source ~/.bashrc
 }
-
 
 #
 #
