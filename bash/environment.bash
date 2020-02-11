@@ -15,7 +15,7 @@ shopt -s cdspell;
 shopt -s checkwinsize
 
 export VISUAL=vim
-export SOURCE_DIR=$HOME/Code
+export SOURCE_DIR=$HOME/Source
 export LINUX_REPO_DIR=$SOURCE_DIR/linux
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
 export UNINSTALL_PACKAGE_LIST=$HOME/Documents/.uninstall
