@@ -8,7 +8,6 @@
   "window.menuBarVisibility": "toggle",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": false,
-  "workbench.iconTheme": "material-icon-theme",
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "git.autofetch": true,
