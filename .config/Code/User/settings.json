@@ -21,5 +21,8 @@
   "editor.glyphMargin": false,
   "editor.folding": false,
   "editor.lineNumbers": "off",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  }
 }
