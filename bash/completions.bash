@@ -19,4 +19,8 @@ if [ -f ${COMPLETION_GIT} ]; then
   source ${COMPLETION_GIT}
 fi
 
+if [ -f /usr/local/etc/bash_completion.d ]; then
+  source /usr/local/etc/bash_completion.d
+fi
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
