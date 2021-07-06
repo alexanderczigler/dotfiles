@@ -1,8 +1,20 @@
-# linux
+# .env
 
-This is where I keep scripts and profile related things for my linux installations. My desktop and laptop run arch linux so that is the main focus. If you happen to find any of this useful, please feel free to use it!
+This is where I gather scripts and settings for my development environments.
 
-## Arch linux (workstation)
+## Mac OS
+
+## Fresh install
+
+- Install [iTerm](https://iterm2.com/)
+- Install [Homebrew](https://brew.sh/)
+- Install [nvm](https://github.com/nvm-sh/nvm)
+
+### Useful links
+
+- https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x
+
+## Arch linux
 
 ### Post-install
 
