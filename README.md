@@ -9,6 +9,7 @@ This is where I gather scripts and settings for my development environments.
 - Install [iTerm](https://iterm2.com/)
 - Install [Homebrew](https://brew.sh/)
 - Install [nvm](https://github.com/nvm-sh/nvm)
+- Install [FiraCode font](https://github.com/tonsky/FiraCode/wiki/Installing)
 
 ```bash
 brew install direnv
