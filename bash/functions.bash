@@ -136,9 +136,6 @@ function src {
 
   # Put files to use
   cp "$LINUX_REPO_DIR"/.ssh/config ~/.ssh/config
-  cp "$LINUX_REPO_DIR"/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub
-  cp "$LINUX_REPO_DIR"/.ssh/git_rsa.pub ~/.ssh/git_rsa.pub
-  cp "$LINUX_REPO_DIR"/.ssh/authorized_keys ~/.ssh/authorized_keys
   cp "$LINUX_REPO_DIR"/.config/Code/User/settings.json ~/.config/Code/User/settings.json
 
   # Reload

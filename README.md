@@ -10,6 +10,22 @@ This is where I gather scripts and settings for my development environments.
 - Install [Homebrew](https://brew.sh/)
 - Install [nvm](https://github.com/nvm-sh/nvm)
 
+```bash
+brew install direnv
+brew install gnupg2
+brew install kubectl
+brew install pinentry-mac
+
+mkdir -p ~/GitHub
+git clone git@github.com:alexanderczigler/.env.git ~/GitHub/.env
+cp ~/GitHub/.env/.zhsrc ~/.zshrc
+source ~/.zshrc
+```
+
+Then;
+ - Import gpg key
+ - Put ssh keys (id_rsa, id_rsa.git) into ~/.ssh
+
 ### Useful links
 
 - https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x
