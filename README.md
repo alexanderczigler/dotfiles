@@ -13,6 +13,7 @@ This is where I gather scripts and settings for my development environments.
 ### Useful links
 
 - https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x
+- https://stackoverflow.com/questions/41502146/git-gpg-onto-mac-osx-error-gpg-failed-to-sign-the-data/41506446
 
 ## Arch linux
 
