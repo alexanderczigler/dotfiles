@@ -10,6 +10,7 @@ This is where I gather scripts and settings for my development environments.
 - Install [Homebrew](https://brew.sh/)
 - Install [nvm](https://github.com/nvm-sh/nvm)
 - Install [FiraCode font](https://github.com/tonsky/FiraCode/wiki/Installing)
+- Install [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
 
 ```bash
 brew install direnv
