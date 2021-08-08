@@ -23,5 +23,8 @@
   "editor.formatOnSave": true,
   "[handlebars]": {
     "editor.formatOnSave": false
-  }
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
 }
