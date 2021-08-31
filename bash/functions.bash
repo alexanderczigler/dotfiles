@@ -130,7 +130,7 @@ function src {
   if [ "$1" == "pull" ]; then
     cd $LINUX_REPO_DIR
     echo "Going to get latest .bashrc from git"
-    git pull origin master
+    git pull origin main --rebase --autostash
     cd -
   fi
 
