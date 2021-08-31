@@ -17,6 +17,7 @@ brew install direnv
 brew install gnupg2
 brew install kubectl
 brew install pinentry-mac
+brew install --cask unnaturalscrollwheels
 
 mkdir -p ~/GitHub
 git clone git@github.com:alexanderczigler/.env.git ~/GitHub/.env
