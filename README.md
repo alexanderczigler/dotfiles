@@ -11,6 +11,7 @@ This is where I gather scripts and settings for my development environments.
 - Install [nvm](https://github.com/nvm-sh/nvm)
 - Install [FiraCode font](https://github.com/tonsky/FiraCode/wiki/Installing)
 - Install [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
+- Install [UnnaturalScrollWheels](https://github.com/ther0n/UnnaturalScrollWheels)
 
 ```bash
 brew install direnv
