@@ -4,7 +4,7 @@ This is where I gather scripts and settings for my development environments.
 
 ## Mac OS
 
-## Fresh install
+### Fresh install
 
 - Install [iTerm](https://iterm2.com/)
 - Install [Homebrew](https://brew.sh/)
