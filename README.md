@@ -12,10 +12,7 @@ This is where I gather scripts and settings for my development environments.
 - Install [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
 
 ```bash
-brew install direnv
-brew install gnupg2
-brew install kubectl
-brew install pinentry-mac
+brew install awscli direnv doctl gnupg2 kubectl pinentry-mac
 
 # UnnaturalScrollWheels
 # https://github.com/ther0n/UnnaturalScrollWheels
