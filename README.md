@@ -9,7 +9,7 @@ This repository is where I gather scripts and settings for my development enviro
 1. Install [iTerm](https://iterm2.com/)
 2. Configure the main iTerm profile as a hotkey window
 3. Configure iTerm to launch when loggin in (hidden)
-4. Fix keybinds in iTerm [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x)
+4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x)
 
 ### Homebrew
 
