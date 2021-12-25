@@ -9,16 +9,22 @@ This is where I gather scripts and settings for my development environments.
 - Install [iTerm](https://iterm2.com/)
 - Install [Homebrew](https://brew.sh/)
 - Install [nvm](https://github.com/nvm-sh/nvm)
-- Install [FiraCode font](https://github.com/tonsky/FiraCode/wiki/Installing)
 - Install [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
-- Install [UnnaturalScrollWheels](https://github.com/ther0n/UnnaturalScrollWheels)
 
 ```bash
 brew install direnv
 brew install gnupg2
 brew install kubectl
 brew install pinentry-mac
+
+# UnnaturalScrollWheels
+# https://github.com/ther0n/UnnaturalScrollWheels
 brew install --cask unnaturalscrollwheels
+
+# FiraCode font
+# https://github.com/tonsky/FiraCode/wiki/Installing
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code
 
 mkdir -p ~/GitHub
 git clone git@github.com:alexanderczigler/.env.git ~/GitHub/.env
