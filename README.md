@@ -29,13 +29,17 @@ cp ~/GitHub/.env/.zhsrc ~/.zshrc
 source ~/.zshrc
 ```
 
-### GnuPG
+### GnuPG & SSH
+
+1. Import gpg key
+2. Put ssh keys (id_rsa, id_rsa.git) into ~/.ssh
+
+```bash
+mkdir -p ~/.gnupg
+echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
+```
 
 https://stackoverflow.com/questions/41502146/git-gpg-onto-mac-osx-error-gpg-failed-to-sign-the-data/41506446
-
-Then;
- - Import gpg key
- - Put ssh keys (id_rsa, id_rsa.git) into ~/.ssh
 
 ### Using a regular mouse in Mac OS
 
