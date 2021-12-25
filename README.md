@@ -1,22 +1,22 @@
 # .env
 
-This is where I gather scripts and settings for my development environments.
+This repository is where I gather scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system.
 
 ## Mac OS
 
-### Fresh install
+### Terminal
 
-- Install [iTerm](https://iterm2.com/)
-- Install [Homebrew](https://brew.sh/)
-- Install [nvm](https://github.com/nvm-sh/nvm)
-- Install [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
+1. Install [iTerm](https://iterm2.com/)
+2. Configure the main iTerm profile as a hotkey window
+3. Configure iTerm to launch when loggin in (hidden)
+4. Fix keybinds in iTerm [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x)
+
+### Homebrew
+
+Install [Homebrew](https://brew.sh/)
 
 ```bash
-brew install awscli direnv doctl gnupg2 kubectl pinentry-mac
-
-# UnnaturalScrollWheels
-# https://github.com/ther0n/UnnaturalScrollWheels
-brew install --cask unnaturalscrollwheels
+brew install awscli direnv doctl gnupg2 kubectl nvm pinentry-mac
 
 # FiraCode font
 # https://github.com/tonsky/FiraCode/wiki/Installing
@@ -29,14 +29,23 @@ cp ~/GitHub/.env/.zhsrc ~/.zshrc
 source ~/.zshrc
 ```
 
+### GnuPG
+
+https://stackoverflow.com/questions/41502146/git-gpg-onto-mac-osx-error-gpg-failed-to-sign-the-data/41506446
+
 Then;
  - Import gpg key
  - Put ssh keys (id_rsa, id_rsa.git) into ~/.ssh
 
-### Useful links
+### Using a regular mouse in Mac OS
 
-- https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x
-- https://stackoverflow.com/questions/41502146/git-gpg-onto-mac-osx-error-gpg-failed-to-sign-the-data/41506446
+When using a regular mouse I want the scroll wheel to behave like I am used to. So I use [UnnaturalScrollWheels](https://github.com/ther0n/UnnaturalScrollWheels) to keep mouse and trackpad scrolling settings opposite of each other. Install and configure it to launch on login.
+
+```bash
+brew install --cask unnaturalscrollwheels
+```
+
+After that, install [SensibleSideButtons](https://sensible-side-buttons.archagon.net) and also configure it to launch on login.
 
 ## Arch linux
 
