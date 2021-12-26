@@ -1,0 +1,10 @@
+[user]
+	signingkey = CEDACBB67334FD7F
+	name = Alexander Czigler
+	email = git@ilix.se
+[gpg]
+	program = gpg
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
