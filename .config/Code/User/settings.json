@@ -15,7 +15,7 @@
   "window.openFoldersInNewWindow": "on",
   "window.restoreWindows": "none",
   "editor.fontLigatures": true,
-  "workbench.colorTheme": "Gruvbox ish Dark Soft",
+  "workbench.colorTheme": "GitHub Light Default",
   "breadcrumbs.enabled": false,
   "editor.glyphMargin": false,
   "editor.folding": false,

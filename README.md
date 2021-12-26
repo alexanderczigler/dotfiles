@@ -1,4 +1,4 @@
-# .env
+# My environments
 
 This repository is where I gather scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system.
 
@@ -13,7 +13,7 @@ This repository is where I gather scripts and settings for my development enviro
 
 ### Homebrew
 
-Install [Homebrew](https://brew.sh/)
+Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
 ```bash
 brew install awscli direnv doctl gnupg2 kubectl nvm pinentry-mac
@@ -25,14 +25,16 @@ brew install --cask font-fira-code
 
 mkdir -p ~/GitHub
 git clone git@github.com:alexanderczigler/.env.git ~/GitHub/.env
-cp ~/GitHub/.env/.zhsrc ~/.zshrc
-source ~/.zshrc
+source ~/.zshrc && zup # Install the .zshrc
 ```
 
 ### GnuPG & SSH
 
-1. Import gpg key
+1. Import gpg key: `gpg --import git.gpg`
 2. Put ssh keys (id_rsa, id_rsa.git) into ~/.ssh
+3. Put ssh keys (git_rsa, git_rsa.git) into ~/.ssh
+
+GnuPG needs to be configured to use pinentry-mac
 
 ```bash
 mkdir -p ~/.gnupg
@@ -52,6 +54,8 @@ brew install --cask unnaturalscrollwheels
 After that, install [SensibleSideButtons](https://sensible-side-buttons.archagon.net) and also configure it to launch on login.
 
 ## Arch linux
+
+The stuff below is getting old... I will most likely have to make several changes next time I install an arch system.
 
 ### Post-install
 
@@ -107,10 +111,6 @@ pip3 install aws --upgrade --user
 curl -o ~/.local/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
 chmod +x ~/.local/bin/aws-iam-authenticator
 ```
-
-### AUR
-
-This repo contains a `.aur` file with a list of the aur packages I use. Running aur-update-packages installs/updates all of them in one go. Running aur-install-package <package> installs/updates a package and makes sure it is saved in `.aur`.
 
 ## CentOS (server)
 
