@@ -1,7 +1,7 @@
 [user]
-	signingkey = CEDACBB67334FD7F
+	signingkey = 8E319CF803D5094E
 	name = Alexander Czigler
-	email = git@ilix.se
+	email = dev@ilix.se
 [gpg]
 	program = gpg
 [init]
