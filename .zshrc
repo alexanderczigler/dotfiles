@@ -6,6 +6,7 @@ ENV_LOCATION="$HOME/GitHub/.env"
 # Aliases
 
 alias gp="git pull --rebase --autostash"
+alias gclean="git checkout main && git fetch --all -p && git pull origin main --autostash --rebase && git branch -D $(git branch --merged | grep -v main)"
 
 # Completions
 
