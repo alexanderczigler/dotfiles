@@ -16,7 +16,7 @@ This repository is where I gather scripts and settings for my development enviro
 Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
 ```bash
-brew install awscli direnv doctl gnupg2 kubectl nvm pinentry-mac
+brew install awscli direnv doctl eksctl gnupg2 helm kubectl nvm pinentry-mac watch
 
 # FiraCode font
 # https://github.com/tonsky/FiraCode/wiki/Installing
