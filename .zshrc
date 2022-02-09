@@ -51,16 +51,23 @@ nvmuse () {
 
   prev_pwd=$PWD
   if [[ -f ".nvmrc" ]]; then
+    echo " -> Found .nvmrc"
     eval "nvm use" >/dev/null
 
     if [[ "$?" == "3" ]]; then
+      echo " -> node version not installed, installing..."
       eval "nvm install" >/dev/null
     fi
 
+    echo " -> Using node $(node -v)"
+
     nvm_dirty="1"
   elif [[ "$nvm_dirty" == "1" ]]; then
+    echo " -> Falling back to default node version"
     eval "nvm use default" >/dev/null
     nvm_dirty="0"
+
+    echo " -> Using node $(node -v)"
   fi
 }
 
@@ -68,3 +75,5 @@ function cd {
   builtin cd "$@"
   nvmuse
 }
+
+nvmuse
