@@ -3,6 +3,14 @@
 
 ENV_LOCATION="$HOME/GitHub/.env"
 
+# History
+HISTDUP=erase             # No duplicates
+HISTSIZE=10000            # In memory
+SAVEHIST=10000            # In ~/.zsh_history
+setopt appendhistory      # Append to ~/.zsh_history
+setopt sharehistory       # All open terminals share history
+setopt incappendhistory   # Append continously
+
 # Aliases
 
 alias gp="git pull --rebase --autostash"
