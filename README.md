@@ -6,34 +6,56 @@ This repository is where I gather scripts and settings for my development enviro
 
 ### Initial setup
 
-1. Install `git`
-2. Place `git_rsa` inside ~/.ssh
-3. Configure ssh (see below)
-4. Clone this repo to ~/Source/.env
+1. Install `git` for your OS
+2. Generate a new ssh key: `ssh-keygen -f ~/.ssh/git_rsa`
+3. Upload `~/.ssh/git_rsa.pub` to version control servers
+4. Edit `~/.ssh/config` and add the following
 
 ```config
-# ~/.ssh/config
 Host bitbucket.org github.com gitlab.com visualstudio.com
   IdentityFile ~/.ssh/git_rsa
   IdentitiesOnly yes
+```
+
+5. Clone this repo `mkdir ~/Source && git clone git@github.com:alexanderczigler/.env.git ~/Source/.env`
+6. Generate a new gpg key `gpg --full-generate-key`
+7. Upload public gpg key to version control servers
+8. Get gpg key id `gpg --list-secret-keys --keyid-format=long`
+9. Configure `git` by editing `~/.gitconfig`
+
+```config
+[user]
+  signingkey = <keyid>
+  name = Alexander Czigler
+  email = alexander@czigler.eu
+[gpg]
+  program = gpg
+[init]
+  defaultBranch = main
+[commit]
+  gpgsign = true
 ```
 
 ### Linux
 
 1. Install [guake](http://guake-project.org/)
 2. `apt update`
-3. `apt install -y awscli curl fonts-firacode otpclient-cli vim wget whois
+3. `apt install -y awscli curl direnv fonts-firacode otpclient-cli vim wget whois
+4. Install [docker](https://docs.docker.com/engine/install/ubuntu/)
+5. Install [eksctl](https://eksctl.io/)
+6. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+7. Install [nvm](https://github.com/nvm-sh/nvm)
 
-## Mac OS
+### Mac OS
 
-### Terminal
+#### Terminal
 
 1. Install [iTerm](https://iterm2.com/)
 2. Configure the main iTerm profile as a hotkey window
 3. Configure iTerm to launch when loggin in (hidden)
 4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x)
 
-### Homebrew
+#### Homebrew
 
 Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
@@ -50,7 +72,7 @@ git clone git@github.com:alexanderczigler/.env.git ~/GitHub/.env
 source ~/.zshrc && zup # Install the .zshrc
 ```
 
-### GnuPG & SSH
+#### GnuPG & SSH
 
 1. Import gpg key: `gpg --import git.gpg`
 2. Put ssh keys (id_rsa, id_rsa.git) into ~/.ssh
@@ -65,7 +87,7 @@ echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 
 https://stackoverflow.com/questions/41502146/git-gpg-onto-mac-osx-error-gpg-failed-to-sign-the-data/41506446
 
-### Using a regular mouse in Mac OS
+#### Using a regular mouse in Mac OS
 
 When using a regular mouse I want the scroll wheel to behave like I am used to. So I use [UnnaturalScrollWheels](https://github.com/ther0n/UnnaturalScrollWheels) to keep mouse and trackpad scrolling settings opposite of each other. Install and configure it to launch on login.
 
@@ -74,83 +96,3 @@ brew install --cask unnaturalscrollwheels
 ```
 
 After that, install [SensibleSideButtons](https://sensible-side-buttons.archagon.net) and also configure it to launch on login.
-
-## Arch linux
-
-The stuff below is getting old... I will most likely have to make several changes next time I install an arch system.
-
-### Post-install
-
-Once done with the arch linux installation, setup a normal user, desktop environment etc.
-
-```bash
-# Load swedish keyboard layout
-loadkeys sv-latin1
-
-# Setup DNS (replace with relevant IPs)
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo "nameserver 8.8.4.4" >> /etc/resolv.conf
-
-# Setup network (if applicable)
-ip address add 5.35.191.60/26 broadcast + dev enp3s0f0
-ip link set dev enp3s0f0 up
-ip route add default via 5.35.191.3
-
-# Set root password
-passwd
-
-# Create user
-useradd alexander
-passwd alexander
-
-# Setup KDE (with xorg, plasma)
-pacman -S extra/xf86-video-intel xorg-server plasma xorg-xdm kde-applications
-systemctl enable xdm
-echo "startkde" > /home/alexander/.xsession
-chmod 700 /home/alexander/.xsession
-```
-
-### Software and settings
-
-```bash
-# NVM
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-
-# Install interesting packages
-sudo pacman -Sy dnsutils docker guake python-pip
-
-# Setup .bashrc and such
-mkdir -p ~/Source/alexander
-git clone git@github.com:alexander/linux.git ~/Source/linux
-source ~/Source/alexander/linux/.bashrc
-bashrc-update
-
-# Install AUR packages (see .aur file for a list)
-aur-update-packages
-
-# AWS
-pip3 install aws --upgrade --user
-curl -o ~/.local/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
-chmod +x ~/.local/bin/aws-iam-authenticator
-```
-
-## CentOS (server)
-
-### NFS server
-
-```bash
-yum update
-yum install -y nfs-utils vim
-chown -R nfsnobody:nfsnobody /mnt/volume*
-chmod -R 755 /mnt/volume*
-cd /mnt/volume*
-mkdir share
-
-# Edit /etc/exports (change path and IP)
-echo "/mnt/volume_bla_bla/share 1.2.3.4(rw,sync,no_subtree_check)" > /etc/exports
-
-systemctl start nfs.service
-systemctl enable nfs.service
-
-exportfs -a
-```
