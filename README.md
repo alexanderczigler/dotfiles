@@ -2,11 +2,27 @@
 
 This repository is where I gather scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system.
 
-## Linux
+## Setup
 
-### Terminal
+### Initial setup
+
+1. Install `git`
+2. Place `git_rsa` inside ~/.ssh
+3. Configure ssh (see below)
+4. Clone this repo to ~/Source/.env
+
+```config
+# ~/.ssh/config
+Host bitbucket.org github.com gitlab.com visualstudio.com
+  IdentityFile ~/.ssh/git_rsa
+  IdentitiesOnly yes
+```
+
+### Linux
 
 1. Install [guake](http://guake-project.org/)
+2. `apt update`
+3. `apt install -y awscli curl fonts-firacode otpclient-cli vim wget whois
 
 ## Mac OS
 
@@ -65,7 +81,7 @@ The stuff below is getting old... I will most likely have to make several change
 
 ### Post-install
 
-Once done with the arch linux installation, setup a normal user, desktop environment etc. 
+Once done with the arch linux installation, setup a normal user, desktop environment etc.
 
 ```bash
 # Load swedish keyboard layout
