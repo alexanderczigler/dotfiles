@@ -1,6 +1,6 @@
 # My environments
 
-This repository is where I gather scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system.
+In this repository I collect scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system. Feel free to use anything here that you find useful.
 
 ## Setup
 
@@ -39,12 +39,12 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
 ### Linux
 
 1. Install [guake](http://guake-project.org/)
-2. Install packages: `apt update && apt install -y awscli curl direnv fonts-firacode otpclient-cli vim wget whois`
-3. Install docker: https://docs.docker.com/engine/install/ubuntu/
-4. Install eksctl: https://eksctl.io/
-5. Install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-6. Install nvm: https://github.com/nvm-sh/nvm
-7. Install terraform: https://www.terraform.io/cli/install/apt
+2. Make `guake` auto-start on login
+3. Configure `quake-toggle` as a global hotkey on **§**
+4. Install packages: `apt update && apt install -y build-essential curl direnv fonts-firacode otpclient-cli vim wget whois`
+5. Install docker: https://docs.docker.com/engine/install/ubuntu/
+6. Install brew: https://www.how2shout.com/linux/how-to-install-brew-ubuntu-20-04-lts-linux/
+7. Install tools using brew: brew install awscli direnv doctl eksctl helm kubectl nvm terraform
 
 ### Mac OS
 
