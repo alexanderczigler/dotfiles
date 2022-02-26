@@ -44,7 +44,7 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
 4. Install packages: `apt update && apt install -y build-essential curl direnv fonts-firacode otpclient-cli vim wget whois`
 5. Install docker: https://docs.docker.com/engine/install/ubuntu/
 6. Install brew: https://www.how2shout.com/linux/how-to-install-brew-ubuntu-20-04-lts-linux/
-7. Install tools using brew: brew install awscli direnv doctl eksctl helm kubectl nvm terraform
+7. Install tools using brew: brew install awscli direnv docker-compose doctl eksctl helm kubectl nvm terraform
 
 ### Mac OS
 
