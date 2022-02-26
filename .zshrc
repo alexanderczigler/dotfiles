@@ -27,19 +27,12 @@ zup () {
   echo " -> Update .zshrc"
   _zup_rc
 
-  echo " -> Update SSH config"
-  _zup_ssh
-
   echo " -> Reload .zshrc"
   source "$HOME/.zshrc"
 }
 
 _zup_rc () {
   cp "$ENV_LOCATION/.zshrc" "$HOME/.zshrc"
-}
-
-_zup_ssh () {
-  cp "$ENV_LOCATION/.ssh/config" "$HOME/.ssh/config"
 }
 
 # direnv
