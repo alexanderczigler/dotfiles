@@ -1,3 +1,0 @@
-# bash
-
-I don't use bash at the moment so these files are getting old. They might not work...
