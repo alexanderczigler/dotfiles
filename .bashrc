@@ -1,3 +1,8 @@
+# My custom .bashrc
+# https://github.com/alexanderczigler/.env
+
+ENV_LOCATION="$HOME/Source/.env"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -80,6 +85,21 @@ fi
 
 # direnv
 eval "$(direnv hook bash)"
+
+# brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+bup () {
+  echo " -> Update .bashrc"
+  _bup_rc
+
+  echo " -> Reload .bashrc"
+  source "$HOME/.bashrc"
+}
+
+_bup_rc () {
+  cp "$ENV_LOCATION/.bashrc" "$HOME/.bashrc"
+}
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
