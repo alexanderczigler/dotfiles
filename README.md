@@ -2,6 +2,12 @@
 
 This repository is where I gather scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system.
 
+## Linux
+
+### Terminal
+
+1. Install [guake](http://guake-project.org/)
+
 ## Mac OS
 
 ### Terminal
