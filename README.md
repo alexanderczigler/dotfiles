@@ -39,12 +39,12 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
 ### Linux
 
 1. Install [guake](http://guake-project.org/)
-2. `apt update`
-3. `apt install -y awscli curl direnv fonts-firacode otpclient-cli vim wget whois
-4. Install [docker](https://docs.docker.com/engine/install/ubuntu/)
-5. Install [eksctl](https://eksctl.io/)
-6. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-7. Install [nvm](https://github.com/nvm-sh/nvm)
+2. Install packages: `apt update && apt install -y awscli curl direnv fonts-firacode otpclient-cli vim wget whois`
+3. Install docker: https://docs.docker.com/engine/install/ubuntu/
+4. Install eksctl: https://eksctl.io/
+5. Install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+6. Install nvm: https://github.com/nvm-sh/nvm
+7. Install terraform: https://www.terraform.io/cli/install/apt
 
 ### Mac OS
 
