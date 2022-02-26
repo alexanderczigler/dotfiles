@@ -1,7 +1,7 @@
 # My custom .zshrc
 # https://github.com/alexanderczigler/.env
 
-ENV_LOCATION="$HOME/GitHub/.env"
+ENV_LOCATION="$HOME/Source/.env"
 
 # History
 HISTDUP=erase             # No duplicates
