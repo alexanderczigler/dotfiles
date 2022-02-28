@@ -4,6 +4,15 @@ alias gclean="git checkout main && git fetch --all -p && git pull origin main --
 export AUR_PACKAGE_LIST=$HOME/Documents/.aur
 export UNINSTALL_PACKAGE_LIST=$HOME/Documents/.uninstall
 
+function rcupdate () {
+  echo " -> Update .bashrc"
+  cp "$ENV_LOCATION/.bashrc" "$HOME/.bashrc"
+  cp "$ENV_LOCATION/.bash_aliases" "$HOME/.bash_aliases"
+  
+  echo " -> Reload .bashrc"
+  source "$HOME/.bashrc"
+}
+
 function otp {
   OTPKEY="$(sed -n "s/${1}=//p" $HOME/Documents/.otpkeys)"
   if [ ! -z "$OTPKEY" ]; then

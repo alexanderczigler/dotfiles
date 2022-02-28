@@ -83,25 +83,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source <(kubectl completion bash)
+source <(/home/linuxbrew/.linuxbrew/bin/kubectl completion bash)
 
 # direnv
 eval "$(direnv hook bash)"
 
 # brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-bup () {
-  echo " -> Update .bashrc"
-  _bup_rc
-
-  echo " -> Reload .bashrc"
-  source "$HOME/.bashrc"
-}
-
-_bup_rc () {
-  cp "$ENV_LOCATION/.bashrc" "$HOME/.bashrc"
-}
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
