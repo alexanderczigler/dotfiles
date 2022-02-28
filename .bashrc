@@ -83,6 +83,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+source <(kubectl completion bash)
+
 # direnv
 eval "$(direnv hook bash)"
 
