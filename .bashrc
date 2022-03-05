@@ -87,6 +87,10 @@ fi
 
 [ -x /home/linuxbrew/.linuxbrew/bin/kubectl ] && source <(/home/linuxbrew/.linuxbrew/bin/kubectl completion bash)
 
+if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash ]; then
+  . /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+fi
+
 # direnv
 eval "$(direnv hook bash)"
 
