@@ -98,7 +98,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-nvmuse () {
+nvm_hook () {
   [ -z "$PS1" ] && return
   if [[ $PWD == $prev_pwd ]]; then
     return
@@ -106,29 +106,23 @@ nvmuse () {
 
   prev_pwd=$PWD
   if [[ -f ".nvmrc" ]]; then
-    echo " -> Found .nvmrc"
-    eval "nvm use" >/dev/null
+    eval "nvm use" > /dev/null
 
     if [[ "$?" == "3" ]]; then
-      echo " -> node version not installed, installing..."
-      eval "nvm install" >/dev/null
+      echo "nvm: going to install desired node version..."
+      eval "nvm install" > /dev/null
     fi
 
-    echo " -> Using node $(node -v)"
+    echo "nvm: using node $(node -v)"
 
     nvm_dirty="1"
   elif [[ "$nvm_dirty" == "1" ]]; then
-    echo " -> Falling back to default node version"
-    eval "nvm use default" >/dev/null
+    echo "nvm: falling back to default node version"
+    eval "nvm use default" > /dev/null
     nvm_dirty="0"
 
-    echo " -> Using node $(node -v)"
+    echo "nvm: using node $(node -v)"
   fi
-}
-
-function cd {
-  builtin cd "$@"
-  nvmuse
 }
 
 alias gp="git pull --rebase --autostash"
@@ -242,4 +236,4 @@ function uninstall-packages {
 }
 
 # A primitive npm hook
-export PROMPT_COMMAND="nvmuse;$PROMPT_COMMAND"
+export PROMPT_COMMAND="nvm_hook;$PROMPT_COMMAND"
