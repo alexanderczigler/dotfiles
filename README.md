@@ -48,6 +48,14 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
 
 ### Mac OS
 
+Create `~/.bash_profile` and add the following:
+
+```
+if [ -r ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+```
+
 #### Terminal
 
 1. Install [iTerm](https://iterm2.com/)
