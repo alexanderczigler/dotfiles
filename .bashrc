@@ -94,6 +94,11 @@ fi
 # direnv
 eval "$(direnv hook bash)"
 
+# kubectl
+if [ -f /usr/local/etc/bash_completion.d/kubectl ]; then
+  . /usr/local/etc/bash_completion.d/kubectl
+fi
+
 # brew
 [ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
