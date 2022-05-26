@@ -2,7 +2,7 @@
 # https://github.com/alexanderczigler/.env
 
 # Install location
-ENV_LOCATION="$HOME/Source/.env"
+ENV_LOCATION="$HOME/.env"
 
 # Continue only when running interactively
 case $- in

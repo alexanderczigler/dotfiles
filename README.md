@@ -17,7 +17,7 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
   IdentitiesOnly yes
 ```
 
-5. Clone this repo `mkdir ~/Source && git clone git@github.com:alexanderczigler/.env.git ~/Source/.env`
+5. Clone this repo `git clone git@github.com:alexanderczigler/.env.git ~/.env`
 6. Generate a new gpg key `gpg --full-generate-key`
 7. Upload public gpg key to version control servers
 8. Get gpg key id `gpg --list-secret-keys --keyid-format=long`
