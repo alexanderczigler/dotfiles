@@ -27,9 +27,7 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
 [user]
   signingkey = <keyid>
   name = Alexander Czigler
-  email = alexander@czigler.eu
-[gpg]
-  program = gpg
+  email = git@ilix.se
 [init]
   defaultBranch = main
 [commit]
@@ -41,10 +39,12 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
 1. Install [guake](http://guake-project.org/)
 2. Make `guake` auto-start on login
 3. Configure `quake-toggle` as a global hotkey on **§**
-4. Install packages: `apt update && apt install -y build-essential curl direnv fonts-firacode otpclient-cli vim wget whois`
-5. Install docker: https://docs.docker.com/engine/install/ubuntu/
-6. Install brew: https://www.how2shout.com/linux/how-to-install-brew-ubuntu-20-04-lts-linux/
-7. Install tools using brew: brew install awscli direnv docker-compose doctl eksctl helm kubectl nvm terraform
+4. Install packages: `pacman -Sy aws-cli curl direnv docker doctl eksctl kubectl terraform ttf-fira-code vim wget whois`
+
+#### AUR packages
+
+- [nvm](https://aur.archlinux.org/nvm.git)
+- [vscode](https://aur.archlinux.org/visual-studio-code-bin.git)
 
 ### Mac OS
 
