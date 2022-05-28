@@ -36,10 +36,12 @@ Host bitbucket.org github.com gitlab.com visualstudio.com
 
 ### Linux
 
-1. Install [guake](http://guake-project.org/)
-2. Make `guake` auto-start on login
-3. Configure `quake-toggle` as a global hotkey on **§**
-4. Install packages: `pacman -Sy aws-cli curl direnv docker doctl eksctl kubectl terraform ttf-fira-code vim wget whois`
+```shell
+# Install packages
+pacman -Sy aws-cli curl direnv docker doctl eksctl kubectl terraform tilda ttf-fira-code vim wget whois`
+```
+
+NOTE: Not using yakuake at the moment because of [this issue](https://forum.garudalinux.org/t/w-key-not-working-while-yakuake-active/19259)
 
 #### AUR packages
 
