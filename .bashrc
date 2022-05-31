@@ -140,7 +140,7 @@ function close-ssh-tunnels {
 #
 
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
-  source /usr/share/nvm/init-nvm.sh # NOTE: This will fail if nvm is not installed
+  source /usr/share/nvm/init-nvm.sh
 fi
 
 nvm_hook () {
