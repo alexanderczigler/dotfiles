@@ -139,7 +139,9 @@ function close-ssh-tunnels {
 # nvm things
 #
 
-source /usr/share/nvm/init-nvm.sh # NOTE: This will fail if nvm is not installed
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh # NOTE: This will fail if nvm is not installed
+fi
 
 nvm_hook () {
   [ -z "$PS1" ] && return
