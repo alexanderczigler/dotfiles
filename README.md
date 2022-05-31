@@ -1,52 +1,68 @@
 # My environments
 
-In this repository I collect scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system. Feel free to use anything here that you find useful.
+In this repository I collect scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system.
+
+Feel free to use any of this if you want but do it at your own risk :)
 
 ## Setup
 
-### Initial setup
+### Core setup (git, pgp, ssh)
 
-1. Install `git` for your OS
-2. Generate a new ssh key: `ssh-keygen -f ~/.ssh/git_rsa`
-3. Upload `~/.ssh/git_rsa.pub` to version control servers
-4. Edit `~/.ssh/config` and add the following
+```shell
+# Clone the .env repo
+git clone git@github.com:alexanderczigler/.env.git ~/.env
 
-```config
+# Install .bashrc
+cp ~/.env/.bashrc ~/.bashrc
+source ~/.bashrc
+
+# Setup nvm
+aur-install nvm
+
+# Configure git
+ssh-keygen -f ~/.ssh/git_rsa
+~/.ssh/git_rsa.pub # Upload the public key to GitHub etc.
+
+# Configure ssh
+cat >~/.ssh/config << EOL
 Host bitbucket.org github.com gitlab.com visualstudio.com
   IdentityFile ~/.ssh/git_rsa
   IdentitiesOnly yes
-```
+EOL
 
-5. Clone this repo `git clone git@github.com:alexanderczigler/.env.git ~/.env`
-6. Generate a new gpg key `gpg --full-generate-key`
-7. Upload public gpg key to version control servers
-8. Get gpg key id `gpg --list-secret-keys --keyid-format=long`
-9. Configure `git` by editing `~/.gitconfig`
+# Configure pgp
+gpg --full-generate-key
+gpg --list-secret-keys --keyid-format=long # Copy the key id
 
-```config
+# Configure git, replace <keyid> with the id you copied above
+cat >~/.gitconfig << EOL
 [user]
   signingkey = <keyid>
   name = Alexander Czigler
-  email = git@ilix.se
+  email = dev@ilix.se
 [init]
   defaultBranch = main
 [commit]
   gpgsign = true
+EOL
+
+# Export public key to github etc.
+gpg --output ~/public.pgp --armor --export dev@ilix.se
 ```
 
-### Linux
+### Tools
 
 ```shell
 # Install packages
-pacman -Sy aws-cli curl direnv docker doctl eksctl kubectl terraform tilda ttf-fira-code vim wget whois`
+pacman -Sy aws-cli curl direnv docker doctl eksctl evolution gnome-keyring kubectl terraform tilda ttf-fira-code vim wget whois`
+
+# Install other packages from AUR
+aur-install minecraft-launcher
+aur-install slack-desktop
+aur-install visual-studio-code-bin
 ```
 
-NOTE: Not using yakuake at the moment because of [this issue](https://forum.garudalinux.org/t/w-key-not-working-while-yakuake-active/19259)
-
-#### AUR packages
-
-- [nvm](https://aur.archlinux.org/nvm.git)
-- [vscode](https://aur.archlinux.org/visual-studio-code-bin.git)
+NOTE: I am using tilda instead of yakuake at the moment because of [this issue](https://forum.garudalinux.org/t/w-key-not-working-while-yakuake-active/19259)
 
 ### Mac OS
 
