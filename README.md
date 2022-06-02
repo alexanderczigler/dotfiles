@@ -4,7 +4,7 @@ In this repository I collect scripts and settings for my development environment
 
 Feel free to use any of this if you want but do it at your own risk :)
 
-## Setup
+## Arch Linux
 
 ### Core setup (git, pgp, ssh)
 
@@ -15,9 +15,6 @@ git clone git@github.com:alexanderczigler/.env.git ~/.env
 # Install .bashrc
 cp ~/.env/.bashrc ~/.bashrc
 source ~/.bashrc
-
-# Setup nvm
-aur-install nvm
 
 # Configure git
 ssh-keygen -f ~/.ssh/git_rsa
@@ -59,6 +56,7 @@ pacman -Sy aws-cli curl direnv docker doctl eksctl evolution gnome-keyring kubec
 # Install other packages from AUR
 aur-install en_se
 aur-install minecraft-launcher
+aur-install nvm
 aur-install slack-desktop
 aur-install visual-studio-code-bin
 ```
