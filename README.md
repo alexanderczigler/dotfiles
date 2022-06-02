@@ -6,7 +6,25 @@ Feel free to use any of this if you want but do it at your own risk :)
 
 ## Arch Linux
 
-### Core setup (git, pgp, ssh)
+### Core setup
+
+#### SSH
+
+```shell
+# Create a new rsa key to use with git
+ssh-keygen -f ~/.ssh/git_rsa
+
+# Configure ssh
+cat >~/.ssh/config << EOL
+Host bitbucket.org github.com gitlab.com visualstudio.com
+  IdentityFile ~/.ssh/git_rsa
+  IdentitiesOnly yes
+EOL
+```
+
+**NOTE:** Remember to `cat ~/.ssh/git_rsa.pub` and upload it to GitHub and other relevant places. Also remove any unused key(s) while you add the new one.
+
+#### Shell
 
 ```shell
 # Clone the .env repo
@@ -15,23 +33,28 @@ git clone git@github.com:alexanderczigler/.env.git ~/.env
 # Install .bashrc
 cp ~/.env/.bashrc ~/.bashrc
 source ~/.bashrc
+```
 
-# Configure git
-ssh-keygen -f ~/.ssh/git_rsa
-~/.ssh/git_rsa.pub # Upload the public key to GitHub etc.
+**NOTE:** Whenever you make changes to .bashrc, run `update-bashrc` to refresh it.
 
-# Configure ssh
-cat >~/.ssh/config << EOL
-Host bitbucket.org github.com gitlab.com visualstudio.com
-  IdentityFile ~/.ssh/git_rsa
-  IdentitiesOnly yes
-EOL
+#### GPG
 
-# Configure pgp
+```shell
+# Generate a new key to use when signing git commits.
 gpg --full-generate-key
-gpg --list-secret-keys --keyid-format=long # Copy the key id
 
-# Configure git, replace <keyid> with the id you copied above
+# Export public key and add it to GitHub and other relevant places.
+gpg --output ~/public.gpg --armor --export dev@ilix.se
+cat ~/public.gpg
+```
+
+#### GIT
+
+```shell
+# Get the gpg key id.
+gpg --list-secret-keys --keyid-format=long
+
+# Configure git, replace <keyid> with the id from the command above.
 cat >~/.gitconfig << EOL
 [user]
   signingkey = <keyid>
@@ -42,9 +65,6 @@ cat >~/.gitconfig << EOL
 [commit]
   gpgsign = true
 EOL
-
-# Export public key to github etc.
-gpg --output ~/public.pgp --armor --export dev@ilix.se
 ```
 
 ### Tools
@@ -65,11 +85,17 @@ NOTE: I am using tilda instead of yakuake at the moment because of [this issue](
 
 ### Locale
 
-Add `en_SE.UTF-8 UTF-8` to `/etc/locale.gen` and run `locale-gen` again. Then set `LANG=en_SE.UTF-8` in `/etc/locale.conf`.
+Add `en_SE.UTF-8 UTF-8` to `/etc/locale.gen` and run `locale-gen` again. Then edit `/etc/locale.conf` to look like this:
+
+```conf
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+LANG=en_SE.UTF-8
+```
 
 ### Other
 
-- [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
+- Install [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
 
 ### Mac OS
 
