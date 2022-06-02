@@ -57,12 +57,17 @@ gpg --output ~/public.pgp --armor --export dev@ilix.se
 pacman -Sy aws-cli curl direnv docker doctl eksctl evolution gnome-keyring kubectl terraform tilda ttf-fira-code vim wget whois`
 
 # Install other packages from AUR
+aur-install en_se
 aur-install minecraft-launcher
 aur-install slack-desktop
 aur-install visual-studio-code-bin
 ```
 
 NOTE: I am using tilda instead of yakuake at the moment because of [this issue](https://forum.garudalinux.org/t/w-key-not-working-while-yakuake-active/19259)
+
+**Locale**
+
+Add `en_SE.UTF-8 UTF-8` to `/etc/locale.gen` and run `locale-gen` again. Then set `LANG=en_SE.UTF-8` in `/etc/locale.conf`.
 
 ### Mac OS
 
