@@ -71,7 +71,7 @@ EOL
 
 ```shell
 # Install packages
-pacman -Sy aws-cli curl direnv docker doctl eksctl evolution gnome-keyring kubectl terraform tilda ttf-fira-code vim wget whois`
+pacman -Sy aws-cli curl direnv docker doctl eksctl evolution gnome-keyring kubectl skaffold terraform tilda ttf-fira-code vim wget whois`
 
 # Install other packages from AUR
 aur-install 1password
