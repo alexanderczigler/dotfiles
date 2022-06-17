@@ -53,11 +53,6 @@ export AUR_DIR=$HOME/.aur
 export AUR_PACKAGE_LIST=$AUR_DIR/packages
 
 function aur-install {
-  if [ ! -d "${PKG}" ]
-  then
-    mkdir $PKG
-  fi
-
   PKG="$AUR_DIR/$1"
 
   if [ -d "${PKG}" ]
