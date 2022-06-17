@@ -74,8 +74,11 @@ EOL
 pacman -Sy aws-cli curl direnv docker doctl eksctl evolution gnome-keyring kubectl terraform tilda ttf-fira-code vim wget whois`
 
 # Install other packages from AUR
+aur-install 1password
+aur-install datagrip
 aur-install en_se
 aur-install minecraft-launcher
+aur-install notion-app
 aur-install nvm
 aur-install slack-desktop
 aur-install visual-studio-code-bin
