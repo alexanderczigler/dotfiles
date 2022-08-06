@@ -4,7 +4,7 @@ In this repository I collect scripts and settings for my development environment
 
 Feel free to use any of this if you want but do it at your own risk :)
 
-## Arch Linux
+## Linux
 
 ### Core setup
 
