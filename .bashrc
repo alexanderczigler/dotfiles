@@ -92,34 +92,6 @@ function aur-cache-delete {
 # Custom tools
 #
 
-function otp {
-  OTPKEY="$(sed -n "s/${1}=//p" $HOME/Documents/.otpkeys)"
-  if [ ! -z "$OTPKEY" ]; then
-    oathtool --totp -b "$OTPKEY"
-  fi
-}
-
-function docker-swarm-tunnel {
-  SSH_DOCKER_SOCK=$(pwd)/.ssh-docker.sock
-  rm $SSH_DOCKER_SOCK
-
-  ssh -fNL $SSH_DOCKER_SOCK:/var/run/docker.sock $1
-  export DOCKER_HOST=unix://$SSH_DOCKER_SOCK
-
-  echo "OK!"
-  echo "DOCKER_HOST=$DOCKER_HOST"
-  echo "Connection: $1"
-}
-
-function docker-local {
-  export DOCKER_HOST=
-}
-
-function cpkubeconfig {
-  KUBE_CONFIG=`ssh root@$1 cat /root/.kube/config`
-  echo -e $"$KUBE_CONFIG" > "$HOME/.kube/config"
-}
-
 function docker-clean {
   docker rm -f $(docker ps -aq)
   docker rmi -f $(docker images -q)
