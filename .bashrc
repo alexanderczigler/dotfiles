@@ -32,61 +32,12 @@ function update-bashrc {
 }
 
 #
-# Arch things
+# Completions
 #
 
-function pacman-installed {
-  pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }' | more
-}
-
-function pacman-clean {
-  sudo pacman -Syy
-  sudo pacman -Scc
-  sudo pacman -Suu
-}
-
-#
-# AUR things
-#
-
-export AUR_DIR=$HOME/.aur
-export AUR_PACKAGE_LIST=$AUR_DIR/packages
-
-function aur-install {
-  PKG="$AUR_DIR/$1"
-
-  if [ -d "${PKG}" ]
-  then
-    cd "${PKG}"
-    git checkout . # NOTE: Should I use git clean -fdx instead?
-    git pull origin master # NOTE: What if they do not use master?
-  else
-    git clone "https://aur.archlinux.org/$1.git" "$PKG"
-    cd "$PKG"
-  fi
-
-  if [ $? == 0 ]; then
-    makepkg -Acsi --noconfirm
-    touch "$AUR_PACKAGE_LIST"
-    grep -q -F "$1" $AUR_PACKAGE_LIST || echo "$1" >> $AUR_PACKAGE_LIST
-  fi
-
-  cd -
-}
-
-function aur-update {
-  while read package; do
-    aur-install "$package"
-  done < $AUR_PACKAGE_LIST
-}
-
-function aur-cache-list {
-  cat $AUR_PACKAGE_LIST | more
-}
-
-function aur-cache-delete {
-  sed -i "/$1/d" $AUR_PACKAGE_LIST
-}
+if [ -f /usr/share/bash-completion/completions/git ]; then
+  source /usr/share/bash-completion/completions/git
+fi
 
 #
 # Custom tools
@@ -106,9 +57,9 @@ function close-ssh-tunnels {
 # nvm things
 #
 
-if [ -f /usr/share/nvm/init-nvm.sh ]; then
-  source /usr/share/nvm/init-nvm.sh
-fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 nvm_hook () {
   [ -z "$PS1" ] && return

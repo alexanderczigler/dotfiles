@@ -70,21 +70,19 @@ EOL
 ### Tools
 
 ```shell
-# Install packages
-pacman -Sy aws-cli curl direnv docker doctl eksctl evolution gnome-keyring kubectl skaffold terraform tilda ttf-fira-code vim wget whois`
+# Enable apt universe repository
+sudo add-apt-repository universe
+sudo apt update
 
-# Install other packages from AUR
-aur-install 1password
-aur-install datagrip
-aur-install en_se
-aur-install minecraft-launcher
-aur-install notion-app
-aur-install nvm
-aur-install slack-desktop
-aur-install visual-studio-code-bin
+# Install packages
+sudo apt install -y curl direnv fonts-firacode vim wget whois
+snap install doctl
+snap install aws-cli kubectl --classic
 ```
 
-NOTE: I am using tilda instead of yakuake at the moment because of [this issue](https://forum.garudalinux.org/t/w-key-not-working-while-yakuake-active/19259)
+#### Manual installations
+
+- [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
 
 ### Locale
 
