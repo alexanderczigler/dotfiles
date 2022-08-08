@@ -76,7 +76,7 @@ sudo apt update
 
 # Install packages
 sudo apt install -y curl direnv fonts-firacode vim wget whois
-snap install doctl
+snap install doctl skaffold
 snap install aws-cli kubectl --classic
 ```
 
