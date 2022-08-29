@@ -1,18 +1,14 @@
-# My environments
+# ENV
 
-In this repository I collect scripts and settings for my development environments. I tend to switch between using linux and Mac OS every few years so I keep this README as a memorandum to myself, reminding me what to install and configure when I setup a new system.
+In this repository I collect scripts and settings for my development environment. I tend to switch between using linux and Mac OS every once in a while so I keep this README as a memorandum to myself. The main goal is that this README should contain complete instructions for setting up my environment exactly how I want it.
 
-Feel free to use any of this if you want but do it at your own risk :)
+Feel free to use any of this if you find it useful but do it at your own risk! :)
 
-## The basics
+## Keys
 
-The environment assumes you are using `bash`, so if you are on Mac OS run `chsh -s /bin/bash` to change your default shell.
+You can setup new GPG and SSH keys or transfer the current ones from an old system. Just make sure that the public keys are setup on GitHub and other places (like servers) that you need to access.
 
-### Setting up keys
-
-I make it a habit to rotate my keys when I setup a new system.
-
-#### GPG
+### GPG
 
 The GPG key is used to sign git commits and should be tied to `dev@ilix.se`.
 
@@ -25,7 +21,7 @@ gpg --output ~/public.gpg --armor --export dev@ilix.se
 cat ~/public.gpg
 ```
 
-#### SSH
+### SSH
 
 ```shell
 # Create a new rsa key to use with git
@@ -35,9 +31,35 @@ ssh-keygen -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
 ```
 
-### Setup GIT and the .env repo locally.
+## Environment
 
-#### GIT
+### Shell (bash)
+
+```bash
+# Add this to `~/.bash_profile` to ensure that `~/.bashrc` is loaded.
+if [ -r ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+```
+
+**NOTE** If you are on Mac OS run `chsh -s /bin/bash` to change your default shell to bash.
+
+### .bashrc
+
+Clone the repo and load up the bash profile.
+
+```shell
+# Clone the .env repo
+git clone git@github.com:alexanderczigler/.env.git ~/.env
+
+# Install .bashrc
+cp ~/.env/.bashrc ~/.bashrc
+source ~/.bashrc
+```
+
+**NOTE:** Whenever you make changes to .bashrc, run `bup` to refresh it.
+
+### GIT
 
 ```shell
 # Get the gpg key id.
@@ -56,69 +78,7 @@ cat >~/.gitconfig << EOL
 EOL
 ```
 
-#### Shell
-
-Ensure that the `~/.bash_profile` also loads `~/.bashrc`.
-
-```bash
-if [ -r ~/.bashrc ]; then
-   source ~/.bashrc
-fi
-```
-
-Clone the repo and load up the bash profile.
-
-```shell
-# Clone the .env repo
-git clone git@github.com:alexanderczigler/.env.git ~/.env
-
-# Install .bashrc
-cp ~/.env/.bashrc ~/.bashrc
-source ~/.bashrc
-```
-
-**NOTE:** Whenever you make changes to .bashrc, run `bup` to refresh it.
-
 ### Tools
-
-```shell
-# Enable apt universe repository
-sudo add-apt-repository universe
-sudo apt update
-
-# Install packages
-sudo apt install -y curl direnv fonts-firacode vim wget whois
-snap install doctl skaffold
-snap install aws-cli kubectl --classic
-```
-
-#### Manual installations
-
-- [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
-
-### Locale
-
-Add `en_SE.UTF-8 UTF-8` to `/etc/locale.gen` and run `locale-gen` again. Then edit `/etc/locale.conf` to look like this:
-
-```conf
-LC_CTYPE=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-LANG=en_SE.UTF-8
-```
-
-### Other
-
-- Install [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
-
-### Mac OS
-
-#### Terminal
-
-1. Install [iTerm](https://iterm2.com/).
-2. Configure the main iTerm profile as a hotkey window.
-3. Configure iTerm to launch when loggin in (hidden).
-4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x).
-5. Map Shift + Insert keybind in iTerm to "Paste...".
 
 #### Homebrew
 
@@ -131,17 +91,9 @@ brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kube
 # https://github.com/tonsky/FiraCode/wiki/Installing
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
-
-mkdir -p ~/GitHub
-git clone git@github.com:alexanderczigler/.env.git ~/GitHub/.env
-source ~/.zshrc && zup # Install the .zshrc
 ```
 
-#### GnuPG & SSH
-
-1. Import gpg key: `gpg --import git.gpg`
-2. Put ssh keys (id_rsa, id_rsa.git) into ~/.ssh
-3. Put ssh keys (git_rsa, git_rsa.git) into ~/.ssh
+##### GnuPG + pinentry
 
 GnuPG needs to be configured to use pinentry-mac
 
@@ -150,7 +102,17 @@ mkdir -p ~/.gnupg
 echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 ```
 
-https://stackoverflow.com/questions/41502146/git-gpg-onto-mac-osx-error-gpg-failed-to-sign-the-data/41506446
+#### iTerm
+
+1. Install [iTerm](https://iterm2.com/).
+2. Configure the main iTerm profile as a hotkey window triggered by **§**.
+3. Configure iTerm to launch when loggin in (hidden).
+4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x).
+5. Map Shift + Insert keybind in iTerm to "Paste...".
+
+### Other
+
+- Install [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
 
 #### Using a regular mouse in Mac OS
 
