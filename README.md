@@ -114,13 +114,14 @@ fi
 2. Configure the main iTerm profile as a hotkey window
 3. Configure iTerm to launch when loggin in (hidden)
 4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x)
+5. Map Shift + Insert keybind in iTerm to "Paste...".
 
 #### Homebrew
 
 Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
 ```bash
-brew install awscli direnv doctl eksctl gnupg2 helm kubectl nvm pinentry-mac watch
+brew install awscli direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac watch
 
 # FiraCode font
 # https://github.com/tonsky/FiraCode/wiki/Installing
