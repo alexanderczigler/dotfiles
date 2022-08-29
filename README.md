@@ -4,40 +4,17 @@ In this repository I collect scripts and settings for my development environment
 
 Feel free to use any of this if you want but do it at your own risk :)
 
-## Linux
+## The basics
 
-### Core setup
+The environment assumes you are using `bash`, so if you are on Mac OS run `chsh -s /bin/bash` to change your default shell.
 
-#### SSH
+### Setting up keys
 
-```shell
-# Create a new rsa key to use with git
-ssh-keygen -f ~/.ssh/git_rsa
-
-# Configure ssh
-cat >~/.ssh/config << EOL
-Host bitbucket.org github.com gitlab.com visualstudio.com
-  IdentityFile ~/.ssh/git_rsa
-  IdentitiesOnly yes
-EOL
-```
-
-**NOTE:** Remember to `cat ~/.ssh/git_rsa.pub` and upload it to GitHub and other relevant places. Also remove any unused key(s) while you add the new one.
-
-#### Shell
-
-```shell
-# Clone the .env repo
-git clone git@github.com:alexanderczigler/.env.git ~/.env
-
-# Install .bashrc
-cp ~/.env/.bashrc ~/.bashrc
-source ~/.bashrc
-```
-
-**NOTE:** Whenever you make changes to .bashrc, run `update-bashrc` to refresh it.
+I make it a habit to rotate my keys when I setup a new system.
 
 #### GPG
+
+The GPG key is used to sign git commits and should be tied to `dev@ilix.se`.
 
 ```shell
 # Generate a new key to use when signing git commits.
@@ -47,6 +24,18 @@ gpg --full-generate-key
 gpg --output ~/public.gpg --armor --export dev@ilix.se
 cat ~/public.gpg
 ```
+
+#### SSH
+
+```shell
+# Create a new rsa key to use with git
+ssh-keygen -f ~/.ssh/id_rsa
+
+# Export public key and add it to GitHub and other relevant places.
+cat ~/.ssh/id_rsa.pub
+```
+
+### Setup GIT and the .env repo locally.
 
 #### GIT
 
@@ -66,6 +55,29 @@ cat >~/.gitconfig << EOL
   gpgsign = true
 EOL
 ```
+
+#### Shell
+
+Ensure that the `~/.bash_profile` also loads `~/.bashrc`.
+
+```bash
+if [ -r ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+```
+
+Clone the repo and load up the bash profile.
+
+```shell
+# Clone the .env repo
+git clone git@github.com:alexanderczigler/.env.git ~/.env
+
+# Install .bashrc
+cp ~/.env/.bashrc ~/.bashrc
+source ~/.bashrc
+```
+
+**NOTE:** Whenever you make changes to .bashrc, run `bup` to refresh it.
 
 ### Tools
 
@@ -100,20 +112,12 @@ LANG=en_SE.UTF-8
 
 ### Mac OS
 
-Create `~/.bash_profile` and add the following:
-
-```
-if [ -r ~/.bashrc ]; then
-   source ~/.bashrc
-fi
-```
-
 #### Terminal
 
-1. Install [iTerm](https://iterm2.com/)
-2. Configure the main iTerm profile as a hotkey window
-3. Configure iTerm to launch when loggin in (hidden)
-4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x)
+1. Install [iTerm](https://iterm2.com/).
+2. Configure the main iTerm profile as a hotkey window.
+3. Configure iTerm to launch when loggin in (hidden).
+4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x).
 5. Map Shift + Insert keybind in iTerm to "Paste...".
 
 #### Homebrew
@@ -121,7 +125,7 @@ fi
 Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
 ```bash
-brew install awscli direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac watch
+brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac watch
 
 # FiraCode font
 # https://github.com/tonsky/FiraCode/wiki/Installing

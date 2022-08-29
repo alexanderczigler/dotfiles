@@ -3,41 +3,40 @@
 # https://github.com/alexanderczigler/.env
 #
 
-# If not running interactively, don't do anything
+# If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+# Prompt.
 PS1='[\u@\h \W]\$ '
 
 #
-# Settings
+# Settings.
 # 
 
 ENV_REPO_DIR="$HOME/.env"
 
-HISTCONTROL=ignoreboth
-HISTFILESIZE=2000
-HISTSIZE=1000
-
 shopt -s checkwinsize
 shopt -s histappend
 
+HISTCONTROL=ignoredups:ignorespace
+HISTFILESIZE=2000
+HISTSIZE=1000
+
+
 #
-# .bashrc controls
+# Update .bashrc from the repo directory.
 #
 
-function update-bashrc {
+function bup {
   cp "$ENV_REPO_DIR/.bashrc" "$HOME/.bashrc"
   source "$HOME/.bashrc"
 }
 
 #
-# Completions
+# Completions.
 #
 
-if [ -f /usr/share/bash-completion/completions/git ]; then
-  source /usr/share/bash-completion/completions/git
-fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 #
 # Custom tools
@@ -54,7 +53,7 @@ function close-ssh-tunnels {
 }
 
 #
-# nvm things
+# NVM.
 #
 
 export NVM_DIR="$HOME/.nvm"
