@@ -22,6 +22,7 @@ HISTCONTROL=ignoredups:ignorespace
 HISTFILESIZE=2000
 HISTSIZE=1000
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 #
 # Update .bashrc from the repo directory.
@@ -37,6 +38,13 @@ function bup {
 #
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+else
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+  . ~/.git-completion.bash
+fi
 
 #
 # Custom tools
