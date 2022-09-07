@@ -46,6 +46,8 @@ else
   . ~/.git-completion.bash
 fi
 
+eval "$(skaffold completion bash)"
+
 #
 # Custom tools
 #
