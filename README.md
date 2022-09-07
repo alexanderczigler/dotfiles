@@ -85,7 +85,7 @@ EOL
 Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
 ```bash
-brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac watch
+brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac skaffold watch
 
 # FiraCode font
 # https://github.com/tonsky/FiraCode/wiki/Installing
