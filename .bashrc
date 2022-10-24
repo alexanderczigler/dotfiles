@@ -9,6 +9,8 @@
 # Prompt.
 PS1='[\u@\h \W]\$ '
 
+export PATH=$PATH:/opt/homebrew/bin
+
 #
 # Settings.
 # 
