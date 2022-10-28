@@ -126,4 +126,4 @@ After that, install [SensibleSideButtons](https://sensible-side-buttons.archagon
 
 #### Non-Apple keyboards
 
-Install Karabiner Elements.
+Install [Karabiner Elements](https://karabiner-elements.pqrs.org).
