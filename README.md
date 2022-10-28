@@ -1,4 +1,4 @@
-# ENV
+# dotENV
 
 In this repository I collect scripts and settings for my development environment. I tend to switch between using linux and Mac OS every once in a while so I keep this README as a memorandum to myself. The main goal is that this README should contain complete instructions for setting up my environment exactly how I want it.
 
