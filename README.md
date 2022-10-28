@@ -4,6 +4,8 @@ In this repository I collect scripts and settings for my development environment
 
 Feel free to use any of this if you find it useful but do it at your own risk! :)
 
+NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. So if something doesn't quite work it is probably adapted for silicon or vice versa.
+
 ## SSH
 
 Configure the ssh client to use and IdentityAgent for all hosts. Put the following lines in `~/.ssh/config`. NOTE: This is for macOS.
