@@ -4,31 +4,35 @@ In this repository I collect scripts and settings for my development environment
 
 Feel free to use any of this if you find it useful but do it at your own risk! :)
 
-## Keys
+## SSH
 
-You can setup new GPG and SSH keys or transfer the current ones from an old system. Just make sure that the public keys are setup on GitHub and other places (like servers) that you need to access.
+Configure the ssh client to use and IdentityAgent for all hosts. Put the following lines in `~/.ssh/config`. NOTE: This is for macOS.
 
-### GPG
-
-The GPG key is used to sign git commits and should be tied to `dev@ilix.se`.
-
-```shell
-# Generate a new key to use when signing git commits.
-gpg --full-generate-key
-
-# Export public key and add it to GitHub and other relevant places.
-gpg --output ~/public.gpg --armor --export dev@ilix.se
-cat ~/public.gpg
+```config
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 ```
 
-### SSH
+## Git
+
+Git commits are signed using an SSH key, the signing program is 1password.
 
 ```shell
-# Create a new rsa key to use with git
-ssh-keygen -f ~/.ssh/id_rsa
-
-# Export public key and add it to GitHub and other relevant places.
-cat ~/.ssh/id_rsa.pub
+# Configure git (macOS).
+cat >~/.gitconfig << EOL
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM5HFfhL/8n8w3C9hyo5btCNMp0RYYwILioNDvQVb6R
+  name = Alexander Czigler
+  email = dev@ilix.se
+[init]
+  defaultBranch = main
+[commit]
+  gpgsign = true
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+EOL
 ```
 
 ## Environment
@@ -58,25 +62,6 @@ source ~/.bashrc
 ```
 
 **NOTE:** Whenever you make changes to .bashrc, run `bup` to refresh it.
-
-### GIT
-
-```shell
-# Get the gpg key id.
-gpg --list-secret-keys --keyid-format=long
-
-# Configure git, replace <keyid> with the id from the command above.
-cat >~/.gitconfig << EOL
-[user]
-  signingkey = <keyid>
-  name = Alexander Czigler
-  email = dev@ilix.se
-[init]
-  defaultBranch = main
-[commit]
-  gpgsign = true
-EOL
-```
 
 ### Tools
 
