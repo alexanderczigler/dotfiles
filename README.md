@@ -123,3 +123,7 @@ brew install --cask unnaturalscrollwheels
 ```
 
 After that, install [SensibleSideButtons](https://sensible-side-buttons.archagon.net) and also configure it to launch on login.
+
+#### Non-Apple keyboards
+
+Install Karabiner Elements.
