@@ -25,19 +25,10 @@ NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. 
 **NOTE** If you are on Mac OS run `chsh -s /bin/bash` to change your default shell to bash.
 
 ```shell
-# If not running interactively, don't do anything.
-[[ $- != *i* ]] && return
-
-# Prompt.
+[[ $- != *i* ]] && return # If not running interactively, don't do anything.
 PS1='[\u@\h \W]\$ '
 
 export PATH=$PATH:/opt/homebrew/bin
-
-#
-# Settings.
-# 
-
-ENV_REPO_DIR="$HOME/.env"
 
 shopt -s checkwinsize
 shopt -s histappend
@@ -47,19 +38,6 @@ HISTFILESIZE=2000
 HISTSIZE=1000
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
-
-#
-# Update .bashrc from the repo directory.
-#
-
-function bup {
-  cp "$ENV_REPO_DIR/.bashrc" "$HOME/.bashrc"
-  source "$HOME/.bashrc"
-}
-
-#
-# Completions.
-#
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
@@ -71,24 +49,6 @@ else
 fi
 
 eval "$(skaffold completion bash)"
-
-#
-# Custom tools
-#
-
-function docker-clean {
-  docker rm -f $(docker ps -aq)
-  docker rmi -f $(docker images -q)
-  docker system prune --volumes -f
-}
-
-function close-ssh-tunnels {
-  pkill -f 'ssh.*-f'
-}
-
-#
-# NVM.
-#
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -120,10 +80,6 @@ nvm_hook () {
     echo "nvm: using node $(node -v)"
   fi
 }
-
-#
-# Hooks
-#
 
 eval "$(direnv hook bash)"
 export PROMPT_COMMAND="nvm_hook;$PROMPT_COMMAND"
