@@ -6,16 +6,40 @@ Feel free to use any of this if you find it useful but do it at your own risk! :
 
 NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. So if something doesn't quite work it is probably adapted for silicon or vice versa.
 
-## SSH
+### Applications
 
-Configure the ssh client to use and IdentityAgent for all hosts. Put the following lines in `~/.ssh/config`. NOTE: This is for macOS.
+- [1Password](https://1password.com/downloads/mac/)
+- [1Password for Safari](https://apps.apple.com/se/app/1password-for-safari/id1569813296?l=en&mt=12)
+- [Slack](https://apps.apple.com/se/app/slack-for-desktop/id803453959?l=en&mt=12)
+- [VSCode](https://code.visualstudio.com/download)
 
-```config
-Host *
-	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+### Configuration
+
+#### bash
+
+```bash
+# Add this to `~/.bash_profile` to ensure that `~/.bashrc` is loaded.
+if [ -r ~/.bashrc ]; then
+   source ~/.bashrc
+fi
 ```
 
-## Git
+**NOTE** If you are on Mac OS run `chsh -s /bin/bash` to change your default shell to bash.
+
+##### .bashrc
+
+Clone the repo and load up the bash profile.
+
+```shell
+# Clone the .env repo
+git clone git@github.com:alexanderczigler/.env.git ~/.env
+
+# Install .bashrc
+cp ~/.env/.bashrc ~/.bashrc
+source ~/.bashrc
+```
+
+#### Git
 
 Git commits are signed using an SSH key, the signing program is 1password.
 
@@ -37,31 +61,22 @@ cat >~/.gitconfig << EOL
 EOL
 ```
 
-## Environment
+#### SSH
 
-### Shell (bash)
+Configure the ssh client to use and IdentityAgent for all hosts. Put the following lines in `~/.ssh/config`. NOTE: This is for macOS.
 
-```bash
-# Add this to `~/.bash_profile` to ensure that `~/.bashrc` is loaded.
-if [ -r ~/.bashrc ]; then
-   source ~/.bashrc
-fi
+```config
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 ```
 
-**NOTE** If you are on Mac OS run `chsh -s /bin/bash` to change your default shell to bash.
+## Environment
+
+
 
 ### .bashrc
 
-Clone the repo and load up the bash profile.
 
-```shell
-# Clone the .env repo
-git clone git@github.com:alexanderczigler/.env.git ~/.env
-
-# Install .bashrc
-cp ~/.env/.bashrc ~/.bashrc
-source ~/.bashrc
-```
 
 **NOTE:** Whenever you make changes to .bashrc, run `bup` to refresh it.
 
@@ -101,13 +116,17 @@ echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 
 - Install [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
 
-#### Using a regular mouse in Mac OS
-
-When using a regular mouse I want the scroll wheel to behave like I am used to. So I use [UnnaturalScrollWheels](https://github.com/ther0n/UnnaturalScrollWheels) to keep mouse and trackpad scrolling settings opposite of each other. Install and configure it to launch on login.
+#### UnnaturalScrollWheels
 
 ```bash
 brew install --cask unnaturalscrollwheels
 ```
+
+##### Configuration
+
+<img width="512" alt="unnaturalscrollwheels" src="https://user-images.githubusercontent.com/3116043/209099151-0f41150e-084b-461b-aa7e-fc43004d9acf.png">
+
+#### SensibleSideButtons
 
 After that, install [SensibleSideButtons](https://sensible-side-buttons.archagon.net) and also configure it to launch on login.
 
