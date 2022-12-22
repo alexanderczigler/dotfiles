@@ -16,6 +16,7 @@ NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. 
 - [Instapaper](https://apps.apple.com/se/app/instapaper/id288545208?l=en)
 - [Instapaper Save](https://apps.apple.com/se/app/instapaper-save/id1481302432?l=en&mt=12)
 - [Karabiner Elements](https://karabiner-elements.pqrs.org)
+- [NVM](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
 - [Slack](https://apps.apple.com/se/app/slack-for-desktop/id803453959?l=en&mt=12)
 - [VSCode](https://code.visualstudio.com/download)
