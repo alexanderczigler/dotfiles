@@ -8,8 +8,13 @@ NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. 
 
 ### Applications
 
+- [1Blocker](https://apps.apple.com/se/app/1blocker-ad-blocker/id1365531024?l=en)
 - [1Password](https://1password.com/downloads/mac/)
 - [1Password for Safari](https://apps.apple.com/se/app/1password-for-safari/id1569813296?l=en&mt=12)
+- [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
+- [Homebrew](https://brew.sh/)
+- [Karabiner Elements](https://karabiner-elements.pqrs.org)
+- [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
 - [Slack](https://apps.apple.com/se/app/slack-for-desktop/id803453959?l=en&mt=12)
 - [VSCode](https://code.visualstudio.com/download)
 
@@ -17,16 +22,7 @@ NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. 
 
 #### bash
 
-```bash
-# Add this to `~/.bash_profile` to ensure that `~/.bashrc` is loaded.
-if [ -r ~/.bashrc ]; then
-   source ~/.bashrc
-fi
-```
-
 **NOTE** If you are on Mac OS run `chsh -s /bin/bash` to change your default shell to bash.
-
-##### .bash_profile
 
 ```shell
 # If not running interactively, don't do anything.
@@ -164,16 +160,6 @@ Host *
 	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 ```
 
-## Environment
-
-
-
-### .bashrc
-
-
-
-**NOTE:** Whenever you make changes to .bashrc, run `bup` to refresh it.
-
 ### Tools
 
 #### Homebrew
@@ -181,21 +167,9 @@ Host *
 Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
 ```bash
-brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac skaffold watch
-
-# FiraCode font
-# https://github.com/tonsky/FiraCode/wiki/Installing
 brew tap homebrew/cask-fonts
+brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac skaffold watch
 brew install --cask font-fira-code
-```
-
-##### GnuPG + pinentry
-
-GnuPG needs to be configured to use pinentry-mac
-
-```bash
-mkdir -p ~/.gnupg
-echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 ```
 
 #### iTerm
@@ -206,10 +180,6 @@ echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x).
 5. Map Shift + Insert keybind in iTerm to "Paste...".
 
-### Other
-
-- Install [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
-
 #### UnnaturalScrollWheels
 
 ```bash
@@ -219,11 +189,3 @@ brew install --cask unnaturalscrollwheels
 ##### Configuration
 
 <img width="512" alt="unnaturalscrollwheels" src="https://user-images.githubusercontent.com/3116043/209099151-0f41150e-084b-461b-aa7e-fc43004d9acf.png">
-
-#### SensibleSideButtons
-
-After that, install [SensibleSideButtons](https://sensible-side-buttons.archagon.net) and also configure it to launch on login.
-
-#### Non-Apple keyboards
-
-Install [Karabiner Elements](https://karabiner-elements.pqrs.org).
