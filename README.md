@@ -13,6 +13,8 @@ NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. 
 - [1Password for Safari](https://apps.apple.com/se/app/1password-for-safari/id1569813296?l=en&mt=12)
 - [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
 - [Homebrew](https://brew.sh/)
+- [Instapaper](https://apps.apple.com/se/app/instapaper/id288545208?l=en)
+- [Instapaper Save](https://apps.apple.com/se/app/instapaper-save/id1481302432?l=en&mt=12)
 - [Karabiner Elements](https://karabiner-elements.pqrs.org)
 - [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
 - [Slack](https://apps.apple.com/se/app/slack-for-desktop/id803453959?l=en&mt=12)
