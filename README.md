@@ -32,28 +32,27 @@ NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. 
 PS1='[\u@\h \W]\$ '
 
 nvm_hook () {
-  [ -z "$PS1" ] && return
-  if [[ $PWD == $prev_pwd ]]; then
-    return
-  fi
+   [ -z "$PS1" ] && return
+   if [[ $PWD == $prev_pwd ]]; then
+      return
+   fi
 
-  prev_pwd=$PWD
-  if [[ -f ".nvmrc" ]]; then
-    eval "nvm use" > /dev/null
+   prev_pwd=$PWD
+   if [[ -f ".nvmrc" ]]; then
+      eval "nvm use" > /dev/null
 
-    if [[ "$?" == "3" ]]; then
-      echo "nvm: installing..."
-      eval "nvm install" > /dev/null
-    fi
+      if [[ "$?" == "3" ]]; then
+         echo "nvm: installing..."
+         eval "nvm install" > /dev/null
+      fi
 
-    nvm_dirty="1"
-  elif [[ "$nvm_dirty" == "1" ]]; then
-    eval "nvm use default" > /dev/null
-    nvm_dirty="0"
-
-  fi
-
-   echo "nvm: using node $(node -v)"
+      echo "nvm: using node $(node -v)"
+      nvm_dirty="1"
+   elif [[ "$nvm_dirty" == "1" ]]; then
+      echo "nvm: using node $(node -v)"
+      eval "nvm use default" > /dev/null
+      nvm_dirty="0"
+   fi
 }
 
 export PATH=$PATH:/opt/homebrew/bin
@@ -72,8 +71,8 @@ eval "$(direnv hook bash)"
 eval "$(kubectl completion bash)"
 eval "$(skaffold completion bash)"
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
 #### Git
