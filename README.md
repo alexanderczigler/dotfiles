@@ -1,6 +1,6 @@
-# dotENV
+# .env
 
-In this repository I collect scripts and settings for my development environment. I tend to switch between using linux and Mac OS every once in a while so I keep this README as a memorandum to myself. The main goal is that this README should contain complete instructions for setting up my environment exactly how I want it.
+When I setup or reinstall a workstation there are a bunch of applications, configuration and tools that need to be in place before I feel like home. The main goal of this repository is to hold complete instructions for setting up my environment exactly how I want it, and to keep my `~/.bashrc` file.
 
 Feel free to use any of this if you find it useful but do it at your own risk! :)
 
