@@ -117,7 +117,7 @@ Install [Homebrew](https://brew.sh/) then use it to install the following packag
 
 ```bash
 brew tap homebrew/cask-fonts
-brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac skaffold watch
+brew install awscli bash-completion direnv doctl eksctl gnupg2 helm kubectl kubectx nvm pinentry-mac skaffold telnet watch
 brew install --cask font-fira-code
 ```
 
