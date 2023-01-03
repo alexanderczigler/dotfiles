@@ -20,6 +20,7 @@ NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. 
 - [Karabiner Elements](https://karabiner-elements.pqrs.org)
 - [NVM](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [OpenVPN Connect](https://openvpn.net/client-connect-vpn-for-mac-os/)
+- [Raindrop Safari Extension](https://apps.apple.com/se/app/save-to-raindrop-io/id1549370672?l=en&mt=12)
 - [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
 - [Slack](https://apps.apple.com/se/app/slack-for-desktop/id803453959?l=en&mt=12)
 - [VSCode](https://code.visualstudio.com/download)
