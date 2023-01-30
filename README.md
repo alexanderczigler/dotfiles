@@ -4,8 +4,6 @@ When I setup or reinstall a workstation there are a bunch of applications, confi
 
 Feel free to use any of this if you find it useful but do it at your own risk! :)
 
-NOTE: There may be a bit of a mix-up between intel and silicon stuff for macOS. So if something doesn't quite work it is probably adapted for silicon or vice versa.
-
 ### Applications
 
 - [1Blocker](https://apps.apple.com/se/app/1blocker-ad-blocker/id1365531024?l=en)
