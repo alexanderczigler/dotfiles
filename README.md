@@ -13,15 +13,11 @@ Feel free to use any of this if you find it useful but do it at your own risk! :
 - [Docker Desktop](https://docs.docker.com/desktop/linux/install/archlinux/)
 - [Homebrew](https://brew.sh/)
 - [Insomnia](https://insomnia.rest/download)
-- [Instapaper](https://apps.apple.com/se/app/instapaper/id288545208?l=en)
-- [Instapaper Save](https://apps.apple.com/se/app/instapaper-save/id1481302432?l=en&mt=12)
 - [Karabiner Elements](https://karabiner-elements.pqrs.org)
 - [NVM](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [OpenVPN Connect](https://openvpn.net/client-connect-vpn-for-mac-os/)
-- [Raindrop Safari Extension](https://apps.apple.com/se/app/save-to-raindrop-io/id1549370672?l=en&mt=12)
 - [SensibleSideButtons](https://sensible-side-buttons.archagon.net)
 - [Slack](https://apps.apple.com/se/app/slack-for-desktop/id803453959?l=en&mt=12)
-- [VSCode](https://code.visualstudio.com/download)
 
 ### Configuration
 
@@ -87,37 +83,6 @@ sudo vim /etc/shells
 chsh -s /opt/homebrew/bin/bash
 ```
 
-#### Git
-
-Git commits are signed using an SSH key, the signing program is 1password.
-
-```shell
-# Configure git (macOS).
-cat >~/.gitconfig << EOL
-[user]
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM5HFfhL/8n8w3C9hyo5btCNMp0RYYwILioNDvQVb6R
-  name = Alexander Czigler
-  email = dev@ilix.se
-[init]
-  defaultBranch = main
-[commit]
-  gpgsign = true
-[gpg]
-  format = ssh
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-EOL
-```
-
-#### SSH
-
-Configure the ssh client to use and IdentityAgent for all hosts. Put the following lines in `~/.ssh/config`. NOTE: This is for macOS.
-
-```config
-Host *
-	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-```
-
 ### Tools
 
 #### Homebrew
@@ -130,14 +95,6 @@ brew install awscli bash-completion direnv doctl eksctl gnupg2 helm jq kubectl k
 brew install --cask font-fira-code
 brew install --cask visual-studio-code
 ```
-
-#### iTerm
-
-1. Install [iTerm](https://iterm2.com/).
-2. Configure the main iTerm profile as a hotkey window triggered by **§**.
-3. Configure iTerm to launch when loggin in (hidden).
-4. Fix keybinds in iTerm: [Jumping between words in iTerm](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x).
-5. Map Shift + Insert keybind in iTerm to "Paste...".
 
 #### UnnaturalScrollWheels
 
