@@ -27,8 +27,6 @@ Feel free to use any of this if you find it useful but do it at your own risk! :
 
 #### bash
 
-**NOTE** If you are on Mac OS run `chsh -s /bin/bash` to change your default shell to bash.
-
 ```shell
 [[ $- != *i* ]] && return # If not running interactively, don't do anything.
 PS1='[\u@\h \W]\$ '
@@ -75,6 +73,18 @@ eval "$(skaffold completion bash)"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+
+##### Mac OS
+
+```shell
+brew install bash
+which -a bash
+
+# Add /opt/homebrew/bin/bash to /etc/shells
+sudo vim /etc/shells
+
+chsh -s /opt/homebrew/bin/bash
 ```
 
 #### Git
