@@ -54,6 +54,9 @@ then
   fi
 fi
 
+# Load Git completion.
+[ -s "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" ] && \. "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+
 # Load NVM.
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
