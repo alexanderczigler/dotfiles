@@ -37,6 +37,8 @@ HISTCONTROL=ignoredups:ignorespace
 HISTFILESIZE=2000
 HISTSIZE=1000
 
+eval "$(direnv hook bash)"
+
 # Completions.
 if type brew &>/dev/null
 then
