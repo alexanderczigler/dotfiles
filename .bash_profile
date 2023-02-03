@@ -16,13 +16,18 @@ _nvm_hook () {
          eval "nvm install" > /dev/null
       fi
 
-      echo "nvm: using node $(node -v)"
       nvm_dirty="1"
    elif [[ "$nvm_dirty" == "1" ]]; then
-      echo "nvm: using node $(node -v)"
       eval "nvm use default" > /dev/null
       nvm_dirty="0"
    fi
+}
+
+dotfiles_up () {
+   cp $HOME/dotfiles/.bash_profile $HOME/.bash_profile
+   cp $HOME/dotfiles/.ssh/config $HOME/.ssh/config
+   cp $HOME/dotfiles/.gitconfig $HOME/.gitconfig
+   source $HOME/.bash_profile
 }
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
