@@ -1,7 +1,7 @@
 [[ $- != *i* ]] && return # If not running interactively, don't do anything.
 PS1='[\u@\h \W]\$ '
 
-nvm_hook () {
+_nvm_hook () {
    [ -z "$PS1" ] && return
    if [[ $PWD == $prev_pwd ]]; then
       return
@@ -25,16 +25,16 @@ nvm_hook () {
    fi
 }
 
-export PATH=$PATH:/opt/homebrew/bin
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH=$PATH:/opt/homebrew/bin
 export NVM_DIR="/opt/homebrew/opt/nvm"
-export PROMPT_COMMAND="nvm_hook;$PROMPT_COMMAND"
+export PROMPT_COMMAND="_nvm_hook"
 
 shopt -s checkwinsize
 shopt -s histappend
 
 HISTCONTROL=ignoredups:ignorespace
-HISTFILESIZE=2000
+HISTFILESIZE=1000
 HISTSIZE=1000
 
 eval "$(direnv hook bash)"
