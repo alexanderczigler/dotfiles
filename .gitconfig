@@ -10,6 +10,9 @@
 [init]
   defaultBranch = main
 
+[pull]
+  rebase = true
+
 [user]
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM5HFfhL/8n8w3C9hyo5btCNMp0RYYwILioNDvQVb6R
   name = Alexander Czigler
