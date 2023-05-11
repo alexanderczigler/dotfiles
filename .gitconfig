@@ -11,9 +11,9 @@
   defaultBranch = main
 
 [pull]
-  rebase = true
+	rebase = true
 
 [user]
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM5HFfhL/8n8w3C9hyo5btCNMp0RYYwILioNDvQVb6R
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOaA1MQ+BwLPLPJSl8GHQ510Odd+/n8Pdd0eSpdSAZwJ
   name = Alexander Czigler
-  email = dev@ilix.se
+  email = git@ilix.se
