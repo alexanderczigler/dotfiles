@@ -27,7 +27,7 @@ Install [Homebrew](https://brew.sh/) then use it to install the following packag
 
 ```bash
 brew tap homebrew/cask-fonts
-brew install argocd awscli bash-completion direnv doctl eksctl gnupg2 helm jq kubectl kubectx nvm pinentry-mac skaffold telnet terraform watch
+brew install argocd awscli bash-completion direnv doctl eksctl gnupg2 helm jq kubectl kubectx nvm opendevtools/supreme/supreme pinentry-mac skaffold telnet terraform watch
 brew install --cask font-fira-code
 brew install --cask visual-studio-code
 ```
