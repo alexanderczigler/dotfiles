@@ -1,6 +1,11 @@
-[[ $- != *i* ]] && return # If not running interactively, don't do anything.
+# If not running interactively, don't do anything.
+[[ $- != *i* ]] && return
+
+# Setup bash prompt.
 PS1='[\u@\h \W]\$ '
 
+# Custom nvm hook.
+# This will detect .nvmrc files and run nvm <install | use> automatically.
 _nvm_hook () {
    [ -z "$PS1" ] && return
    if [[ $PWD == $prev_pwd ]]; then
@@ -23,28 +28,30 @@ _nvm_hook () {
    fi
 }
 
-dotfiles_up () {
-   cp $HOME/dotfiles/.bash_profile $HOME/.bash_profile
-   cp $HOME/dotfiles/.ssh/config $HOME/.ssh/config
-   cp $HOME/dotfiles/.gitconfig $HOME/.gitconfig
-   source $HOME/.bash_profile
-}
-
-export BASH_SILENCE_DEPRECATION_WARNING=1
-export PATH=$PATH:/opt/homebrew/bin
-export NVM_DIR="/opt/homebrew/opt/nvm"
-export PROMPT_COMMAND="_nvm_hook"
-
+# Make bash check window size after each command.
 shopt -s checkwinsize
-shopt -s histappend
 
-HISTCONTROL=ignoredups:ignorespace
-HISTFILESIZE=1000
+# Setup bash history.
+# https://askubuntu.com/questions/15926/how-to-avoid-duplicate-entries-in-bash-history
 HISTSIZE=1000
+HISTFILESIZE=1000
+HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; _nvm_hook; $PROMPT_COMMAND"
 
+# Silence deprecation warning.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Setup path.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# Setup NVM.
+export NVM_DIR="/opt/homebrew/opt/nvm"
+
+# direnv hook.
 eval "$(direnv hook bash)"
 
-# Completions.
+# Load Homebrew completion.
 if type brew &>/dev/null
 then
   HOMEBREW_PREFIX="$(brew --prefix)"
@@ -65,3 +72,12 @@ fi
 # Load NVM.
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+# Load RVM.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ilix/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/ilix/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ilix/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/ilix/Downloads/google-cloud-sdk/completion.bash.inc'; fi
