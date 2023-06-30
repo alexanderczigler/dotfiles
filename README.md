@@ -1,8 +1,10 @@
 # .env
 
-When I setup or reinstall a workstation there are a bunch of applications, configuration and tools that need to be in place before I feel like home. The main goal of this repository is to hold complete instructions for setting up my environment exactly how I want it, and to keep my `~/.bashrc` file.
-
-Feel free to use any of this if you find it useful but do it at your own risk! :)
+```shell
+git clone git@github.com:alexanderczigler/dotfiles.git ~/.env
+cp ~/.env/.bash_profile ~/.bash_profile
+. ~/.bash_profile
+```
 
 ### Applications
 
