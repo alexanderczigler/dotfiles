@@ -1,9 +1,25 @@
 # .env
 
+## Mac OS
+
 ```shell
-git clone git@github.com:alexanderczigler/dotfiles.git ~/.env
-cp ~/.env/.bash_profile ~/.bash_profile
-. ~/.bash_profile
+
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Setup bash
+brew install bash
+sudo vim /etc/shells
+
+# Set default shell
+sudo vim /etc/shells # Add /opt/homebrew/bin/bash
+chsh -s /opt/homebrew/bin/bash
+
+# Setup dotfiles
+bash
+git clone git@github.com:alexanderczigler/dotfiles.git .github/dotfiles
+cp .github/dotfiles/.bash_profile ~/.bash_profile
 ```
 
 ### Applications
@@ -32,20 +48,6 @@ brew tap homebrew/cask-fonts
 brew install argocd awscli bash-completion direnv doctl eksctl gnupg2 helm jq kubectl kubectx nvm opendevtools/supreme/supreme pinentry-mac skaffold telnet terraform watch
 brew install --cask font-fira-code
 brew install --cask visual-studio-code
-```
-
-##### Mac OS
-
-On Mac OS, install bash via Homebrew and set it as your default shell.
-
-```shell
-brew install bash
-which -a bash
-
-# Add /opt/homebrew/bin/bash to /etc/shells
-sudo vim /etc/shells
-
-chsh -s /opt/homebrew/bin/bash
 ```
 
 #### UnnaturalScrollWheels
