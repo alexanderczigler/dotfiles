@@ -90,3 +90,40 @@ brew install --cask unnaturalscrollwheels
 ```
 
 <img width="512" alt="unnaturalscrollwheels" src="https://user-images.githubusercontent.com/3116043/209099151-0f41150e-084b-461b-aa7e-fc43004d9acf.png">
+
+### Linux
+
+// TODO
+
+## Configuring git
+
+1. Configure git to load .gitconfig in this repo.
+
+```bash
+cat <<EOF >> ~/.gitconfig
+[include]
+  path = ~/.dotfiles/.gitconfig
+EOF
+```
+
+2. Create a `~/.gitconfig.local` with your user-specific settings
+
+```bash
+cat <<EOF >> ~/.gitconfig.local
+[commit]
+gpgsign = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOaA1MQ+BwLPLPJSl8GHQ510Odd+/n8Pdd0eSpdSAZwJ
+  name = Alexander Czigler
+  email = git@ilix.se
+EOF
+```
+
+In the example above, I am signing my commits with an SSH key, using 1Password as the signing program.
