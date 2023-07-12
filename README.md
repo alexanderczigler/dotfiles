@@ -8,10 +8,17 @@ A minimalistic bash profile for developers.
 
 > **Tip:** If you want to make your own adjustments, [fork](https://github.com/alexanderczigler/dotfiles/fork) this repository first.
 
-- Clone this repository
-  `git clone https://github.com/alexanderczigler/dotfiles.git ~/.dotfiles`
-- Copy the .bash_profile to your ~
-  `cp ~/.dotfiles/.bash_profile ~/.bash_profile`
+1. Clone this repository
+
+```bash
+git clone https://github.com/alexanderczigler/dotfiles.git ~/.dotfiles
+```
+
+2. Copy the .bash_profile to your ~
+
+```bash
+cp ~/.dotfiles/.bash_profile ~/.bash_profile
+```
 
 #### Installing utilities
 
