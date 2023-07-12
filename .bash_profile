@@ -1,3 +1,7 @@
+## A minimalistic bash profile for developers.
+## https://github.com/alexanderczigler/dotfiles
+####
+
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
@@ -18,35 +22,61 @@ PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 # Silence deprecation warning.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Setup path.
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# direnv hook.
+
+
+## Homebrew.
+## https://brew.sh/
+####
+
+if [ -d "/opt/homebrew" ]
+then
+   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+   # Load Homebrew completion.
+   if type brew &>/dev/null
+   then
+   HOMEBREW_PREFIX="$(brew --prefix)"
+   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+   then
+      source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+   else
+      for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+      do
+         [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+      done
+   fi
+   fi
+fi
+
+
+
+
+## git
+####
+
+GIT_COMPLETION_PATH="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+[ -s $GIT_COMPLETION_PATH ] && \. $GIT_COMPLETION_PATH
+
+
+
+
+## direnv
+## https://direnv.net/
+####
+
 if type direnv &>/dev/null
 then
   eval "$(direnv hook bash)"
 fi
 
-# Load Homebrew completion.
-if type brew &>/dev/null
-then
-  HOMEBREW_PREFIX="$(brew --prefix)"
-  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
-  then
-    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-  else
-    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
-    do
-      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
-    done
-  fi
-fi
 
-# Load Git completion.
-GIT_COMPLETION_PATH="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
-[ -s $GIT_COMPLETION_PATH ] && \. $GIT_COMPLETION_PATH
 
-# Load NVM.
+
+## Node version manager.
+## https://github.com/nvm-sh/nvm
+####
+
 NVM_DIR="/opt/homebrew/opt/nvm"
 NVM_COMPLETION_PATH="/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -81,11 +111,22 @@ then
   PROMPT_COMMAND="_nvm_hook; $PROMPT_COMMAND"
 fi
 
-# Load RVM.
+
+
+
+## Ruby version manager.
+## https://rvm.io/
+####
 RVM_PATH="$HOME/.rvm/scripts/rvm"
 [[ -s $RVM_PATH ]] && source $RVM_PATH # Load RVM into a shell session *as a function*
 
-# Google Cloud SDK.
+
+
+
+## Google Cloud SDK.
+## https://cloud.google.com/sdk/docs/quickstart
+####
+
 GC_PATH="$HOME/.local/google-cloud-sdk"
 [ -s "$GC_PATH/path.bash.inc" ] && \. "$GC_PATH/path.bash.inc"
 [ -s "$GC_PATH/completion.bash.inc" ] && \. "$GC_PATH/completion.bash.inc"
