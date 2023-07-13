@@ -134,3 +134,7 @@ EOF
 ```
 
 In the example above, I am signing my commits with an SSH key, using 1Password as the signing program.
+
+## Updating
+
+There is a built-in function that copies the `.bash_profile` to your `~`. Simply run `dotfiles_update` in bash, or `dotfiles_update pull` if you want to pull the latest version from git.
