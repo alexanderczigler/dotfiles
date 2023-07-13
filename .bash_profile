@@ -130,3 +130,28 @@ RVM_PATH="$HOME/.rvm/scripts/rvm"
 GC_PATH="$HOME/.local/google-cloud-sdk"
 [ -s "$GC_PATH/path.bash.inc" ] && \. "$GC_PATH/path.bash.inc"
 [ -s "$GC_PATH/completion.bash.inc" ] && \. "$GC_PATH/completion.bash.inc"
+
+
+
+
+## Updating.
+####
+
+DOTFILES_PATH="$HOME/.dotfiles"
+function dotfiles_update {
+    cd $DOTFILES_PATH
+
+  if [ "$1" == 'pull' ]
+  then
+    echo 'Updating dotfiles repo from git...'
+    echo "Remote is $(git remote get-url origin)"
+    git pull
+    cd -
+  fi
+
+  cd -
+
+  echo 'Installing dotfiles...'
+  cp $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
+  source $HOME/.bash_profile
+}
