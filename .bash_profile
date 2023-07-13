@@ -146,6 +146,7 @@ function dotfiles_update {
     echo 'Updating dotfiles repo from git...'
     echo "Remote is $(git remote get-url origin)"
     git pull
+    echo
     cd -
   fi
 
@@ -154,4 +155,6 @@ function dotfiles_update {
   echo 'Installing dotfiles...'
   cp $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
   source $HOME/.bash_profile
+
+  echo "Done!"
 }
