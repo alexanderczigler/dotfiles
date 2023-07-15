@@ -20,6 +20,12 @@ git clone https://github.com/alexanderczigler/dotfiles.git ~/.dotfiles
 cp ~/.dotfiles/.bash_profile ~/.bash_profile
 ```
 
+3. Load the .bash_profile from your ~
+
+```bash
+source ~/.bash_profile
+```
+
 #### Installing utilities
 
 ##### Install Homebrew
