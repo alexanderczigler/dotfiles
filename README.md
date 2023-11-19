@@ -26,7 +26,7 @@ cp ~/.dotfiles/.zshrc ~/.zshrc
 source ~/.zshrc
 ```
 
-#### Installing utilities
+#### Apps & Utilities
 
 ##### Install Homebrew
 
@@ -40,50 +40,42 @@ source ~/.zshrc
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-##### Common tools
+##### Formulas
 
-Here is a list of cli tools that I always install on my computers.
+Here is a somewhat complete list of all applications and utilies that I install on my computers.
 
 ```shell
+# Applications
+brew install --cask firefox visual-studio-code
+
+# Developer
 brew install direnv jq nvm opendevtools/supreme/supreme telnet watch yq
-```
 
-##### Fira Code
-
-[Fira Code](https://github.com/tonsky/FiraCode) is a free monospaced font with programming ligatures.
-
-```shell
+# Fonts.
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
+
+# Infrastructure
+brew install argocd awscli doctl eksctl helm kubectl kubectx skaffold terraform
+
+# Shell
+brew install zsh-completions
 ```
 
 #### Other
+
+```shell
+# Utilities
+brew install --cask sensiblesidebuttons unnaturalscrollwheels
+```
 
 ##### SensibleSideButtons
 
 [SensibleSideButtons](https://sensible-side-buttons.archagon.net) will let you use the side buttons on a mouse just like in Linux or Windows.
 
-##### Homebrew
-
-Install [Homebrew](https://brew.sh/) then use it to install the following packages.
-
-```bash
-brew install zsh-completions
-
-brew install argocd awscli bash-completion direnv doctl eksctl gnupg2 helm jq kubectl kubectx nvm opendevtools/supreme/supreme pinentry-mac skaffold telnet terraform watch
-
-brew install --cask visual-studio-code
-```
-
 ##### UnnaturalScrollWheels
 
 [UnnaturalScrollWheels](https://github.com/ther0n/UnnaturalScrollWheels) lets you configure a _normal_ scroll direction on the wheel of a mouse, while keeping the _natural_ scroll direction on your trackpad. Very smart!
-
-Install UnnaturalScrollWheel with brew or download it from their website.
-
-```bash
-brew install --cask unnaturalscrollwheels
-```
 
 <img width="512" alt="unnaturalscrollwheels" src="https://user-images.githubusercontent.com/3116043/209099151-0f41150e-084b-461b-aa7e-fc43004d9acf.png">
 
