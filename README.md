@@ -14,16 +14,16 @@ A minimalistic bash profile for developers.
 git clone https://github.com/alexanderczigler/dotfiles.git ~/.dotfiles
 ```
 
-2. Copy the .bash_profile to your ~
+2. Copy the .zshrc to your ~
 
 ```bash
-cp ~/.dotfiles/.bash_profile ~/.bash_profile
+cp ~/.dotfiles/.zshrc ~/.zshrc
 ```
 
-3. Load the .bash_profile from your ~
+3. Load the .zshrc from your ~
 
 ```bash
-source ~/.bash_profile
+source ~/.zshrc
 ```
 
 #### Installing utilities
@@ -38,25 +38,6 @@ source ~/.bash_profile
 
 # Load brew into your current shell.
 eval "$(/opt/homebrew/bin/brew shellenv)"
-```
-
-##### Setting up the latest bash as your default shell
-
-The `bash` version that comes bundled with Mac OS is very old. Therefore it is a good idea to install the latest `bash`. Setting it as the default shell requires a couple of commands.
-
-```shell
-brew install bash
-sudo vim /etc/shells
-
-# Set default shell
-sudo vim /etc/shells # Add /opt/homebrew/bin/bash
-chsh -s /opt/homebrew/bin/bash
-```
-
-###### bash completion
-
-```shell
-brew install bash-completion
 ```
 
 ##### Common tools
@@ -87,6 +68,8 @@ brew install --cask font-fira-code
 Install [Homebrew](https://brew.sh/) then use it to install the following packages.
 
 ```bash
+brew install zsh-completions
+
 brew install argocd awscli bash-completion direnv doctl eksctl gnupg2 helm jq kubectl kubectx nvm opendevtools/supreme/supreme pinentry-mac skaffold telnet terraform watch
 
 brew install --cask visual-studio-code
