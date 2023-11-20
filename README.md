@@ -46,7 +46,7 @@ Here is a somewhat complete list of all applications and utilies that I install 
 
 ```shell
 # Applications
-brew install --cask firefox raycast visual-studio-code warp
+brew install --cask firefox orbstack raycast visual-studio-code warp
 
 # Developer
 brew install direnv jq nvm opendevtools/supreme/supreme telnet watch yq
