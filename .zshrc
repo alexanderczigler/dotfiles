@@ -51,8 +51,3 @@ then
   add-zsh-hook chpwd load-nvmrc
   load-nvmrc
 fi
-
-# GCP.
-GC_PATH="$HOME/.local/google-cloud-sdk"
-[ -s "$GC_PATH/path.zsh.inc" ] && \. "$GC_PATH/path.zsh.inc"
-[ -s "$GC_PATH/completion.zsh.inc" ] && \. "$GC_PATH/completion.zsh.inc"
