@@ -2,29 +2,17 @@
 
 A minimalistic bash profile for developers.
 
-## Installing
+## Quick Start
 
-### Mac OS
+```shell
+# NOTE: Backup your ~/.zshrc before running this.
 
-> **Tip:** If you want to make your own adjustments, [fork](https://github.com/alexanderczigler/dotfiles/fork) this repository first.
-
-1. Clone this repository
-
-```bash
 git clone https://github.com/alexanderczigler/dotfiles.git ~/.dotfiles
-```
-
-2. Copy the .zshrc to your ~
-
-```bash
-cp ~/.dotfiles/.zshrc ~/.zshrc
-```
-
-3. Load the .zshrc from your ~
-
-```bash
+echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
 source ~/.zshrc
 ```
+
+> **Tip:** If you want to make your own adjustments, [fork](https://github.com/alexanderczigler/dotfiles/fork) this repository first.
 
 #### Apps & Utilities
 
