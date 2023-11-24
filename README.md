@@ -45,6 +45,7 @@ brew install --cask font-fira-code
 
 # Infrastructure
 brew install argocd awscli doctl eksctl helm kubectl kubectx skaffold terraform
+brew install fluxcd/tap/flux
 brew install --cask google-cloud-sdk
 gcloud components install gke-gcloud-auth-plugin
 
