@@ -57,3 +57,7 @@ then
   source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 fi
+
+function loop {
+  while [ 1 = 1 ]; do $@; sleep 10; done
+}
