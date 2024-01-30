@@ -22,7 +22,7 @@ The main purpose of this repo is to get up and running as fast as possible each 
   ```
 4. Configure GIT
   ```bash
-  cat <<EOF >> ~/.gitconfig
+  cat <<EOF > ~/.gitconfig
   [include]
     path = ~/.dotfiles/.gitconfig
   EOF
