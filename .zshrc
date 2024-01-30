@@ -1,4 +1,4 @@
-## A minimalistic shell profile for developers.
+## My shell profile.
 ## https://github.com/alexanderczigler/dotfiles
 ####
 
@@ -61,3 +61,12 @@ fi
 function loop {
   while [ 1 = 1 ]; do $@; sleep 10; done
 }
+
+# zsh completions
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
