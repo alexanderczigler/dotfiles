@@ -57,7 +57,7 @@ brew install microsoft-outlook microsoft-teams
 #### CLI
 
 ```shell
-brew install argocd awscli direnv doctl eksctl fluxcd/tap/flux helm jq kubectl kubectx nvm skaffold opendevtools/supreme/supreme telnet terraform watch yq zsh-completions
+brew install argocd awscli direnv doctl eksctl fluxcd/tap/flux helm jq kubectl kubectx nvm skaffold opendevtools/supreme/supreme telnet terraform watch yarn yq zsh-completions
 
 # Google Cloud
 brew install --cask google-cloud-sdk
