@@ -36,13 +36,14 @@ The main purpose of this repo is to get up and running as fast as possible each 
 
 [Homebrew](https://brew.sh/) is a package manager for Mac OS that I recommend you use. With `brew` you can install several useful cli tools ranging from `awscli` to `direnv` and `kubectl`.
 
-```shell
-# Install instruction taken from https://brew.sh/
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Load brew into your current shell.
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
+1. Install brew (instruction taken from https://brew.sh/)
+  ```shell
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+2. Load brew into the current shell
+  ```shell
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  ```
 
 ### 💻 Apps
 
