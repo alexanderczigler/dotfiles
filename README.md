@@ -4,7 +4,7 @@ My shell profile and CLI settings, geared towards backend dev/devops tooling.
 
 The main purpose of this repo is to get up and running as fast as possible each time I install a new system. If you find anything useful in here, feel free to use it!
 
-## Quick Start
+## ✨ Quick Start
 
 > **NOTE:**
 > - If you want to make your own adjustments, [fork](https://github.com/alexanderczigler/dotfiles/fork) this repository first and change the URL in step 1 below.
@@ -30,9 +30,9 @@ The main purpose of this repo is to get up and running as fast as possible each 
   EOF
   ```
 
-## Mac OS
+## 🍏 Mac OS
 
-### Homebrew
+### 🍺 Homebrew
 
 [Homebrew](https://brew.sh/) is a package manager for Mac OS that I recommend you use. With `brew` you can install several useful cli tools ranging from `awscli` to `direnv` and `kubectl`.
 
@@ -44,7 +44,7 @@ The main purpose of this repo is to get up and running as fast as possible each 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-### Apps
+### 💻 Apps
 
 ```shell
 # Applications
@@ -67,19 +67,28 @@ brew install zsh-completions
 brew install microsoft-outlook microsoft-teams
 ```
 
-### Utilities
-
-```shell
-# Utilities
-brew install --cask sensiblesidebuttons unnaturalscrollwheels
-```
+### ⚙️ Utilities
 
 #### SensibleSideButtons
 
-[SensibleSideButtons](https://sensible-side-buttons.archagon.net) will let you use the side buttons on a mouse just like in Linux or Windows.
+[SensibleSideButtons](https://sensible-side-buttons.archagon.net) will let you use the side buttons on a mouse just like in Linux or Windows. Once installed, add it to `Login items` in System Settings.
+
+```shell
+brew install --cask sensiblesidebuttons
+```
+
+> Once installed, add it to `Login items` in System Settings.
 
 ##### UnnaturalScrollWheels
 
 [UnnaturalScrollWheels](https://github.com/ther0n/UnnaturalScrollWheels) lets you configure a _normal_ scroll direction on the wheel of a mouse, while keeping the _natural_ scroll direction on your trackpad. I love it!
+
+```shell
+brew install --cask unnaturalscrollwheels
+```
+
+> Once installed, add it to `Login items` in System Settings.
+
+###### Configuration
 
 ![unnaturalscrollwheels](https://github.com/alexanderczigler/dotfiles/assets/3116043/b9b52edc-c7ea-4bcc-82ad-a66676784150)
