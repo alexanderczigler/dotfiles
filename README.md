@@ -45,27 +45,29 @@ The main purpose of this repo is to get up and running as fast as possible each 
   eval "$(/opt/homebrew/bin/brew shellenv)"
   ```
 
-### 💻 Apps
+### 📦 Packages
+
+#### Applications
 
 ```shell
-# Applications
 brew install --cask firefox orbstack raycast visual-studio-code
+brew install microsoft-outlook microsoft-teams
+```
 
-# CLI
-brew install argocd awscli doctl eksctl helm kubectl kubectx skaffold terraform direnv jq nvm opendevtools/supreme/supreme telnet watch yq
-brew install fluxcd/tap/flux
+#### CLI
+
+```shell
+brew install argocd awscli direnv doctl eksctl fluxcd/tap/flux helm jq kubectl kubectx nvm skaffold opendevtools/supreme/supreme telnet terraform watch yq zsh-completions
+
+# Google Cloud
 brew install --cask google-cloud-sdk
 gcloud components install gke-gcloud-auth-plugin
+```
 
-# Fonts.
+#### Fonts
+```shell
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
-
-# Shell
-brew install zsh-completions
-
-# Work things
-brew install microsoft-outlook microsoft-teams
 ```
 
 ### ⚙️ Utilities
