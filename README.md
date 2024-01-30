@@ -1,6 +1,6 @@
 # 🧑‍💻 dotfiles
 
-My shell profile and CLI settings, geared towards backend developer/devops tooling.
+My shell profile and CLI settings, geared towards backend dev/devops tooling.
 
 The main purpose of this repo is to get up and running as fast as possible each time I install a new system. If you find anything useful in here, feel free to use it!
 
