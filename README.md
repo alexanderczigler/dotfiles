@@ -6,7 +6,9 @@ The main purpose of this repo is to get up and running as fast as possible each 
 
 ## Quick Start
 
-> **Tip:** If you want to make your own adjustments, [fork](https://github.com/alexanderczigler/dotfiles/fork) this repository first and change the URL in step 1 below.
+> **NOTE:**
+> - If you want to make your own adjustments, [fork](https://github.com/alexanderczigler/dotfiles/fork) this repository first and change the URL in step 1 below.
+> - Backup your .zshrc and .gitconfig files before running the steps below, in case you want to revert back to any settings you currently have.
 
 1. Clone this repo
   ```shell
