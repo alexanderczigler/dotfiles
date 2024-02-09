@@ -30,7 +30,12 @@ The main purpose of this repo is to get up and running as fast as possible each 
   EOF
   ```
 
-> If zsh compinit gives you a warning, you may need to run `compaudit | xargs chmod g-w`
+> You may need to force rebuild `zcompdump`:
+> `rm -f ~/.zcompdump; compinit`
+> 
+> Additionally, if you receive "zsh compinit: insecure directories" warnings when attempting to load these completions, you may need to run these commands:
+> - `chmod go-w '/opt/homebrew/share'`
+> - `chmod -R go-w '/opt/homebrew/share/zsh'`
 
 ## 🍏 Mac OS
 
