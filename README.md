@@ -30,6 +30,8 @@ The main purpose of this repo is to get up and running as fast as possible each 
   EOF
   ```
 
+> If zsh compinit gives you a warning, you may need to run `compaudit | xargs chmod g-w`
+
 ## 🍏 Mac OS
 
 ### 🍺 Homebrew
