@@ -70,3 +70,13 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+# update the shell profile
+
+function update-dotfiles {
+  cd ~/.dotfiles
+  git pull
+  cd -
+  source ~/.zshrc
+}
+
