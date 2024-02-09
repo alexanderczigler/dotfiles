@@ -57,7 +57,7 @@ The main purpose of this repo is to get up and running as fast as possible each 
 #### Applications
 
 ```shell
-brew install --cask firefox orbstack raycast visual-studio-code
+brew install --cask firefox obs orbstack visual-studio-code
 brew install microsoft-outlook microsoft-teams
 ```
 
