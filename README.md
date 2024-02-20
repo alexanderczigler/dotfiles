@@ -68,7 +68,7 @@ brew install argocd awscli direnv doctl eksctl fluxcd/tap/flux helm jq kubectl k
 
 # Google Cloud
 brew install --cask google-cloud-sdk
-gcloud --quiet components install gke-gcloud-auth-plugin
+gcloud --quiet components install beta gke-gcloud-auth-plugin
 ```
 
 #### Fonts
