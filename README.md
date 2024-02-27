@@ -102,3 +102,45 @@ brew install --cask unnaturalscrollwheels
 ###### Configuration
 
 ![unnaturalscrollwheels](https://github.com/alexanderczigler/dotfiles/assets/3116043/b9b52edc-c7ea-4bcc-82ad-a66676784150)
+
+#### hdutil
+
+Remap a couple of keys on my non-Apple keyboard.
+
+```shell
+sudo hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064}]}'
+```
+
+Edit `~/Library/LaunchAgents/com.local.KeyRemapping.plist`
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.local.KeyRemapping</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/hidutil</string>
+        <string>property</string>
+        <string>--set</string>
+        <string>{"UserKeyMapping":[
+
+            {
+              "HIDKeyboardModifierMappingSrc": 0x700000064,
+              "HIDKeyboardModifierMappingDst": 0x700000035
+            },
+
+            {
+              "HIDKeyboardModifierMappingSrc": 0x700000035,
+              "HIDKeyboardModifierMappingDst": 0x700000064
+            }
+
+        ]}</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
+```
