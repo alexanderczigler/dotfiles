@@ -8,6 +8,9 @@
 # Prompt.
 PS1='%~$ '
 
+# Settings.
+setopt hist_ignore_all_dups
+
 # Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
