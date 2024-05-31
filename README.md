@@ -105,11 +105,15 @@ brew install --cask unnaturalscrollwheels
 
 #### hidutil
 
-Remap a couple of keys on my non-Apple keyboard.
+Remap `<` and `§` on my non-Apple keyboard.
+
+##### Change this session only
 
 ```shell
 sudo hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064}]}'
 ```
+
+##### Persist change after reboot
 
 Edit `~/Library/LaunchAgents/com.local.KeyRemapping.plist`
 
