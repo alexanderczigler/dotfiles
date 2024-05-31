@@ -103,7 +103,7 @@ brew install --cask unnaturalscrollwheels
 
 ![unnaturalscrollwheels](https://github.com/alexanderczigler/dotfiles/assets/3116043/b9b52edc-c7ea-4bcc-82ad-a66676784150)
 
-#### hdutil
+#### hidutil
 
 Remap a couple of keys on my non-Apple keyboard.
 
