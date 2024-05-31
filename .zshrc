@@ -65,6 +65,12 @@ function loop {
   while [ 1 = 1 ]; do $@; sleep 10; done
 }
 
+# rbenv
+if type rbenv &>/dev/null
+then
+  eval "$(rbenv init - zsh)"
+fi
+
 # zsh completions
 
 if type brew &>/dev/null; then
