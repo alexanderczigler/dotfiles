@@ -1,0 +1,92 @@
+## My shell profile.
+## https://github.com/alexanderczigler/dotfiles
+
+# If not running interactively, don't do anything.
+[[ $- != *i* ]] && return
+
+# Prompt.
+PS1='\w$ '
+
+# Settings.
+HISTCONTROL=ignoredups:erasedups
+
+# Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# direnv.
+if type direnv &>/dev/null
+then
+  eval "$(direnv hook bash)"
+fi
+
+# NVM.
+NVM_DIR="/opt/homebrew/opt/nvm"
+NVM_COMPLETION_PATH="/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s $NVM_COMPLETION_PATH ] && \. $NVM_COMPLETION_PATH
+
+if type nvm &>/dev/null
+then
+  # Custom nvm hook.
+  # This will detect .nvmrc files and run nvm <install|use> automatically.
+  load-nvmrc() {
+    local node_version="$(nvm version)"
+    local nvmrc_path="$(nvm_find_nvmrc)"
+
+    if [ -n "$nvmrc_path" ]; then
+      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+      if [ "$nvmrc_node_version" = "N/A" ]; then
+        nvm install
+      elif [ "$nvmrc_node_version" != "$node_version" ]; then
+        nvm use
+      fi
+    elif [ "$node_version" != "$(nvm version default)" ]; then
+      nvm use default
+    fi
+  }
+
+  # Automatically load-nvmrc when changing directories.
+  function chpwd() {
+    load-nvmrc
+  }
+  export PROMPT_COMMAND=chpwd
+  load-nvmrc
+fi
+
+if type gcloud &>/dev/null
+then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.bash.inc"
+fi
+
+function loop {
+  while true; do $@; sleep 10; done
+}
+
+# rbenv
+if type rbenv &>/dev/null
+then
+  eval "$(rbenv init - bash)"
+fi
+
+# bash completions
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/bash-completions:$FPATH
+
+  # Load bash completion
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+
+# update the shell profile
+
+function update-dotfiles {
+  cd ~/.dotfiles
+  git pull
+  cd -
+  source ~/.bashrc
+}
