@@ -28,31 +28,18 @@ NVM_COMPLETION_PATH="/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 if type nvm &>/dev/null
 then
-  # Custom nvm hook.
-  # This will detect .nvmrc files and run nvm <install|use> automatically.
-  load-nvmrc() {
-    local node_version="$(nvm version)"
-    local nvmrc_path="$(nvm_find_nvmrc)"
-
-    if [ -n "$nvmrc_path" ]; then
-      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-      if [ "$nvmrc_node_version" = "N/A" ]; then
-        nvm install
-      elif [ "$nvmrc_node_version" != "$node_version" ]; then
-        nvm use
-      fi
-    elif [ "$node_version" != "$(nvm version default)" ]; then
-      nvm use default
+  _nvmrc_hook() {
+    if [[ $PWD == $PREV_PWD ]]; then
+      return
     fi
+    
+    PREV_PWD=$PWD
+    [[ -f ".nvmrc" ]] && nvm use
   }
 
-  # Automatically load-nvmrc when changing directories.
-  function chpwd() {
-    load-nvmrc
-  }
-  export PROMPT_COMMAND=chpwd
-  load-nvmrc
+  if ! [[ "${PROMPT_COMMAND:-}" =~ _nvmrc_hook ]]; then
+    PROMPT_COMMAND="_nvmrc_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+  fi
 fi
 
 if type gcloud &>/dev/null
