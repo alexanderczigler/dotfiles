@@ -59,6 +59,11 @@ The main purpose of this repo is to get up and running as fast as possible each 
 ```shell
 brew install --cask firefox obs orbstack visual-studio-code
 brew install microsoft-outlook microsoft-teams
+
+# linux
+snap install bitwarden firefox discord spotify steam kubectl kubectx
+snap install --classic code
+sudo apt-get install jq yq telnet vim curl
 ```
 
 #### CLI
