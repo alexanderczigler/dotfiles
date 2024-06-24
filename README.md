@@ -57,11 +57,12 @@ The main purpose of this repo is to get up and running as fast as possible each 
 #### Applications
 
 ```shell
-brew install --cask firefox obs orbstack visual-studio-code
+# macOS
+brew install --cask firefox obs visual-studio-code
 brew install microsoft-outlook microsoft-teams
 
 # linux
-snap install bitwarden firefox discord spotify steam kubectl kubectx
+snap install bitwarden firefox discord spotify steam
 snap install --classic code
 sudo apt-get install jq yq telnet vim curl
 ```
@@ -69,10 +70,14 @@ sudo apt-get install jq yq telnet vim curl
 #### CLI
 
 ```shell
-brew install argocd awscli direnv doctl eksctl fluxcd/tap/flux helm jq kubectl kubectx nvm opendevtools/supreme/supreme telnet terraform watch yarn yq zsh-completions
-
-# Google Cloud
+# macOS
+brew install colima direnv docker docker-compose jq kubectl kubectx nvm opendevtools/supreme/supreme telnet watch yq
 brew install --cask google-cloud-sdk
+
+# linux
+snap install kubectl kubectx
+
+# gcloud
 gcloud --quiet components install beta gke-gcloud-auth-plugin
 ```
 
