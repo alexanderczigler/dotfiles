@@ -8,7 +8,7 @@
 PS1='\w$ '
 
 # Settings.
-HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoreboth:erasedups
 
 # Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
