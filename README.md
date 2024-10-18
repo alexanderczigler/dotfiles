@@ -71,7 +71,7 @@ sudo apt-get install jq yq telnet vim curl
 
 ```shell
 # macOS
-brew install colima direnv docker docker-buildx docker-compose jq kubectl kubectx nvm opendevtools/supreme/supreme telnet watch yq
+brew install colima direnv docker docker-buildx docker-compose fluxcd/tap/flux jq kubectl kubectx nvm opendevtools/supreme/supreme telnet watch yq
 brew install --cask google-cloud-sdk
 
 # linux
