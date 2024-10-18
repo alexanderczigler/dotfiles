@@ -8,7 +8,11 @@
 PS1='\w$ '
 
 # Settings.
+export HISTSIZE=100
+export HISTFILESIZE=100
 export HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r"
 
 # Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -38,7 +42,7 @@ then
   }
 
   if ! [[ "${PROMPT_COMMAND:-}" =~ _nvmrc_hook ]]; then
-    PROMPT_COMMAND="_nvmrc_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+    export PROMPT_COMMAND="_nvmrc_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
   fi
 fi
 
