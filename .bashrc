@@ -12,7 +12,7 @@ export HISTSIZE=100
 export HISTFILESIZE=100
 export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r"
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
