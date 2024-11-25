@@ -58,8 +58,8 @@ The main purpose of this repo is to get up and running as fast as possible each 
 
 ```shell
 # macOS
-brew install --cask firefox obs visual-studio-code
-brew install microsoft-outlook microsoft-teams
+brew install --cask firefox obs spotify visual-studio-code
+brew install microsoft-edge microsoft-outlook microsoft-teams
 
 # linux
 snap install bitwarden firefox discord spotify steam
@@ -72,6 +72,7 @@ sudo apt-get install jq yq telnet vim curl
 ```shell
 # macOS
 brew install colima direnv docker docker-buildx docker-compose fluxcd/tap/flux jq kubectl kubectx nvm opendevtools/supreme/supreme telnet watch yq
+brew install bash-completion
 brew install --cask google-cloud-sdk
 
 # linux
