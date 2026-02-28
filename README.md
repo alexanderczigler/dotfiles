@@ -37,6 +37,28 @@ The main purpose of this repo is to get up and running as fast as possible each 
 > - `chmod go-w '/opt/homebrew/share'`
 > - `chmod -R go-w '/opt/homebrew/share/zsh'`
 
+## 🐧 linux
+
+Setup the `.ssh` directory with the appropriate keys and config.
+
+```shell
+# Clone the dotfiles repo
+git clone git@github.com:alexanderczigler/dotfiles.git .dotfiles
+
+# Configure git
+cat <<EOF > ~/.gitconfig
+[include]
+  path = ~/.dotfiles/.gitconfig
+EOF
+
+# Install apps
+flatpak install flathub com.visualstudio.code
+```
+
+### nvm
+
+https://github.com/nvm-sh/nvm?tab=readme-ov-file#git-install
+
 ## 🍏 Mac OS
 
 ### 🍺 Homebrew
