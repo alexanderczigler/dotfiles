@@ -4,6 +4,54 @@ This repo holds my shell profile and CLI settings. I use bash on both linux and 
 
 The main purpose of this repo is to keep track of what I install and configure on my systems. If you find anything useful here, feel free to fork it.
 
+## bash
+
+```bash
+export LANG="${LANG:-en_US.UTF-8}"
+export LC_CTYPE="${LC_CTYPE:-$LANG}"
+if [[ -n "${LC_COLLATE+x}" && -z "${LC_COLLATE}" ]]; then
+  unset LC_COLLATE
+fi
+
+[[ $- != *i* ]] && return
+PS1='\w$ '
+
+export HISTSIZE=1000
+export HISTFILESIZE=1000
+export HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+if type direnv &>/dev/null
+then
+  eval "$(direnv hook bash)"
+fi
+
+if type fnm &>/dev/null
+then
+  eval "$(fnm env --shell bash --use-on-cd)"
+fi
+
+if type gcloud &>/dev/null
+then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.bash.inc"
+fi
+
+if type rbenv &>/dev/null
+then
+  eval "$(rbenv init - bash)"
+fi
+
+if type brew &>/dev/null; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  FPATH=$(brew --prefix)/share/bash-completions:$FPATH
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+```
+
 ## git+ssh
 
 1. Generate keys
