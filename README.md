@@ -100,6 +100,7 @@ brew install \
  kubectx \
  microsoft-edge \
  obs \
+ obsidian \
  protobuf \
  rbenv \
  visual-studio-code \
