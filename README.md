@@ -85,6 +85,7 @@ brew install \
  bash \
  bash-completion \
  bitwarden \
+ bruno \
  colima \
  direnv \
  docker \
@@ -95,6 +96,7 @@ brew install \
  fnm \
  font-fira-code \
  google-cloud-sdk \
+ iterm \
  jq \
  kubectl \
  kubectx \
