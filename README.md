@@ -100,6 +100,8 @@ brew install \
  kubectx \
  microsoft-edge \
  obs \
+ protobuf \
+ rbenv \
  visual-studio-code \
  watch \
  yq
