@@ -103,7 +103,7 @@ brew install \
  microsoft-edge \
  obs \
  obsidian \
- protobuf \
+ protobuf@33 \
  rbenv \
  visual-studio-code \
  watch \
