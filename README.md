@@ -95,9 +95,9 @@ brew install \
  firefox \
  fluxcd/tap/flux \
  fnm \
+ git \
  font-fira-code \
  google-cloud-sdk \
- iterm \
  jq \
  kubectl \
  kubectx \
