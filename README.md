@@ -45,9 +45,10 @@ fi
 
 if type brew &>/dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-  FPATH=$(brew --prefix)/share/bash-completions:$FPATH
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+
+  # bash-completion@2
+  if [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]]; then
+    . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
   fi
 fi
 ```
@@ -83,7 +84,7 @@ ssh-keygen
 ```shell
 brew install \
  bash \
- bash-completion \
+ bash-completion@2 \
  bitwarden \
  bruno \
  colima \
