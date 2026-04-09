@@ -95,7 +95,9 @@ brew install \
  firefox \
  fluxcd/tap/flux \
  fnm \
+ gh \
  git \
+ go \
  font-fira-code \
  google-cloud-sdk \
  jq \
@@ -106,6 +108,7 @@ brew install \
  obsidian \
  protobuf@33 \
  rbenv \
+ tw93/tap/kakuku \
  visual-studio-code \
  watch \
  yq
