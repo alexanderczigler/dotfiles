@@ -108,6 +108,7 @@ brew install \
  obsidian \
  protobuf@33 \
  rbenv \
+ terraform \
  tw93/tap/kakuku \
  visual-studio-code \
  watch \
